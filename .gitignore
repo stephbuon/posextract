@@ -1,0 +1,6 @@
+# Pycharm
+.idea
+
+# Python bytecode
+*.pyc
+*.pyo
