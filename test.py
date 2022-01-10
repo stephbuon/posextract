@@ -1,7 +1,10 @@
+from pathlib import Path
+
 import spacy
+from spacy import displacy
 from spacy.symbols import *
 from spacy.tokens import Doc, Token
-from posextractor.util import subject_search, object_search
+from posextractor.util import subject_search, object_search, is_verb, is_object
 
 import posextractor.rules
 
@@ -10,6 +13,10 @@ rule_funcs = [
     posextractor.rules.rule2,
     posextractor.rules.rule3,
     posextractor.rules.rule4,
+    posextractor.rules.rule5,
+    posextractor.rules.rule6,
+    posextractor.rules.rule7,
+    posextractor.rules.rule8,
 ]
 
 nlp = spacy.load("en_core_web_sm")
@@ -19,7 +26,7 @@ def graph_tokens(doc: Doc):
     verbs = []
 
     for token in doc:  # type: Token
-        if token.pos == VERB:
+        if is_verb(token):
             verbs.append(token)
 
     for verb in verbs:
@@ -31,10 +38,18 @@ def graph_tokens(doc: Doc):
         # Search for the objects.
         objects = object_search(verb)
 
+        if not subjects:
+            print('Couldnt find subjects.')
+            continue
+
+        if not objects:
+            print('Couldnt find objects.')
+            continue
+
         for subject in subjects:
             for object_pair in objects:
                 poa, obj = object_pair
-                print('\tpossible triple:', subject, verb, poa if poa else '', obj)
+                print('\tpossible triple:', subject.lemma_, verb.lemma_, poa if poa else '', obj.lemma_)
 
                 for rule in rule_funcs:
                     if rule(verb, subject, obj, poa):
@@ -48,8 +63,11 @@ def graph_tokens(doc: Doc):
         print('\n\n')
 
 
-s = "Taking all these circumstances into consideration, he must again say that he did not think the returning officer would be able to look over more than 120 ballot papers an hour, and in the case of a large constituency the result of the poll would not be known for a fortnight"
+s = "The establishment of the Mauritius garrison has been slightly reduced during the last few years, though the actual strength was somewhat depleted at the beginning of that period, owing to the war."
 doc = nlp(s)
-# displacy.serve(doc, style="dep")
-graph_tokens(doc)
 
+graph_tokens(doc)
+svg = displacy.render(doc, style="dep", jupyter=False)
+file_name = "displacy.svg"
+output_path = Path(f'./{file_name}')
+output_path.open("w", encoding="utf-8").write(svg)
