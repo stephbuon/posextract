@@ -1,6 +1,8 @@
 from spacy.symbols import *
 from spacy.tokens import Token
 
+from posextractor.util import is_noun_attribute
+
 
 def rule1(verb_token: Token, subject_token: Token, object_token: Token, poa: Token):
     if verb_token.dep != pcomp:
@@ -64,5 +66,149 @@ def rule4(verb_token: Token, subject_token: Token, object_token: Token, poa: Tok
         return False
 
 
-def rule_5(verb_token: Token, subject_token: Token, object_token: Token, poa: Token):
-    pass
+def rule5(verb_token: Token, subject_token: Token, object_token: Token, poa: Token):
+    if verb_token.dep not in {ccomp, advcl, pcomp} and verb_token.dep_ != "ROOT":
+        return False
+
+    if subject_token.head != verb_token:
+        return False
+
+    if object_token.dep in {pobj, acomp, amod}:  # dative?
+        return poa.head == verb_token and poa.head == subject_token.head
+    else:
+        return False
+
+
+def rule6(verb_token: Token, subject_token: Token, object_token: Token, poa: Token):
+    if verb_token.dep != xcomp and verb_token.dep != advcl:
+        return False
+
+    if verb_token.head != subject_token.head:
+        return False
+
+    if object_token.dep in {pobj, acomp, amod}:  # dative?
+        return poa.head == verb_token and poa.head == object_token.head
+    else:
+        return False
+
+
+def rule7(verb_token: Token, subject_token: Token, object_token: Token, poa: Token):
+    if verb_token.dep != relcl:
+        return False
+
+    if verb_token.head != subject_token:
+        return False
+
+    if object_token.dep in {pobj, acomp, amod}:  # dative?
+        return poa.head == verb_token and poa.head == object_token.head
+    else:
+        return False
+
+
+def rule8(verb_token: Token, subject_token: Token, object_token: Token, poa: Token):
+    if verb_token.dep != conj:
+        return False
+
+    if verb_token.head != subject_token.head:
+        return False
+
+    if object_token.dep in {pobj, acomp, amod} and poa.head == verb_token and object_token.head == poa:
+        return True
+    elif object_token.dep in {dobj, acomp, amod} and object_token.head == verb_token:
+        return True
+
+
+def rule9(verb_token: Token, subject_token: Token, object_token: Token, poa: Token):
+    if verb_token.dep != relcl:
+        return False
+
+    noun_attribute = None
+
+    for child in object_token.children:
+        if is_noun_attribute(child):
+            noun_attribute = child
+            break
+
+    if not noun_attribute:
+        return False
+
+    if subject_token.head != noun_attribute.head:
+        return False
+
+    if verb_token.head != noun_attribute:
+        return False
+
+    if object_token.dep in {pobj, acomp, amod} and poa.head == verb_token and object_token.head == poa:
+        return True
+
+    if object_token.dep in {dobj, acomp, amod} and object_token.head == verb_token:
+        return True
+
+    return False
+
+
+def rule10(verb_token: Token, subject_token: Token, object_token: Token, poa: Token):
+    if verb_token.head != subject_token.head:
+        return False
+
+    verb_conj = None
+
+    for conjunct in verb_token.conjuncts:
+        if conjunct.head == verb_token.head:
+            verb_conj = conjunct
+            break
+
+    if verb_conj is None:
+        return False
+
+    if object_token.dep == pobj and verb_conj == poa.head and poa == object_token.head:
+        return True
+
+    if object_token.dep == dobj and verb_conj == object_token.head:
+        return True
+
+    return False
+
+
+def rule11(verb_token: Token, subject_token: Token, object_token: Token, poa: Token):
+    if verb_token.dep != ccomp:
+        return False
+
+    if subject_token.head != verb_token:
+        return False
+
+    verb_xcomp = None
+
+    for child in verb_token.children:
+        if child.dep == xcomp:
+            verb_xcomp = child
+            break
+
+    print('rule 11: xcomp=', verb_xcomp)
+
+    if verb_xcomp is None:
+        return False
+
+    if object_token.dep == pobj:
+        return False
+
+    if object_token.dep in {dobj, acomp, amod} and verb_token.head == object_token.head:
+        return True
+
+    return False
+
+
+def rule12(verb_token: Token, subject_token: Token, object_token: Token, poa: Token):
+    if verb_token.dep != conj:
+        return False
+
+    if subject_token.head != verb_token:
+        return False
+
+    if object_token.dep in {pobj, acomp, amod} and poa.head == verb_token and object_token.head == poa:
+        return True
+
+    if object_token.dep == dobj and object_token.head == verb_token:
+        return True
+
+    return False

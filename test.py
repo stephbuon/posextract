@@ -17,6 +17,10 @@ rule_funcs = [
     posextractor.rules.rule6,
     posextractor.rules.rule7,
     posextractor.rules.rule8,
+    posextractor.rules.rule9,
+    posextractor.rules.rule10,
+    posextractor.rules.rule11,
+    posextractor.rules.rule12,
 ]
 
 nlp = spacy.load("en_core_web_sm")
@@ -63,7 +67,9 @@ def graph_tokens(doc: Doc):
         print('\n\n')
 
 
-s = "The establishment of the Mauritius garrison has been slightly reduced during the last few years, though the actual strength was somewhat depleted at the beginning of that period, owing to the war."
+# s = "The establishment of the Mauritius garrison has been slightly reduced during the last few years, though the actual strength was somewhat depleted at the beginning of that period, owing to the war."
+
+s = "Mr. Goulding begged to trouble the House for a few minutes, as he was possessed of some local knowledge on the subject of the petition from John Knight."
 doc = nlp(s)
 
 graph_tokens(doc)

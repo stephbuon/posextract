@@ -2,11 +2,30 @@ from spacy.symbols import *
 from spacy.tokens import Token
 
 
+VERB_DEP_TAGS = {ccomp, relcl, xcomp, acl, advcl, pcomp, csubj, csubjpass, conj}
+OBJ_DEP_TAGS = {dobj, pobj, acomp} # dative?
+
+
+def is_verb(token: Token):
+    if token.dep_ == 'ROOT':
+        return True
+
+    return token.dep in VERB_DEP_TAGS
+
+
+def is_object(token: Token):
+    if token.pos == NOUN and token.dep == amod:
+        return True
+
+    return token.dep in OBJ_DEP_TAGS
+
+
+def is_noun_attribute(token: Token):
+    return token.pos == NOUN and token.dep == attr
+
+
 def is_poa(token: Token):
     return token.dep == prep or token.dep == agent or token.dep == det
-
-
-collect_children_of = [VERB, AUX, pobj, dobj]
 
 
 def object_search(token: Token):
@@ -23,7 +42,7 @@ def object_search(token: Token):
 
         visited.add(candidate)
 
-        if candidate.dep == dobj or candidate.dep == pobj:
+        if is_object(candidate):
             if is_poa(candidate.head):
                 objects.append((candidate.head, candidate))
             else:
@@ -42,6 +61,10 @@ def subject_search(token: Token):
     visited = set()
     considering = [token, ]
 
+    # print('Doing subject search for token: ', token)
+    # print('verb.head', token.head)
+    # print('verb.children', list(token.children))
+
     while considering:
         candidate = considering.pop(-1)
 
@@ -56,7 +79,9 @@ def subject_search(token: Token):
             objects.append(candidate)
 
         for child in candidate.children:
-            if child not in visited and child.pos != VERB:
+            if child not in visited:
+                if child.pos == VERB:
+                    continue
                 considering.append(child)
 
         parent = candidate.head
