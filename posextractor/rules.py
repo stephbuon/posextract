@@ -1,7 +1,7 @@
 from spacy.symbols import *
 from spacy.tokens import Token
 
-from posextractor.util import is_noun_attribute
+from .util import is_noun_attribute
 
 
 def rule1(verb_token: Token, subject_token: Token, object_token: Token, poa: Token):
@@ -80,7 +80,7 @@ def rule5(verb_token: Token, subject_token: Token, object_token: Token, poa: Tok
 
 
 def rule6(verb_token: Token, subject_token: Token, object_token: Token, poa: Token):
-    if verb_token.dep != xcomp and verb_token.dep != advcl:
+    if verb_token.dep != xcomp or verb_token.dep != advcl:
         return False
 
     if verb_token.head != subject_token.head:
@@ -183,8 +183,6 @@ def rule11(verb_token: Token, subject_token: Token, object_token: Token, poa: To
         if child.dep == xcomp:
             verb_xcomp = child
             break
-
-    print('rule 11: xcomp=', verb_xcomp)
 
     if verb_xcomp is None:
         return False
