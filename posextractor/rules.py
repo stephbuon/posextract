@@ -85,7 +85,7 @@ def rule5(verb_token: Token, subject_token: Token, object_token: Token, poa: Tok
 
 
 def rule6(verb_token: Token, subject_token: Token, object_token: Token, poa: Token):
-    if verb_token.dep != xcomp or verb_token.dep != advcl:
+    if verb_token.dep != xcomp and verb_token.dep != advcl:
         return False
 
     if verb_token.head != subject_token.head:
