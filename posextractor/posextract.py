@@ -3,7 +3,7 @@ import argparse
 import os
 import spacy
 from spacy.tokens import Doc, Token
-from posextractor.util import subject_search, object_search, is_verb
+from posextractor.util import subject_search, object_search, is_root, is_verb
 import pandas as pd
 
 rule_funcs = [
@@ -24,49 +24,65 @@ rule_funcs = [
 nlp = spacy.load("en_core_web_sm")
 
 
+def visit_verb(verb, parent_subjects, parent_objects, metadata, verbose=False):
+    if verbose:
+        print('beginning triple search for verb:', verb)
+        print('\tparent_subjects=', parent_subjects)
+        print('\tparent_objects=', parent_objects)
+
+    # Search for the subject.
+    subjects = subject_search(verb) + parent_subjects
+
+    # Search for the objects.
+    objects = object_search(verb) + parent_objects
+
+    # Remove duplicates.
+    # TODO: Not sure if this is needed.
+    # subjects = list(set(subjects))
+    # objects = list(set(objects))
+
+    if not subjects:
+        if verbose: print('Could not find subjects.')
+
+    if not objects:
+        if verbose: print('Could not find objects.')
+
+    for subject in subjects:
+        for object_pair in objects:
+            poa, obj = object_pair
+            if verbose: print('\tconsidering triple:', subject.lemma_, verb.lemma_, poa if poa else '', obj.lemma_)
+
+            for rule in rule_funcs:
+                if rule(verb, subject, obj, poa):
+                    if verbose: print('\tmatched with', rule.__name__, '\n')
+                    if metadata:
+                        yield verb, subject, obj, poa, metadata
+                    else:
+                        yield verb, subject, obj, poa
+                    break
+            else:
+                if verbose: print('\tNo matching rule found.\n')
+
+    for child in verb.children:
+        if is_verb(child):
+            yield from visit_verb(child, subjects, objects, metadata, verbose=verbose)
+
+
 def graph_tokens(doc: Doc, verbose=False, metadata=None):
-    verbs = []
+    root_verb = None
 
-    for token in doc:  # type: Token
-        if is_verb(token):
-            verbs.append(token)
+    for token in doc:
+        if is_root(token):
+            root_verb = token
+            break
 
-    extractions = []
+    if root_verb is None:
+        print('Could not find root verb.')
+        return []
 
-    for verb in verbs:
-        if verbose: print('beginning triple search for verb:', verb)
+    triple_extractions = list(visit_verb(root_verb, [], [], metadata, verbose=verbose))
 
-        # Search for the subject.
-        subjects = subject_search(verb)
-
-        # Search for the objects.
-        objects = object_search(verb)
-
-        if not subjects:
-            if verbose: print('Couldnt find subjects.')
-            continue
-
-        if not objects:
-            if verbose: print('Couldnt find objects.')
-            continue
-
-        for subject in subjects:
-            for object_pair in objects:
-                poa, obj = object_pair
-                if verbose: print('\tpossible triple:', subject.lemma_, verb.lemma_, poa if poa else '', obj.lemma_)
-
-                for rule in rule_funcs:
-                    if rule(verb, subject, obj, poa):
-                        if verbose: print('\tmatched with', rule.__name__)
-                        if metadata:
-                            extractions.append((verb, subject, obj, poa, metadata))
-                        else:
-                            extractions.append((verb, subject, obj, poa))
-                        break
-                else:
-                    if verbose: print('\tNo matching rule found.')
-
-    return extractions
+    return triple_extractions
 
 
 if __name__ == '__main__':

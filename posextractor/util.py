@@ -6,6 +6,10 @@ VERB_DEP_TAGS = {ccomp, relcl, xcomp, acl, advcl, pcomp, csubj, csubjpass, conj}
 OBJ_DEP_TAGS = {dobj, pobj, acomp} # dative?
 
 
+def is_root(token: Token):
+    return token.dep_ == 'ROOT'
+
+
 def is_verb(token: Token):
     if token.dep_ == 'ROOT':
         return True
@@ -50,6 +54,8 @@ def object_search(token: Token):
 
         for child in candidate.children:
             if child not in visited:
+                if child.pos == VERB:
+                    continue
                 considering.append(child)
 
     return objects
