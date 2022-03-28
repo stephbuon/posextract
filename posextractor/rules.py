@@ -78,8 +78,12 @@ def rule5(verb_token: Token, subject_token: Token, object_token: Token, poa: Tok
     if subject_token.head != verb_token:
         return False
 
-    if object_token.dep in {pobj, acomp, amod}:  # dative?
+# pobj requires POA
+# acomp and amod (optional)
+    if object_token.dep == pobj:
         return poa.head == verb_token and poa.head == subject_token.head
+    elif object_token.dep == acomp or object_token.dep == amod:
+        return True
     else:
         return False
 
