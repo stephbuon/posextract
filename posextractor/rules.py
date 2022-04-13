@@ -54,13 +54,16 @@ def rule4(verb_token: Token, subject_token: Token, object_token: Token, poa: Tok
     if verb_token.dep not in {xcomp, advcl, conj}:
         return False
 
-    # Traverse until we reach the end or the verb is the subject's head.
-    curr_verb = verb_token
-    while subject_token.head != curr_verb:
-        if curr_verb.head == curr_verb:
-            return False  # end of traversal.
+    if subject_token.head != verb_token:
+        return False
 
-        curr_verb = curr_verb.head
+    # Traverse until we reach the end or the verb is the subject's head.
+    # curr_verb = verb_token
+    # while subject_token.head != curr_verb:
+    #     if curr_verb.head == curr_verb:
+    #         return False  # end of traversal.
+    #
+    #     curr_verb = curr_verb.head
 
     if object_token.dep == pobj:
         # we originally checked object_token.head == poa.head
