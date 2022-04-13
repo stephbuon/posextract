@@ -121,7 +121,9 @@ def rule8(verb_token: Token, subject_token: Token, object_token: Token, poa: Tok
     if verb_token.head != subject_token.head:
         return False
 
-    if object_token.dep in {pobj, acomp, amod} and poa.head == verb_token and object_token.head == poa:
+    if object_token.dep == pobj:
+        return poa.head == verb_token and object_token.head == poa
+    if object_token.dep in {acomp, amod}:
         return True
     elif object_token.dep in {dobj, acomp, amod} and object_token.head == verb_token:
         return True
