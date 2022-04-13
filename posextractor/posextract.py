@@ -3,7 +3,7 @@ import argparse
 import os
 import spacy
 from spacy.tokens import Doc, Token
-from posextractor.util import subject_search, object_search, is_root, is_verb
+from posextractor.util import subject_search, object_search, is_root, is_verb, get_verb_neg, get_subject_neg, get_object_neg
 import pandas as pd
 
 rule_funcs = [
@@ -21,12 +21,30 @@ rule_funcs = [
     rules.rule12,
 ]
 
+
+from typing import NamedTuple, Optional
+
+
+class TripleExtraction(NamedTuple):
+    subject_negdat: Optional[spacy.tokens.Token] = ''
+    subject: Optional[spacy.tokens.Token] = ''
+    neg_adverb: Optional[spacy.tokens.Token] = ''
+    verb: Optional[spacy.tokens.Token] = ''
+    poa: Optional[spacy.tokens.Token] = ''
+    object_negdat: Optional[spacy.tokens.Token] = ''
+    object: Optional[spacy.tokens.Token] = ''
+
+    def __str__(self):
+        return ' '.join((str(v) for v in self if v))
+
+
 nlp = spacy.load("en_core_web_sm")
 
 
 def visit_verb(verb, parent_subjects, parent_objects, metadata, verbose=False):
     if verbose:
         print('beginning triple search for verb:', verb)
+        print('verb dep=', verb.dep_)
         print('\tparent_subjects=', parent_subjects)
         print('\tparent_objects=', parent_objects)
 
@@ -37,9 +55,12 @@ def visit_verb(verb, parent_subjects, parent_objects, metadata, verbose=False):
     objects = object_search(verb) + parent_objects
 
     # Remove duplicates.
-    # TODO: Not sure if this is needed.
-    # subjects = list(set(subjects))
-    # objects = list(set(objects))
+    subjects = list(set(subjects))
+    objects = list(set(objects))
+
+    if verbose:
+        print('\tsubjects=', subjects)
+        print('\tobjects=', objects)
 
     if not subjects:
         if verbose: print('Could not find subjects.')
@@ -47,25 +68,43 @@ def visit_verb(verb, parent_subjects, parent_objects, metadata, verbose=False):
     if not objects:
         if verbose: print('Could not find objects.')
 
-    for subject in subjects:
-        for object_pair in objects:
-            poa, obj = object_pair
+    neg_adverb = get_verb_neg(verb)
+
+    for subject_negdat, subject in subjects:
+        for poa, obj_negdat, obj in objects:
             if verbose: print('\tconsidering triple:', subject.lemma_, verb.lemma_, poa if poa else '', obj.lemma_)
 
             for rule in rule_funcs:
                 if rule(verb, subject, obj, poa):
                     if verbose: print('\tmatched with', rule.__name__, '\n')
+
+                    extraction = TripleExtraction(
+                            subject_negdat=subject_negdat, subject=subject.lemma_,
+                            neg_adverb=neg_adverb, verb=verb.lemma_,
+                            poa=poa, object_negdat=obj_negdat, object=obj.lemma_)
+
                     if metadata:
-                        yield verb, subject, obj, poa, metadata
+                        yield extraction, metadata
                     else:
-                        yield verb, subject, obj, poa
+                        yield extraction
                     break
             else:
                 if verbose: print('\tNo matching rule found.\n')
 
     for child in verb.children:
         if is_verb(child):
-            yield from visit_verb(child, subjects, objects, metadata, verbose=verbose)
+            yield from visit_verb(child, subjects, [], metadata, verbose=verbose)
+        else:
+            # Reset inherited subjects and objects.
+            yield from visit_token(child, [], [], metadata, verbose=verbose)
+
+
+def visit_token(token, parent_subjects, parent_objects, metadata, verbose=False):
+    for child in token.children:
+        if is_verb(child):
+            yield from visit_verb(child, parent_subjects, [], metadata, verbose=verbose)
+        else:
+            yield from visit_token(child, [], [], metadata, verbose=verbose)
 
 
 def graph_tokens(doc: Doc, verbose=False, metadata=None):
@@ -74,6 +113,7 @@ def graph_tokens(doc: Doc, verbose=False, metadata=None):
     for token in doc:
         if is_root(token):
             root_verb = token
+            print(f"Root verb is {root_verb}")
             break
 
     if root_verb is None:
@@ -108,14 +148,14 @@ if __name__ == '__main__':
 
         for i, row in df.iterrows():
             doc = nlp(row[args.data_column])
-            extractions = graph_tokens(doc, metadata=i)
+            extractions = graph_tokens(doc, metadata=i, verbose=True)
             outputs.extend(extractions)
     else:
         doc = nlp(args.input)
         extractions = graph_tokens(doc, metadata=None)
         outputs.extend(extractions)
 
-    out_columns = ['verb', 'subject', 'obj', 'poa']
+    out_columns = ['subject_negdat', 'subject', 'neg_adverb', 'verb', 'poa', 'object_negdat', 'object']
     if is_file:
         out_columns.append(args.id_column)
     output_df = pd.DataFrame(outputs, columns=out_columns)

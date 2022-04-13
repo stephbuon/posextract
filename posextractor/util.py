@@ -47,10 +47,9 @@ def object_search(token: Token):
         visited.add(candidate)
 
         if is_object(candidate):
-            if is_poa(candidate.head):
-                objects.append((candidate.head, candidate))
-            else:
-                objects.append((None, candidate))
+            obj_negdat = get_object_neg(candidate)
+            poa = candidate.head if is_poa(candidate.head) else None
+            objects.append((poa, obj_negdat, candidate))
 
         for child in candidate.children:
             if child not in visited:
@@ -80,9 +79,9 @@ def subject_search(token: Token):
         visited.add(candidate)
 
         if candidate.dep == nsubj:
-            objects.append(candidate)
+            objects.append((get_subject_neg(candidate), candidate))
         elif candidate.dep == nsubjpass:
-            objects.append(candidate)
+            objects.append((get_subject_neg(candidate), candidate))
 
         for child in candidate.children:
             if child not in visited:
@@ -95,3 +94,27 @@ def subject_search(token: Token):
             considering.append(parent)
 
     return objects
+
+
+def get_verb_neg(token):
+    for child in token.children:
+        if child.dep == neg:
+            return child
+
+    return None
+
+
+def get_subject_neg(token):
+    for child in token.children:
+        if child.dep == det:
+            return child
+
+    return None
+
+
+def get_object_neg(token):
+    for child in token.children:
+        if child.dep == det:
+            return child
+
+    return None
