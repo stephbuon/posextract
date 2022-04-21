@@ -21,6 +21,12 @@ def is_object(token: Token):
     if token.pos == NOUN and token.dep == amod:
         return True
 
+    if token.pos == ADV and token.dep == advmod:
+        return True
+
+    if token.pos == PRON and token.dep_ == "dative":
+        return True
+
     return token.dep in OBJ_DEP_TAGS
 
 

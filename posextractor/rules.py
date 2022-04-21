@@ -45,7 +45,8 @@ def rule3(verb_token: Token, subject_token: Token, object_token: Token, poa: Tok
     if object_token.dep == pobj:
         return verb_token == poa.head and object_token.head == poa.head
     elif object_token.dep == dobj:
-        return verb_token.head == object_token
+        # return verb_token.head == object_token
+        return verb_token == object_token.head
     else:
         return False
 
@@ -54,16 +55,23 @@ def rule4(verb_token: Token, subject_token: Token, object_token: Token, poa: Tok
     if verb_token.dep not in {xcomp, advcl, conj}:
         return False
 
-    if subject_token.head != verb_token:
+    if subject_token.head != verb_token and subject_token.head != verb_token.head:
         return False
 
     # Traverse until we reach the end or the verb is the subject's head.
     # curr_verb = verb_token
+    # print(f'subject head: {subject_token.head}')
     # while subject_token.head != curr_verb:
+    #     print(f'curr_verb {curr_verb} {curr_verb.pos_} {curr_verb.dep_}')
+    #     i += 1
+    #
     #     if curr_verb.head == curr_verb:
     #         return False  # end of traversal.
     #
     #     curr_verb = curr_verb.head
+    #
+    #     if curr_verb.pos != VERB:
+    #         return False
 
     if object_token.dep == pobj:
         # we originally checked object_token.head == poa.head
@@ -85,7 +93,7 @@ def rule5(verb_token: Token, subject_token: Token, object_token: Token, poa: Tok
 # acomp and amod (optional)
     if object_token.dep == pobj:
         return poa.head == verb_token and poa.head == subject_token.head
-    elif object_token.dep == acomp or object_token.dep == amod:
+    elif object_token.dep in {acomp, amod, advmod}:
         return True
     else:
         return False
@@ -98,8 +106,13 @@ def rule6(verb_token: Token, subject_token: Token, object_token: Token, poa: Tok
     if verb_token.head != subject_token.head:
         return False
 
-    if object_token.dep in {pobj, acomp, amod}:  # dative?
+    if object_token.dep == pobj:
         return poa.head == verb_token and poa.head == object_token.head
+
+    if object_token.dep in {acomp, amod, advmod}:  # dative?
+        return True
+    elif object_token.dep_ == "dative":
+        return True
     else:
         return False
 
@@ -111,8 +124,10 @@ def rule7(verb_token: Token, subject_token: Token, object_token: Token, poa: Tok
     if verb_token.head != subject_token:
         return False
 
-    if object_token.dep in {pobj, acomp, amod}:  # dative?
+    if object_token.dep in {pobj, acomp, amod, advmod}:  # dative?
         return poa.head == verb_token and poa.head == object_token.head
+    elif object_token.dep_ == "dative":
+        return True
     else:
         return False
 
@@ -126,9 +141,9 @@ def rule8(verb_token: Token, subject_token: Token, object_token: Token, poa: Tok
 
     if object_token.dep == pobj:
         return poa.head == verb_token and object_token.head == poa
-    if object_token.dep in {acomp, amod}:
+    if object_token.dep in {acomp, amod, advmod}:
         return True
-    elif object_token.dep in {dobj, acomp, amod} and object_token.head == verb_token:
+    elif object_token.dep in {dobj, acomp, amod, advmod} and object_token.head == verb_token:
         return True
 
 
@@ -152,10 +167,10 @@ def rule9(verb_token: Token, subject_token: Token, object_token: Token, poa: Tok
     if verb_token.head != noun_attribute:
         return False
 
-    if object_token.dep in {pobj, acomp, amod} and poa.head == verb_token and object_token.head == poa:
+    if object_token.dep in {pobj, acomp, amod, advmod} and poa.head == verb_token and object_token.head == poa:
         return True
 
-    if object_token.dep in {dobj, acomp, amod} and object_token.head == verb_token:
+    if object_token.dep in {dobj, acomp, amod, advmod} and object_token.head == verb_token:
         return True
 
     return False
@@ -204,7 +219,7 @@ def rule11(verb_token: Token, subject_token: Token, object_token: Token, poa: To
     if object_token.dep == pobj:
         return False
 
-    if object_token.dep in {dobj, acomp, amod} and verb_token.head == object_token.head:
+    if object_token.dep in {dobj, acomp, amod, advmod} and verb_token.head == object_token.head:
         return True
 
     return False
@@ -217,7 +232,7 @@ def rule12(verb_token: Token, subject_token: Token, object_token: Token, poa: To
     if subject_token.head != verb_token:
         return False
 
-    if object_token.dep in {pobj, acomp, amod} and poa.head == verb_token and object_token.head == poa:
+    if object_token.dep in {pobj, acomp, amod, advmod} and poa.head == verb_token and object_token.head == poa:
         return True
 
     if object_token.dep == dobj and object_token.head == verb_token:
