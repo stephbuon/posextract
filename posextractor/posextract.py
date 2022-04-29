@@ -120,7 +120,14 @@ def graph_tokens(doc: Doc, verbose=False, metadata=None):
         print('Could not find root verb.')
         return []
 
+    extraction_set = set()
     triple_extractions = list(visit_verb(root_verb, [], [], metadata, verbose=verbose))
+    triple_extractions_no_duplicates = []
+
+    for triple in triple_extractions:
+        if str(triple) not in extraction_set:
+            triple_extractions_no_duplicates.append(triple)
+            extraction_set.add(str(triple))
 
     return triple_extractions
 
