@@ -1,9 +1,24 @@
 from spacy.symbols import *
 from spacy.tokens import Token
+from typing import NamedTuple, Optional
+import spacy.tokens
 
 
 VERB_DEP_TAGS = {ccomp, relcl, xcomp, acl, advcl, pcomp, csubj, csubjpass, conj}
 OBJ_DEP_TAGS = {dobj, pobj, acomp} # dative?
+
+
+class TripleExtraction(NamedTuple):
+    subject_negdat: Optional[Token] = ''
+    subject: Optional[Token] = ''
+    neg_adverb: Optional[Token] = ''
+    verb: Optional[Token] = ''
+    poa: Optional[Token] = ''
+    object_negdat: Optional[Token] = ''
+    object: Optional[spacy.tokens.Token] = ''
+
+    def __str__(self):
+        return ' '.join((str(v) for v in self if v))
 
 
 def is_root(token: Token):
@@ -54,6 +69,7 @@ def object_search(token: Token):
 
         if is_object(candidate):
             obj_negdat = get_object_neg(candidate)
+            # obj_adj = get_object_adj(candidate)
             poa = candidate.head if is_poa(candidate.head) else None
             objects.append((poa, obj_negdat, candidate))
 
@@ -84,9 +100,7 @@ def subject_search(token: Token):
 
         visited.add(candidate)
 
-        if candidate.dep == nsubj:
-            objects.append((get_subject_neg(candidate), candidate))
-        elif candidate.dep == nsubjpass:
+        if candidate.dep == nsubj or candidate.dep == nsubjpass:
             objects.append((get_subject_neg(candidate), candidate))
 
         for child in candidate.children:
@@ -112,7 +126,7 @@ def get_verb_neg(token):
 
 def get_subject_neg(token):
     for child in token.children:
-        if child.dep == det:
+        if child.dep == det and child.text.lower() == "no":
             return child
 
     return None
@@ -120,7 +134,17 @@ def get_subject_neg(token):
 
 def get_object_neg(token):
     for child in token.children:
-        if child.dep == det:
+        if child.dep == neg:
+            return child
+
+    return None
+
+
+def get_object_adj(token):
+    for child in token.children:
+        if child.dep == amod and child.pos == ADJ:
+            return child
+        if child.dep == advmod and child.pos == ADV:
             return child
 
     return None

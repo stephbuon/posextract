@@ -3,7 +3,7 @@ import argparse
 import os
 import spacy
 from spacy.tokens import Doc, Token
-from posextractor.util import subject_search, object_search, is_root, is_verb, get_verb_neg, get_subject_neg, get_object_neg
+from posextractor.util import *
 import pandas as pd
 
 rule_funcs = [
@@ -20,22 +20,6 @@ rule_funcs = [
     rules.rule11,
     rules.rule12,
 ]
-
-
-from typing import NamedTuple, Optional
-
-
-class TripleExtraction(NamedTuple):
-    subject_negdat: Optional[spacy.tokens.Token] = ''
-    subject: Optional[spacy.tokens.Token] = ''
-    neg_adverb: Optional[spacy.tokens.Token] = ''
-    verb: Optional[spacy.tokens.Token] = ''
-    poa: Optional[spacy.tokens.Token] = ''
-    object_negdat: Optional[spacy.tokens.Token] = ''
-    object: Optional[spacy.tokens.Token] = ''
-
-    def __str__(self):
-        return ' '.join((str(v) for v in self if v))
 
 
 nlp = spacy.load("en_core_web_sm")
