@@ -28,9 +28,14 @@ def rule2(verb_token: Token, subject_token: Token, object_token: Token, poa: Tok
         return False
 
     if object_token.dep == pobj:
-        return verb_token == poa.head and object_token.head == poa
+        if poa.head.pos == SCONJ:
+            return verb_token == poa.head.head and object_token.head == poa
+        else:
+            return verb_token == poa.head and object_token.head == poa
     elif object_token.dep == dobj:
         return verb_token == object_token.head
+    elif object_token.dep in {acomp, amod, advmod}:
+        return True
     else:
         return False
 
