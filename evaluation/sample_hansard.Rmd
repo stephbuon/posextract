@@ -1,0 +1,148 @@
+---
+title: "sample_hansard"
+author: "Steph Buongiorno"
+date: "6/3/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(data.table)
+library(tidyverse)
+
+hansard <- fread("/scratch/group/pract-txt-mine/hansard_justnine_12192019.csv") %>%
+  select(sentence_id, text)
+```
+
+##Interrogative Sentences and Sentences with “Wh-” Fronting
+Interrogative sentences are sentences that ask a question and are punctuated with a question mark. As mentioned earlier, subjects generally precede the verb or object in an English sentence. An exception is when asking a question. Questions are often structured by “wh-” fronting, where the object is transposed in front of the subject. Consider the following sentence:
+
+“Which car did you say that Mary wanted to buy?”
+
+In this example, the object “car” comes before the subject “Mary” and the verb “wanted.”
+
+```{r}
+which_what <- hansard %>%
+  filter(str_detect(text, regex("^Which (.*)\\?$|^What (.*)\\?$")), 
+         !str_detect(text, regex("hon\\.$")),
+         nchar(text) > 40) %>%
+  sample_n(1000)
+
+write_csv(which_what, "~/placeholder_3.csv")
+
+hansard_sample <- read_csv("")
+
+incomplete_or_incorrect_sentences <- c("S3V0110P0_17033", "S3V0326P0_11946", "S4V0010P0_22877", "S4V0081P0_800")
+
+for(id in incomplete_or_incorrect_sentences) {
+  
+  which_what <- which_what %>%
+    filter(!str_detect(sentence_id, regex(id))) }
+
+replace <- (1000 - nrow(which_what))
+if(replace != 0) {
+  replace_ww <- which_what %>%
+    sample_n(replace)
+  
+  which_what <- bind_rows(which_what, replace_ww) }
+```
+
+##Sentences with Leftward Syntactic Movement (without “wh-” fronting)
+Leftward syntactic movement occurs when an object or verb precedes a subject. English is considered a rigid “subject-verb-object” language, meaning that within a sentence, the subject usually comes first followed by the verb and then the object. However, sometimes grammatical sentences will feature the verb or object preceding the subject. Consider the following sentence:
+
+“After watching it like 5 or 6 times, I think I see what happened.”
+
+In this example, the verb “watching” and the object “it” come before the subject “I.”
+
+```{r}
+after <- hansard %>%
+  filter(str_detect(text, regex("^After ")), 
+         !str_detect(sentence_id, regex("hon\\.$")),
+         nchar(text) > 40) %>%
+  sample_n(1000)
+
+write_csv(sample_which_what, "~/placeholder_4.csv")
+
+hansard_sample <- read_csv("")
+
+incomplete_or_incorrect_sentences <- c("", "", "", "")
+
+for(id in incomplete_or_incorrect_sentences) {
+  
+  after <- after %>%
+    filter(!str_detect(sentence_id, regex(id))) }
+
+replace <- (1000 - nrow(after))
+if(replace != 0) {
+  replace_a <- after %>%
+    sample_n(replace)
+  
+  after <- bind_rows(after, replace) }
+```
+
+##Sentences Selected at Random
+Random sentences are sentences drawn without any manual intervention. They include simple sentences (e.g. sentences composed of a single, independent clause) to compound-complex sentences (e.g. sentences with multiple, dependent clauses).
+
+```{r}
+hansard_sample <- hansard %>%
+  sample_n(2000) %>%
+  filter(!str_detect(text, regex("hon\\.$")),
+         !str_detect(text, regex("^(?![A-Z])"))) %>%
+  filter(str_count(text, "\\w+") > 4) %>%
+  sample_n(1000)
+
+write_csv(hansard_sample, "~/placeholder_5.csv")
+
+hansard_sample <- read_csv("")
+
+incomplete_or_incorrect_sentences <- c("", "", "", "")
+
+for(id in incomplete_or_incorrect_sentences) {
+  
+  hansard_sample <- hansard_sample %>%
+    filter(!str_detect(sentence_id, regex(id))) }
+
+replace <- (1000 - nrow(hansard_sample))
+if(replace != 0) {
+  replace_a <- hansard_sample %>%
+    sample_n(replace)
+  
+  after <- bind_rows(after, replace) }
+
+```
+
+##Compound Sentences, Complex Sentences, and Compound-Complex Sentences
+Compound sentences are sentences where two or more independent clauses are joined together with a coordinating conjunction such as “for” or “yet,” or a conjunctive adverb such as “however.” Complex sentences are sentences that have one independent clause and one or more subordinate clauses that modify the main subject or verb of a sentence. Compound-complex sentences are sentences that contain at least three clauses: two independent clauses and one or more dependent clauses. In total, a compound-complex sentence can have three or more sets of subject-verb relations.
+
+```{r}
+compound_complex_compoundcomplex <- hansard %>%
+  sample_n(100000) %>%
+  filter(!str_detect(text, regex("hon\\.$")),
+         !str_detect(text, regex("^(?![A-Z])")),
+         str_detect(text, regex(" and,| but,| or,"))) %>%
+  sample_n(1000)
+
+write_csv(hansard_sample, "~/placeholder_6.csv")
+
+hansard_sample <- read_csv("")
+
+incomplete_or_incorrect_sentences <- c("", "", "", "")
+
+for(id in incomplete_or_incorrect_sentences) {
+  
+  hansard_sample <- hansard_sample %>%
+    filter(!str_detect(sentence_id, regex(id))) }
+
+replace <- (1000 - nrow(hansard_sample))
+if(replace != 0) {
+  replace_a <- hansard_sample %>%
+    sample_n(replace)
+  
+  after <- bind_rows(after, replace) }
+```
+
+
+
