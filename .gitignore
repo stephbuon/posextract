@@ -4,3 +4,6 @@
 # Python bytecode
 *.pyc
 *.pyo
+
+# experimental code
+evaluation/sample_hansard.Rmd
