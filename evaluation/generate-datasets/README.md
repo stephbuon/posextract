@@ -1,9 +1,10 @@
 ### File Contents
 
 
-**generate_wikipedia_dataset.py**: Create a new data set of random sentences from Wikipedia.
+**generate_wikipedia_dataset.py** 
 
-| **generate_wikipedia_dataset.py**|
+Create a new data set of random sentences from Wikipedia.
+
 | Argument  | Definition |
 | ------------- | ------------- |
 | --input_number | Number of sentences to generate. |
