@@ -14,3 +14,6 @@ Example Usage:
 
 Example Usage without input file:
 `python -m posextractor.posextract "This is a sentence." output.csv`
+
+
+For list of spaCy symbols: https://github.com/explosion/spaCy/blob/master/spacy/symbols.pyx
