@@ -32,12 +32,11 @@ def sentence_check(doc):
     if re.match(r'^Which (.*)\?$|^What (.*)\?$|^Why (.*)\?$|^Where (.*)\?$|^When (.*)\?$', str(doc), re.IGNORECASE):
         if doc[1].pos_ == 'NOUN':
             return 'interrogative_sent'
-    #elif re.match(r' and,| but,| or,', str(doc)):
     elif str(doc).count(',') > 0:
         return 'comp_sent'
-    elif doc[0].pos_ != 'NOUN':
-        if doc[0].pos_ != 'PRON':
-            if doc[1].pos_ == 'VERB': 
+    elif doc[0].pos_ != 'NOUN' and doc[0].pos_ != 'PRON' and doc[0].pos_ != 'PROPN':
+        if str(doc[0]) != 'The':
+            if doc[1].pos_ == 'VERB' or doc[1].pos_ == 'ADJ':
                 return 'leftward_sent'
 
 def tag_sentence(df):  
@@ -46,7 +45,8 @@ def tag_sentence(df):
     return df
 
 def collect_sentences(df, col):
-    df = pd.read_csv(df)
+    #df = pd.read_csv(df)
+    df = pd.read_csv(df, sep='|')
     df = df[[col]].copy()
         
     df = validate_data(df, col)
@@ -56,18 +56,24 @@ def collect_sentences(df, col):
     df = validate_syntax(df)
     df = tag_sentence(df)
 
-    export_dir = '/users/sbuongiorno/sentence_eval'
-    if not os.path.exists(export_dir):
-        os.makedirs(export_dir)
+    export_dir = '/home/stephbuon/projects/posextract/evaluation'
+    #export_dir = '/users/sbuongiorno/sentence_eval'
+    #if not os.path.exists(export_dir):
+    #    os.makedirs(export_dir)
         
     types = ['leftward_sent', 'interrogative_sent', 'comp_sent']
                 
     for t in types:
         out = df[df['tag'] == t]
-        out = out.sample(1500)
-        out.to_csv(export_dir + '/' + t + '.csv')
+        try:
+            out = out.sample(10)
+            out.to_csv(export_dir + '/' + t + '.csv')
+        except:
+            continue
             
     df = df.sample(n = 1500)
     df.to_csv(export_dir + '/' + 'random_sent.csv')
     
-collect_sentences('/scratch/group/pract-txt-mine/hansard_justnine_12192019.csv', 'text')
+#collect_sentences('/scratch/group/pract-txt-mine/hansard_justnine_12192019.csv', 'text')
+
+collect_sentences('/home/stephbuon/projects/posextract/evaluation/wikipedia_sentences.csv', 'text')
