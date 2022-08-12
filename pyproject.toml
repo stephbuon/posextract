@@ -1,0 +1,35 @@
+# pyproject.toml
+
+[build-system]
+requires      = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "posextract"
+version = "1.0.0"
+description = "Grammatical information extraction methods designed for the analysis of historical and contemporary textual corpora."
+readme = "README.md"
+authors = [{ name = "Steph Buongiorno and Omar Alexander Cerpa", email = "steph.buon@gmail.com" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["triples", "svo", "action", "agency"]
+dependencies = [
+    "spacy",
+    "pandas",
+    'tomli; python_version < "3.11"',
+]
+requires-python = ">=3.6"
+
+[project.optional-dependencies]
+dev = ["pip-tools", "pytest"]
+
+[project.urls]
+Homepage = "https://github.com/stephbuon/posextract"
+
+#[project.scripts]
+#posextract = posextract.__main__:main"
+
