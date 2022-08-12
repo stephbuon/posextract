@@ -75,5 +75,6 @@ def collect_sentences(df, col):
     df.to_csv(export_dir + '/' + 'random_sent.csv')
     
 #collect_sentences('/scratch/group/pract-txt-mine/hansard_justnine_12192019.csv', 'text')
+#collect_sentences('/home/stephbuon/projects/posextract/evaluation/wikipedia_dataset_2.csv', 'text')
 
-collect_sentences('/home/stephbuon/projects/posextract/evaluation/wikipedia_sentences.csv', 'text')
+collect_sentences('/home/stephbuon/projects/posextract/evaluation/wikipedia_dataset.csv', 'text')
