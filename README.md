@@ -1,12 +1,11 @@
 # posextract
-posextract offers grammatical information extraction methods designed for the analysis of historical and contemporary textual corpora.
+posextract offers grammatical information extraction methods designed for the analysis of historical and contemporary textual corpora. It traverses the syntactic dependency relations between parts-of-speech and returns sequences of words that share a grammatical relationship. 
 
-posextract traverses the dependency relations between parts-of-speech and returns sequences of words that share a grammatical relationship. 
-
-Users have the option of: 
+Users have the options of: 
 
 - Extracting subject-verb-object (SVO) and subject-verb-adjective complement (SVA) triples
 - Extracting adjective-noun piars
+- Extracting subject-verb pairs
 
 ## Usage
 Required Paramters: 
@@ -24,14 +23,15 @@ Optional Paramters:
 
 ```
 python -m posextract.extract_triples "The soldiers were terminally ill." output.csv --post-combine-adj
+
+# Output: soldiers-were-terminally-ill
 ```
 
-Examples:
+If provided a .csv file: 
+
 ```
-`python -m posextractor.posextract --data_column sentence --id_column sentence_id test.csv output.csv`
+`python -m posextract.extract_triples --data_column sentence --id_column sentence_id test.csv output.csv`
 ```
-Example Usage without input file:
-`python -m posextractor.posextract "This is a sentence." output.csv`
 
 ## For More Information...
 ... see our Wiki: 
