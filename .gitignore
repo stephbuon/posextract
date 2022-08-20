@@ -7,3 +7,7 @@
 
 # experimental code
 evaluation/sample_hansard.Rmd
+
+/dist
+/build
+/posextract.egg-info

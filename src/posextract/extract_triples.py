@@ -1,9 +1,10 @@
-from . import rules
+from typing import List
+
+from posextract import rules
 import argparse
 import os
-import spacy
-from spacy.tokens import Doc, Token
-from posextract.util import *
+from spacy.tokens import Doc
+from .util import *
 import pandas as pd
 
 rule_funcs = [
@@ -116,6 +117,60 @@ def graph_tokens(doc: Doc, verbose=False, metadata=None):
     return triple_extractions
 
 
+def post_process_combine_adj(extractions: List[TripleExtraction]):
+    possible_dupes = {}
+
+    for extraction in extractions:
+        key = (extraction.subject.i, extraction.verb.i)
+        possible_dupes.setdefault(key, []).append(extraction)
+
+    new_extractions = []
+
+    for key, dupe_list in possible_dupes.items():
+
+        if len(dupe_list) == 1:
+            new_extractions.append(dupe_list[0])
+            continue
+
+        print(key, [str(dupe) for dupe in dupe_list])
+
+        # Find the extraction with a pobj or dobj
+        try:
+            ext_main = next(ext for ext in dupe_list if ext.object.dep == pobj or ext.object.dep == dobj or ext.object.dep == acomp)
+            print('main:', ext_main)
+            adjectives = []
+
+            for ext in dupe_list:
+                if ext.object.i == ext_main.object.i:
+                    continue
+                if ext.object.dep == advmod and not ext.poa:
+                    adjectives.append(str(ext.object))
+                else:
+                    new_extractions.append(ext)
+
+            adjectives = ' '.join(adjectives)
+
+            ext_main = TripleExtraction(
+                subject_negdat=ext_main.subject_negdat,
+                subject=ext_main.subject,
+                neg_adverb=ext_main.neg_adverb,
+                verb=ext_main.verb,
+                poa=ext_main.poa,
+                object_negdat=ext_main.object_negdat,
+                adjectives=adjectives,
+                object=ext_main.object,
+            )
+
+            new_extractions.append(ext_main)
+
+        except StopIteration:
+            # No extraction can be combined
+            new_extractions.append(dupe_list[0])
+            continue
+
+    return new_extractions
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='posextractor')
     parser.add_argument('input', metavar='input', type=str,
@@ -146,7 +201,7 @@ if __name__ == '__main__':
         extractions = graph_tokens(doc, metadata=None)
         outputs.extend(extractions)
 
-    out_columns = ['subject_negdet', 'subject', 'neg_adverb', 'verb', 'poa', 'object_negdet', 'object']
+    out_columns = ['subject_negdat', 'subject', 'neg_adverb', 'verb', 'poa', 'object_negdat', 'adjectives', 'object']
     if is_file:
         out_columns.append(args.id_column)
     output_df = pd.DataFrame(outputs, columns=out_columns)

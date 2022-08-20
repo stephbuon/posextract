@@ -15,6 +15,7 @@ class TripleExtraction(NamedTuple):
     verb: Optional[Token] = ''
     poa: Optional[Token] = ''
     object_negdat: Optional[Token] = ''
+    adjectives: Optional[Token, str] = ''
     object: Optional[spacy.tokens.Token] = ''
 
     def __str__(self):

@@ -9,7 +9,11 @@ name = "posextract"
 version = "1.0.0"
 description = "Grammatical information extraction methods designed for the analysis of historical and contemporary textual corpora."
 readme = "README.md"
-authors = [{ name = "Steph Buongiorno and Omar Alexander Cerpa", email = "steph.buon@gmail.com" }]
+requires-python = ">=3.6"
+authors = [
+    {name="Steph Buongiorno", email="steph.buon@gmail.com" },
+    {name="Alexander Cerpa" email="acerpa@smu.edu"},
+]
 license = { file = "LICENSE" }
 classifiers = [
     "License :: OSI Approved :: MIT License",
@@ -28,7 +32,9 @@ requires-python = ">=3.6"
 dev = ["pip-tools", "pytest"]
 
 [project.urls]
-Homepage = "https://github.com/stephbuon/posextract"
+homepage = "https://github.com/stephbuon/posextract"
+repository = "https://github.com/stephbuon/posextract"
+documentation = "https://github.com/stephbuon/posextract"
 
 [project.scripts]
 posextract = "posextract.__main__:main"
