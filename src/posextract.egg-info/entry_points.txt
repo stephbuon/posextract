@@ -1,0 +1,2 @@
+[console_scripts]
+posextract = posextract.__main__:main

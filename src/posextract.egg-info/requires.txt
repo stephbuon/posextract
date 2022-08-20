@@ -1,0 +1,9 @@
+spacy
+pandas
+
+[:python_version < "3.11"]
+tomli
+
+[dev]
+pip-tools
+pytest

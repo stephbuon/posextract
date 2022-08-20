@@ -30,6 +30,6 @@ dev = ["pip-tools", "pytest"]
 [project.urls]
 Homepage = "https://github.com/stephbuon/posextract"
 
-#[project.scripts]
-#posextract = posextract.__main__:main"
+[project.scripts]
+posextract = "posextract.__main__:main"
 

@@ -3,7 +3,7 @@ import argparse
 import os
 import spacy
 from spacy.tokens import Doc, Token
-from posextractor.util import *
+from posextract.util import *
 import pandas as pd
 
 rule_funcs = [
@@ -146,7 +146,7 @@ if __name__ == '__main__':
         extractions = graph_tokens(doc, metadata=None)
         outputs.extend(extractions)
 
-    out_columns = ['subject_negdat', 'subject', 'neg_adverb', 'verb', 'poa', 'object_negdat', 'object']
+    out_columns = ['subject_negdet', 'subject', 'neg_adverb', 'verb', 'poa', 'object_negdet', 'object']
     if is_file:
         out_columns.append(args.id_column)
     output_df = pd.DataFrame(outputs, columns=out_columns)
