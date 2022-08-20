@@ -35,7 +35,9 @@ posextract can extract SVO/SVA relationships separately or it can combine the ad
 python -m posextract.extract_triples "The soldiers were terminally ill." output.csv --post-combine-adj
 
 # Output: soldiers-were-terminally, soldiers-were-ill 
+```
 
+```
 python -m posextract.extract_triples "The soldiers were terminally ill." output.csv --post-combine-adj
 
 # Output: soldiers-were-terminally-ill
