@@ -36,6 +36,3 @@ homepage = "https://github.com/stephbuon/posextract"
 repository = "https://github.com/stephbuon/posextract"
 documentation = "https://github.com/stephbuon/posextract"
 
-[project.scripts]
-posextract = "posextract.__main__:main"
-
