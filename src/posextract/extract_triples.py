@@ -4,7 +4,7 @@ from posextract import rules
 import argparse
 import os
 from spacy.tokens import Doc
-from .util import *
+from posextract.util import *
 import pandas as pd
 
 rule_funcs = [
@@ -57,16 +57,16 @@ def visit_verb(verb, parent_subjects, parent_objects, metadata, verbose=False):
 
     for subject_negdat, subject in subjects:
         for poa, obj_negdat, obj in objects:
-            if verbose: print('\tconsidering triple:', subject.lemma_, verb.lemma_, poa if poa else '', obj.lemma_)
+            if verbose: print('\tconsidering triple:', subject, verb, poa if poa else '', obj)
 
             for rule in rule_funcs:
                 if rule(verb, subject, obj, poa):
                     if verbose: print('\tmatched with', rule.__name__, '\n')
 
                     extraction = TripleExtraction(
-                            subject_negdat=subject_negdat, subject=subject.lemma_,
-                            neg_adverb=neg_adverb, verb=verb.lemma_,
-                            poa=poa, object_negdat=obj_negdat, object=obj.lemma_)
+                            subject_negdat=subject_negdat, subject=subject,
+                            neg_adverb=neg_adverb, verb=verb,
+                            poa=poa, object_negdat=obj_negdat, object=obj)
 
                     if metadata:
                         yield extraction, metadata
@@ -132,12 +132,9 @@ def post_process_combine_adj(extractions: List[TripleExtraction]):
             new_extractions.append(dupe_list[0])
             continue
 
-        print(key, [str(dupe) for dupe in dupe_list])
-
         # Find the extraction with a pobj or dobj
         try:
             ext_main = next(ext for ext in dupe_list if ext.object.dep == pobj or ext.object.dep == dobj or ext.object.dep == acomp)
-            print('main:', ext_main)
             adjectives = []
 
             for ext in dupe_list:
@@ -181,6 +178,8 @@ if __name__ == '__main__':
                         help='what column to use if a csv is given', dest='data_column')
     parser.add_argument('--id_column', type=str, default=None, metavar='id_col',
                         help='what column to use if a csv is given', dest='id_column')
+    parser.add_argument('--post-combine-adj', action='store_true')
+    parser.add_argument('--lemma', action='store_true')
     args = parser.parse_args()
     is_file = os.path.isfile(args.input)
 
@@ -200,6 +199,13 @@ if __name__ == '__main__':
         doc = nlp(args.input)
         extractions = graph_tokens(doc, metadata=None)
         outputs.extend(extractions)
+
+    if args.post_combine_adj:
+        print('Combining triples...')
+        outputs = post_process_combine_adj(outputs)\
+
+    if args.lemma:
+        outputs = [triple.lemmatized() for triple in outputs]
 
     out_columns = ['subject_negdat', 'subject', 'neg_adverb', 'verb', 'poa', 'object_negdat', 'adjectives', 'object']
     if is_file:

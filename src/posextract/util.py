@@ -15,11 +15,21 @@ class TripleExtraction(NamedTuple):
     verb: Optional[Token] = ''
     poa: Optional[Token] = ''
     object_negdat: Optional[Token] = ''
-    adjectives: Optional[Token, str] = ''
+    adjectives: Optional[str] = ''
     object: Optional[spacy.tokens.Token] = ''
 
     def __str__(self):
         return ' '.join((str(v) for v in self if v))
+
+    def lemmatized(self):
+        d = self._asdict()
+        d['object'] = self.object.lemma_
+        d['verb'] = self.verb.lemma_
+        d['subject'] = self.subject.lemma_
+
+        return TripleExtraction(
+            **d
+        )
 
 
 def is_root(token: Token):
