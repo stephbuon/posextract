@@ -33,7 +33,7 @@ Over CLI:
 posextract can extract grammatical triples from text: 
 
 ```
-python -m posextract.extract_triples "Landlords may exercise oppression." output.csv --post-combine-adj
+python -m posextract.extract_triples "Landlords may exercise oppression." output.csv
 
 # Output: Landlords exercise oppression. 
 ```
