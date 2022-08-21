@@ -23,10 +23,9 @@ Optional Paramters:
 Interactively: 
 
 ```
-import posextract
+from posextract import extract_triples
 
-posextract.extract_triples(dataframe, sentence, unique_id)
-
+extract_triples(dataframe, sentence, unique_id)
 ```
 
 Over CLI: 
