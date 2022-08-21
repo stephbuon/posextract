@@ -9,9 +9,9 @@ Users have the options of:
 
 ## Usage
 
-- `posextract.extract_triples()`
-- `posextract.extract_adj_noun_pairs()`
-- `posextract.extract_subj_verb_pairs()`
+- `extract_triples`
+- `extract_adj_noun_pairs`
+- `extract_subj_verb_pairs`
 
 Required Paramters: 
 
