@@ -51,7 +51,7 @@ python -m posextract.extract_triples "The soldiers were terminally ill." output.
 If provided a .csv file: 
 
 ```
-`python -m posextract.extract_triples --data_column sentence --id_column sentence_id input.csv output.csv`
+python -m posextract.extract_triples --data_column sentence --id_column sentence_id input.csv output.csv
 ```
 
 ## For More Information...
