@@ -8,6 +8,11 @@ Users have the options of:
 - Extracting subject-verb pairs
 
 ## Usage
+
+- `posextract.extract_triples()`
+- `posextract.extract_adj_noun_pairs()`
+- `posextract.extract_subj_verb_pairs()`
+
 Required Paramters: 
 
 - `input` can be the name of a csv file or an input string
