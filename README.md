@@ -1,17 +1,11 @@
 # posextract
-posextract offers grammatical information extraction methods designed for the analysis of historical and contemporary textual corpora. It traverses the syntactic dependency relations between parts-of-speech and returns sequences of words that share a grammatical relationship. See [our article]() for more.
-
-Users have the options of: 
-
-- Extracting subject-verb-object (SVO) and subject-verb-adjective complement (SVA) triples
-- Extracting adjective-noun piars
-- Extracting subject-verb pairs
+posextract offers grammatical information extraction methods designed for the analysis of historical and contemporary textual corpora. It traverses the syntactic dependency relations between parts-of-speech and returns sequences of words that share a grammatical relationship. See [our article]() for more. You can also [download posextract with pip](https://pypi.org/project/posextract/). 
 
 ## Usage
 
-- `extract_triples`
-- `extract_adj_noun_pairs`
-- `extract_subj_verb_pairs`
+- `extract_triples` to extract subject-verb-object (SVO) and subject-verb-adjective complement (SVA) triples
+- `extract_adj_noun_pairs` to extract adjective-noun pairs
+- `extract_subj_verb_pairs` to extract subject-verb pairs
 
 Required Paramters: 
 
@@ -25,6 +19,17 @@ Optional Paramters:
 - `--post-combine-adj` combine triples (adjective predicate with object)
 
 ### Examples
+
+Interactively: 
+
+```
+import posextract
+
+posextract.extract_triples(dataframe, sentence, unique_id)
+
+```
+
+Over CLI: 
 
 posextract can extract grammatical triples from text: 
 
