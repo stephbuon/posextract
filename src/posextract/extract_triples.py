@@ -1,4 +1,5 @@
-from typing import List
+import collections
+from typing import List, Union, Iterable
 
 from posextract import rules
 import argparse
@@ -22,11 +23,10 @@ rule_funcs = [
     rules.rule12,
 ]
 
-
 nlp = spacy.load("en_core_web_sm")
 
 
-def visit_verb(verb, parent_subjects, parent_objects, metadata, verbose=False):
+def visit_verb(verb, parent_subjects, parent_objects, verbose=False):
     if verbose:
         print('beginning triple search for verb:', verb)
         print('verb dep=', verb.dep_)
@@ -64,35 +64,27 @@ def visit_verb(verb, parent_subjects, parent_objects, metadata, verbose=False):
                     if verbose: print('\tmatched with', rule.__name__, '\n')
 
                     extraction = TripleExtraction(
-                            subject_negdat=subject_negdat, subject=subject,
-                            neg_adverb=neg_adverb, verb=verb,
-                            poa=poa, object_negdat=obj_negdat, object=obj)
-
-                    if metadata:
-                        yield extraction, metadata
-                    else:
-                        yield extraction
+                        subject_negdat=subject_negdat, subject=subject,
+                        neg_adverb=neg_adverb, verb=verb,
+                        poa=poa, object_negdat=obj_negdat, object=obj)
+                    yield extraction
                     break
             else:
                 if verbose: print('\tNo matching rule found.\n')
 
-    for child in verb.children:
-        if is_verb(child):
-            yield from visit_verb(child, subjects, [], metadata, verbose=verbose)
-        else:
-            # Reset inherited subjects and objects.
-            yield from visit_token(child, [], [], metadata, verbose=verbose)
+    yield from visit_token(verb, parent_subjects=subjects, verbose=verbose)
 
 
-def visit_token(token, parent_subjects, parent_objects, metadata, verbose=False):
+def visit_token(token, parent_subjects, verbose=False):
     for child in token.children:
         if is_verb(child):
-            yield from visit_verb(child, parent_subjects, [], metadata, verbose=verbose)
+            yield from visit_verb(child, parent_subjects, parent_objects=[], verbose=verbose)
         else:
-            yield from visit_token(child, [], [], metadata, verbose=verbose)
+            # Reset inherited subjects and objects.
+            yield from visit_token(child, [], verbose=verbose)
 
 
-def graph_tokens(doc: Doc, verbose=False, metadata=None):
+def graph_tokens(doc: Doc, verbose=False) -> List[TripleExtraction]:
     root_verb = None
 
     for token in doc:
@@ -106,7 +98,7 @@ def graph_tokens(doc: Doc, verbose=False, metadata=None):
         return []
 
     extraction_set = set()
-    triple_extractions = list(visit_verb(root_verb, [], [], metadata, verbose=verbose))
+    triple_extractions = list(visit_verb(root_verb, [], [], verbose=verbose))
     triple_extractions_no_duplicates = []
 
     for triple in triple_extractions:
@@ -134,7 +126,8 @@ def post_process_combine_adj(extractions: List[TripleExtraction]):
 
         # Find the extraction with a pobj or dobj
         try:
-            ext_main = next(ext for ext in dupe_list if ext.object.dep == pobj or ext.object.dep == dobj or ext.object.dep == acomp)
+            ext_main = next(
+                ext for ext in dupe_list if ext.object.dep == pobj or ext.object.dep == dobj or ext.object.dep == acomp)
             adjectives = []
 
             for ext in dupe_list:
@@ -168,6 +161,29 @@ def post_process_combine_adj(extractions: List[TripleExtraction]):
     return new_extractions
 
 
+def extract_triples(input_object: Union[str, Iterable[str]], combine_adj: bool = False, lemmatize: bool = False) -> List[TripleExtraction]:
+    output_extractions = []
+
+    if type(input_object) == str:
+        output_extractions.extend(graph_tokens(nlp(input_object), verbose=True))
+    elif isinstance(input_object, collections.Iterable):
+        for i, doc in enumerate(input_object):
+            doc = nlp(doc)
+            extractions = graph_tokens(doc, verbose=True)
+            output_extractions.extend(extractions)
+    else:
+        raise ValueError('extract_triple: input should be a string or a collection of strings')
+
+    if combine_adj:
+        print('Combining triples...')
+        output_extractions = post_process_combine_adj(output_extractions)
+
+    if lemmatize:
+        output_extractions = [triple.lemmatized() for triple in output_extractions]
+
+    return output_extractions
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='posextractor')
     parser.add_argument('input', metavar='input', type=str,
@@ -190,28 +206,19 @@ if __name__ == '__main__':
         if args.data_column is None or args.id_column is None:
             exit('Must specify column name for data')
         df = pd.read_csv(args.input, index_col=args.id_column, usecols=[args.data_column, args.id_column])
-
-        for i, row in df.iterrows():
-            doc = nlp(row[args.data_column])
-            extractions = graph_tokens(doc, metadata=i, verbose=True)
-            outputs.extend(extractions)
+        outputs = extract_triples(df[args.data_column], combine_adj=args.post_combine_adj, lemmatize=args.lemma)
     else:
-        doc = nlp(args.input)
-        extractions = graph_tokens(doc, metadata=None)
-        outputs.extend(extractions)
+        outputs = extract_triples(args.input, combine_adj=args.post_combine_adj, lemmatize=args.lemma)
 
-    if args.post_combine_adj:
-        print('Combining triples...')
-        outputs = post_process_combine_adj(outputs)\
-
-    if args.lemma:
-        outputs = [triple.lemmatized() for triple in outputs]
-
-    out_columns = ['subject_negdat', 'subject', 'neg_adverb', 'verb', 'poa', 'object_negdat', 'adjectives', 'object']
+    out_columns = ['subject_negdat', 'subject', 'neg_adverb', 'verb', 'poa', 'object_negdat', 'adjectives',
+                   'object']
     if is_file:
         out_columns.append(args.id_column)
     output_df = pd.DataFrame(outputs, columns=out_columns)
     if is_file:
         output_df.set_index(args.id_column, inplace=True)
+
     output_df.to_csv(args.output)
     print('Number of extractions: %d' % len(outputs))
+
+__all__ = ['extract_triples', ]
