@@ -1,5 +1,5 @@
 # posextract
-posextract offers grammatical information extraction methods designed for the analysis of historical and contemporary textual corpora. It traverses the syntactic dependency relations between parts-of-speech and returns sequences of words that share a grammatical relationship. See [our article]() for more. You can also [download posextract with pip](https://pypi.org/project/posextract/). 
+posextract offers grammatical information extraction methods designed for the analysis of historical and contemporary textual corpora. It traverses the syntactic dependency relations between parts-of-speech and returns sequences of words that share a grammatical relationship. See [our article]() for more. You can also [download posextract for pypi with pip](https://pypi.org/project/posextract/). 
 
 ## Usage
 
