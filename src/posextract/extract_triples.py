@@ -1,11 +1,12 @@
 import collections
 from typing import List, Union, Iterable
 
-from posextract import rules
+from . import rules
 import argparse
 import os
 from spacy.tokens import Doc
-from posextract.util import *
+from spacy.symbols import aux
+from .util import *
 import pandas as pd
 
 rule_funcs = [
@@ -139,18 +140,7 @@ def post_process_combine_adj(extractions: List[TripleExtraction]):
                     new_extractions.append(ext)
 
             adjectives = ' '.join(adjectives)
-
-            ext_main = TripleExtraction(
-                subject_negdat=ext_main.subject_negdat,
-                subject=ext_main.subject,
-                neg_adverb=ext_main.neg_adverb,
-                verb=ext_main.verb,
-                poa=ext_main.poa,
-                object_negdat=ext_main.object_negdat,
-                adjectives=adjectives,
-                object=ext_main.object,
-            )
-
+            ext_main.adjectives = adjectives
             new_extractions.append(ext_main)
 
         except StopIteration:
@@ -161,7 +151,8 @@ def post_process_combine_adj(extractions: List[TripleExtraction]):
     return new_extractions
 
 
-def extract_triples(input_object: Union[str, Iterable[str]], combine_adj: bool = False, lemmatize: bool = False) -> List[TripleExtraction]:
+def extract_triples(input_object: Union[str, Iterable[str]], combine_adj: bool = False, lemmatize: bool = False,
+                    add_aux: bool = False) -> List[TripleExtraction]:
     output_extractions = []
 
     if type(input_object) == str:
@@ -177,6 +168,13 @@ def extract_triples(input_object: Union[str, Iterable[str]], combine_adj: bool =
     if combine_adj:
         print('Combining triples...')
         output_extractions = post_process_combine_adj(output_extractions)
+
+    if add_aux:
+        for triple in output_extractions:
+            for child in triple.verb.children:
+                if child.dep == aux:
+                    triple.aux_verb = child
+                    break
 
     if lemmatize:
         output_extractions = [triple.lemmatized() for triple in output_extractions]
@@ -196,6 +194,7 @@ if __name__ == '__main__':
                         help='what column to use if a csv is given', dest='id_column')
     parser.add_argument('--post-combine-adj', action='store_true')
     parser.add_argument('--lemma', action='store_true')
+    parser.add_argument('--add-auxiliary', action='store_true')
     args = parser.parse_args()
     is_file = os.path.isfile(args.input)
 
@@ -206,15 +205,17 @@ if __name__ == '__main__':
         if args.data_column is None or args.id_column is None:
             exit('Must specify column name for data')
         df = pd.read_csv(args.input, index_col=args.id_column, usecols=[args.data_column, args.id_column])
-        outputs = extract_triples(df[args.data_column], combine_adj=args.post_combine_adj, lemmatize=args.lemma)
+        outputs = extract_triples(df[args.data_column], combine_adj=args.post_combine_adj, lemmatize=args.lemma,
+                                  add_aux=args.add_auxiliary)
     else:
-        outputs = extract_triples(args.input, combine_adj=args.post_combine_adj, lemmatize=args.lemma)
+        outputs = extract_triples(args.input, combine_adj=args.post_combine_adj, lemmatize=args.lemma,
+                                  add_aux=args.add_auxiliary)
 
-    out_columns = ['subject_negdat', 'subject', 'neg_adverb', 'verb', 'poa', 'object_negdat', 'adjectives',
+    out_columns = ['subject_negdat', 'subject', 'neg_adverb', 'aux_verb', 'verb', 'poa', 'object_negdat', 'adjectives',
                    'object']
     if is_file:
         out_columns.append(args.id_column)
-    output_df = pd.DataFrame(outputs, columns=out_columns)
+    output_df = pd.DataFrame([output.astuple() for output in outputs], columns=out_columns)
     if is_file:
         output_df.set_index(args.id_column, inplace=True)
 
