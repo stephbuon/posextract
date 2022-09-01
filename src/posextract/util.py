@@ -1,6 +1,8 @@
 from spacy.symbols import *
 from spacy.tokens import Token
 from typing import NamedTuple, Optional
+from dataclasses import dataclass
+import dataclasses
 import spacy.tokens
 
 
@@ -8,28 +10,29 @@ VERB_DEP_TAGS = {ccomp, relcl, xcomp, acl, advcl, pcomp, csubj, csubjpass, conj}
 OBJ_DEP_TAGS = {dobj, pobj, acomp} # dative?
 
 
-class TripleExtraction(NamedTuple):
+@dataclass
+class TripleExtraction:
     subject_negdat: Optional[Token] = ''
     subject: Optional[Token] = ''
     neg_adverb: Optional[Token] = ''
+    aux_verb: Optional[Token] = ''
     verb: Optional[Token] = ''
     poa: Optional[Token] = ''
     object_negdat: Optional[Token] = ''
     adjectives: Optional[str] = ''
     object: Optional[spacy.tokens.Token] = ''
 
+    def astuple(self):
+        return (v for v in self.__dict__.values())
+
     def __str__(self):
-        return ' '.join((str(v) for v in self if v))
+        return ' '.join((str(v) for v in self.astuple() if v))
 
     def lemmatized(self):
-        d = self._asdict()
-        d['object'] = self.object.lemma_
-        d['verb'] = self.verb.lemma_
-        d['subject'] = self.subject.lemma_
-
-        return TripleExtraction(
-            **d
-        )
+        self.object = self.object.lemma_
+        self.verb = self.verb.lemma_
+        self.subject = self.subject.lemma_
+        return self
 
 
 def is_root(token: Token):
