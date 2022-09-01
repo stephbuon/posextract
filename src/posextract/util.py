@@ -12,6 +12,7 @@ OBJ_DEP_TAGS = {dobj, pobj, acomp} # dative?
 
 @dataclass
 class TripleExtraction:
+    sentence_id: str = ''
     subject_negdat: Optional[Token] = ''
     subject: Optional[Token] = ''
     neg_adverb: Optional[Token] = ''

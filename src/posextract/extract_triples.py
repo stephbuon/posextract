@@ -188,10 +188,13 @@ if __name__ == '__main__':
                         help='a filepath to a csv file or an input string')
     parser.add_argument('output', metavar='output', type=str,
                         help='an output path')
-    parser.add_argument('--data_column', type=str, default=None, metavar='data_col',
+    parser.add_argument('--data-column', type=str, default=None, metavar='data_col',
                         help='what column to use if a csv is given', dest='data_column')
-    parser.add_argument('--id_column', type=str, default=None, metavar='id_col',
+    parser.add_argument('--id-column', type=str, default=None, metavar='id_col',
                         help='what column to use if a csv is given', dest='id_column')
+    parser.add_argument('--file-delimiter', default='comma', const='comma', nargs='?',
+                        choices=['comma', 'pipe', 'tab'],
+                        help='delimiter character for data file (default: %(default)s)')
     parser.add_argument('--post-combine-adj', action='store_true')
     parser.add_argument('--lemma', action='store_true')
     parser.add_argument('--add-auxiliary', action='store_true')
@@ -201,25 +204,49 @@ if __name__ == '__main__':
     inputs = []
     outputs = []
 
+    delimiter = {'comma': ',', 'pipe': '|', 'tab': '\t'}[args.file_delimiter]
+
+    input_values = None
+    df = None
+
     if is_file:
-        if args.data_column is None or args.id_column is None:
-            exit('Must specify column name for data')
-        df = pd.read_csv(args.input, index_col=args.id_column, usecols=[args.data_column, args.id_column])
-        outputs = extract_triples(df[args.data_column], combine_adj=args.post_combine_adj, lemmatize=args.lemma,
-                                  add_aux=args.add_auxiliary)
+        print('Loading input (%s) as a CSV file...' % args.input)
+        print('delimiter:', args.file_delimiter)
+        if args.data_column is None:
+            exit('Invalid arguments: Must specify column name for data using --data-column')
+
+        usecols = [args.data_column, ]
+
+        if args.id_column is not None:
+            usecols.append(args.id_column)
+
+        df = pd.read_csv(args.input, index_col=args.id_column, usecols=usecols, delimiter=delimiter)
+        input_values = df[args.data_column]
+        print(df)
     else:
-        outputs = extract_triples(args.input, combine_adj=args.post_combine_adj, lemmatize=args.lemma,
+        input_values = [args.input, ]
+
+    with open(args.output, 'w+') as f:
+        pass
+
+    extraction_count = 0
+    header = True
+
+    for i, data_str in enumerate(input_values):
+        triples = extract_triples(data_str, combine_adj=args.post_combine_adj, lemmatize=args.lemma,
                                   add_aux=args.add_auxiliary)
 
-    out_columns = ['subject_negdat', 'subject', 'neg_adverb', 'aux_verb', 'verb', 'poa', 'object_negdat', 'adjectives',
-                   'object']
-    if is_file:
-        out_columns.append(args.id_column)
-    output_df = pd.DataFrame([output.astuple() for output in outputs], columns=out_columns)
-    if is_file:
-        output_df.set_index(args.id_column, inplace=True)
+        if is_file and args.id_column:
+            for triple in triples:
+                triple.sentence_id = df.index[i]
 
-    output_df.to_csv(args.output)
-    print('Number of extractions: %d' % len(outputs))
+        extraction_count += len(triples)
+        output_df = pd.DataFrame([t.__dict__ for t in triples])
+        output_df.to_csv(args.output, mode='a', sep=delimiter, header=header, index=False)
+
+        if header:
+            header = False
+
+    print('Number of extractions: %d' % extraction_count)
 
 __all__ = ['extract_triples', ]
