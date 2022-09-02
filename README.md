@@ -25,8 +25,14 @@ Interactively: (UNDER DEVELOPMENT -- USE CLI)
 ```
 from posextract import extract_triples
 
-extract_triples(dataframe, sentence, unique_id)
+triples = extract_triples(['Landlords may exercise oppression.', 'The soldiers were ill.'])
+
+for triple in triples:
+    print(triple)
+
+# Output: Landlords exercise oppression, soldiers were ill
 ```
+
 
 Over CLI: 
 
@@ -35,7 +41,7 @@ posextract can extract grammatical triples from text:
 ```
 python -m posextract.extract_triples "Landlords may exercise oppression." output.csv
 
-# Output: Landlords exercise oppression. 
+# Output: Landlords exercise oppression
 ```
 
 posextract can extract SVO/SVA relationships separately or it can combine the adjective as part of a SVO triple:
@@ -43,13 +49,13 @@ posextract can extract SVO/SVA relationships separately or it can combine the ad
 ```
 python -m posextract.extract_triples "The soldiers were terminally ill." output.csv --post-combine-adj
 
-# Output: soldiers-were-terminally, soldiers-were-ill 
+# Output: soldiers were terminally, soldiers were ill 
 ```
 
 ```
 python -m posextract.extract_triples "The soldiers were terminally ill." output.csv --post-combine-adj
 
-# Output: soldiers-were-terminally-ill
+# Output: soldiers were terminally ill
 ```
 
 If provided a .csv file: 
