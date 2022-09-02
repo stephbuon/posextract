@@ -20,7 +20,7 @@ Optional Paramters:
 
 ### Examples
 
-Interactively: (UNDER DEVELOPMENT -- USE CLI) 
+Interactively: 
 
 ```
 from posextract import extract_triples
