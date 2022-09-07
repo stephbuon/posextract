@@ -241,7 +241,7 @@ if __name__ == '__main__':
 
     for i, data_str in enumerate(input_values):
         triples_df = extract(data_str, combine_adj=args.post_combine_adj, lemmatize=args.lemma,
-                             add_aux=args.add_auxiliary, verbose=args.verbose, want_dataframe=True)
+                             add_aux=args.add_auxiliary, verbose=args.verbose, want_dataframe=False)
         extraction_count += len(triples_df)
         if df is not None:
             triples_df['sentence_id'] = df.index[i]
