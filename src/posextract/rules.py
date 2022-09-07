@@ -28,6 +28,8 @@ def rule2(verb_token: Token, subject_token: Token, object_token: Token, poa: Tok
         return False
 
     if object_token.dep == pobj:
+        if poa is None:
+            return False
         if poa.head.pos == SCONJ:
             return verb_token == poa.head.head and object_token.head == poa
         else:
@@ -48,6 +50,8 @@ def rule3(verb_token: Token, subject_token: Token, object_token: Token, poa: Tok
         return False
 
     if object_token.dep == pobj:
+        if poa is None:
+            return False
         return verb_token == poa.head and object_token.head == poa.head
     elif object_token.dep == dobj:
         # return verb_token.head == object_token
@@ -80,6 +84,8 @@ def rule4(verb_token: Token, subject_token: Token, object_token: Token, poa: Tok
 
     if object_token.dep == pobj:
         # we originally checked object_token.head == poa.head
+        if poa is None:
+            return False
         return verb_token == poa.head and object_token.head.head == poa.head
     elif object_token.dep == dobj:
         return verb_token == object_token.head
@@ -97,6 +103,8 @@ def rule5(verb_token: Token, subject_token: Token, object_token: Token, poa: Tok
 # pobj requires POA
 # acomp and amod (optional)
     if object_token.dep == pobj:
+        if poa is None:
+            return False
         return poa.head == verb_token and poa.head == subject_token.head
     elif object_token.dep in {acomp, amod, advmod}:
         return True
@@ -112,9 +120,10 @@ def rule6(verb_token: Token, subject_token: Token, object_token: Token, poa: Tok
         return False
 
     if object_token.dep == pobj:
-        return poa.head == verb_token and poa.head == object_token.head
-
-    if object_token.dep in {acomp, amod, advmod}:  # dative?
+        if poa is None:
+            return False
+        return poa.head == verb_token and poa.head == subject_token.head
+    elif object_token.dep in {acomp, amod, advmod}:
         return True
     elif object_token.dep_ == "dative":
         return True
@@ -129,8 +138,12 @@ def rule7(verb_token: Token, subject_token: Token, object_token: Token, poa: Tok
     if verb_token.head != subject_token:
         return False
 
-    if object_token.dep in {pobj, acomp, amod, advmod}:  # dative?
-        return poa.head == verb_token and poa.head == object_token.head
+    if object_token.dep == pobj:
+        if poa is None:
+            return False
+        return poa.head == verb_token and poa.head == subject_token.head
+    elif object_token.dep in {acomp, amod, advmod}:
+        return True
     elif object_token.dep_ == "dative":
         return True
     else:
@@ -145,6 +158,8 @@ def rule8(verb_token: Token, subject_token: Token, object_token: Token, poa: Tok
         return False
 
     if object_token.dep == pobj:
+        if poa is None:
+            return False
         return poa.head == verb_token and object_token.head == poa
     if object_token.dep in {acomp, amod, advmod}:
         return True
@@ -195,8 +210,11 @@ def rule10(verb_token: Token, subject_token: Token, object_token: Token, poa: To
     if verb_conj is None:
         return False
 
-    if object_token.dep == pobj and verb_conj == poa.head and poa == object_token.head:
-        return True
+    if object_token.dep == pobj:
+        if poa is None:
+            return False
+
+        return verb_conj == poa.head and poa == object_token.head
 
     if object_token.dep == dobj and verb_conj == object_token.head:
         return True
@@ -237,8 +255,10 @@ def rule12(verb_token: Token, subject_token: Token, object_token: Token, poa: To
     if subject_token.head != verb_token:
         return False
 
-    if object_token.dep in {pobj, acomp, amod, advmod} and poa.head == verb_token and object_token.head == poa:
-        return True
+    if object_token.dep in {pobj, acomp, amod, advmod}:
+        if poa is None:
+            return False
+        return poa.head == verb_token and object_token.head == poa
 
     if object_token.dep == dobj and object_token.head == verb_token:
         return True

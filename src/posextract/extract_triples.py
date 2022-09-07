@@ -91,11 +91,11 @@ def graph_tokens(doc: Doc, verbose=False) -> List[TripleExtraction]:
     for token in doc:
         if is_root(token):
             root_verb = token
-            print(f"Root verb is {root_verb}")
+            if verbose: print(f"Root verb is {root_verb}")
             break
 
     if root_verb is None:
-        print('Could not find root verb.')
+        if verbose: print('Could not find root verb.')
         return []
 
     extraction_set = set()
@@ -152,27 +152,29 @@ def post_process_combine_adj(extractions: List[TripleExtraction]):
 
 
 def extract_triples(input_object: Union[str, Iterable[str]], combine_adj: bool = False, lemmatize: bool = False,
-                    add_aux: bool = False) -> List[TripleExtraction]:
+                    add_aux: bool = False, verbose: bool = False) -> List[TripleExtraction]:
     output_extractions = []
 
     if type(input_object) == str:
-        output_extractions.extend(graph_tokens(nlp(input_object), verbose=True))
+        output_extractions.extend(graph_tokens(nlp(input_object), verbose=verbose))
     elif isinstance(input_object, collections.Iterable):
         for i, doc in enumerate(input_object):
             doc = nlp(doc)
-            extractions = graph_tokens(doc, verbose=True)
+            extractions = graph_tokens(doc, verbose=verbose)
             output_extractions.extend(extractions)
     else:
         raise ValueError('extract_triple: input should be a string or a collection of strings')
 
     if combine_adj:
-        print('Combining triples...')
+        if verbose: print('Combining triples...')
         output_extractions = post_process_combine_adj(output_extractions)
+
+    output_extractions = remove_duplicate_triples(output_extractions)
 
     if add_aux:
         for triple in output_extractions:
             for child in triple.verb.children:
-                if child.dep == aux:
+                if child.dep == aux and child.text == 'will':
                     triple.aux_verb = child
                     break
 
@@ -198,6 +200,7 @@ if __name__ == '__main__':
     parser.add_argument('--post-combine-adj', action='store_true')
     parser.add_argument('--lemma', action='store_true')
     parser.add_argument('--add-auxiliary', action='store_true')
+    parser.add_argument('--verbose', action='store_true')
     args = parser.parse_args()
     is_file = os.path.isfile(args.input)
 
@@ -210,8 +213,9 @@ if __name__ == '__main__':
     df = None
 
     if is_file:
-        print('Loading input (%s) as a CSV file...' % args.input)
-        print('delimiter:', args.file_delimiter)
+        if args.verbose:
+            print('Loading input (%s) as a CSV file...' % args.input)
+            print('delimiter:', args.file_delimiter)
         if args.data_column is None:
             exit('Invalid arguments: Must specify column name for data using --data-column')
 
@@ -222,7 +226,6 @@ if __name__ == '__main__':
 
         df = pd.read_csv(args.input, index_col=args.id_column, usecols=usecols, delimiter=delimiter)
         input_values = df[args.data_column]
-        print(df)
     else:
         input_values = [args.input, ]
 
@@ -234,7 +237,7 @@ if __name__ == '__main__':
 
     for i, data_str in enumerate(input_values):
         triples = extract_triples(data_str, combine_adj=args.post_combine_adj, lemmatize=args.lemma,
-                                  add_aux=args.add_auxiliary)
+                                  add_aux=args.add_auxiliary, verbose=args.verbose)
 
         if is_file and args.id_column:
             for triple in triples:
@@ -247,6 +250,7 @@ if __name__ == '__main__':
         if header:
             header = False
 
-    print('Number of extractions: %d' % extraction_count)
+    if args.verbose:
+        print('Number of extractions: %d' % extraction_count)
 
 __all__ = ['extract_triples', ]

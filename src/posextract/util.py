@@ -65,7 +65,7 @@ def is_noun_attribute(token: Token):
 
 
 def is_poa(token: Token):
-    return token.dep == prep or token.dep == agent or token.dep == det
+    return token.dep == prep or token.dep == agent or token.dep == det or token.dep == nmod
 
 
 def object_search(token: Token):
