@@ -1,6 +1,8 @@
 import collections
 from typing import List, Union, Iterable
 
+import pandas
+
 from . import rules
 import argparse
 import os
@@ -151,25 +153,23 @@ def post_process_combine_adj(extractions: List[TripleExtraction]):
     return new_extractions
 
 
-def extract_triples(input_object: Union[str, Iterable[str]], combine_adj: bool = False, lemmatize: bool = False,
-                    add_aux: bool = False, verbose: bool = False) -> List[TripleExtraction]:
+def extract(input_object: Union[str, Iterable[str]], combine_adj: bool = False, lemmatize: bool = False,
+            add_aux: bool = False, verbose: bool = False, want_dataframe: bool = False,) -> Union[List[TripleExtraction], pandas.DataFrame]:
     output_extractions = []
 
     if type(input_object) == str:
-        output_extractions.extend(graph_tokens(nlp(input_object), verbose=verbose))
-    elif isinstance(input_object, collections.Iterable):
-        for i, doc in enumerate(input_object):
-            doc = nlp(doc)
-            extractions = graph_tokens(doc, verbose=verbose)
-            output_extractions.extend(extractions)
-    else:
-        raise ValueError('extract_triple: input should be a string or a collection of strings')
+        input_object = [input_object, ]
+    elif not isinstance(input_object, collections.Iterable):
+        raise ValueError('extract_triples: input should be a string or a collection of strings')
+
+    for i, doc in enumerate(input_object):
+        doc = nlp(doc)
+        extractions = graph_tokens(doc, verbose=verbose)
+        output_extractions.extend(extractions)
 
     if combine_adj:
         if verbose: print('Combining triples...')
         output_extractions = post_process_combine_adj(output_extractions)
-
-    output_extractions = remove_duplicate_triples(output_extractions)
 
     if add_aux:
         for triple in output_extractions:
@@ -180,6 +180,10 @@ def extract_triples(input_object: Union[str, Iterable[str]], combine_adj: bool =
 
     if lemmatize:
         output_extractions = [triple.lemmatized() for triple in output_extractions]
+
+    if want_dataframe:
+        extractions_df = pd.DataFrame([t.__dict__ for t in output_extractions])
+        return extractions_df
 
     return output_extractions
 
@@ -236,16 +240,12 @@ if __name__ == '__main__':
     header = True
 
     for i, data_str in enumerate(input_values):
-        triples = extract_triples(data_str, combine_adj=args.post_combine_adj, lemmatize=args.lemma,
-                                  add_aux=args.add_auxiliary, verbose=args.verbose)
-
-        if is_file and args.id_column:
-            for triple in triples:
-                triple.sentence_id = df.index[i]
-
-        extraction_count += len(triples)
-        output_df = pd.DataFrame([t.__dict__ for t in triples])
-        output_df.to_csv(args.output, mode='a', sep=delimiter, header=header, index=False)
+        triples_df = extract(data_str, combine_adj=args.post_combine_adj, lemmatize=args.lemma,
+                             add_aux=args.add_auxiliary, verbose=args.verbose, want_dataframe=True)
+        extraction_count += len(triples_df)
+        if df is not None:
+            triples_df['sentence_id'] = df.index[i]
+        triples_df.to_csv(args.output, mode='a', sep=delimiter, header=header, index=False)
 
         if header:
             header = False
@@ -253,4 +253,4 @@ if __name__ == '__main__':
     if args.verbose:
         print('Number of extractions: %d' % extraction_count)
 
-__all__ = ['extract_triples', ]
+__all__ = ['extract', ]
