@@ -1,9 +1,10 @@
 from spacy.symbols import *
 from spacy.tokens import Token
-from typing import NamedTuple, Optional
+from typing import NamedTuple, Optional, List
 from dataclasses import dataclass
 import dataclasses
 import spacy.tokens
+import copy
 
 
 VERB_DEP_TAGS = {ccomp, relcl, xcomp, acl, advcl, pcomp, csubj, csubjpass, conj}
@@ -11,16 +12,16 @@ OBJ_DEP_TAGS = {dobj, pobj, acomp} # dative?
 
 
 @dataclass
-class TripleExtraction:
-    subject_negdat: Optional[Token] = ''
-    subject: Optional[Token] = ''
-    neg_adverb: Optional[Token] = ''
-    aux_verb: Optional[Token] = ''
-    verb: Optional[Token] = ''
-    poa: Optional[Token] = ''
-    object_negdat: Optional[Token] = ''
-    adjectives: Optional[str] = ''
-    object: Optional[spacy.tokens.Token] = ''
+class TripleExtractionFlattened:
+    subject_negdat: str = ''
+    subject: str = ''
+    neg_adverb: str = ''
+    aux_verb: str = ''
+    verb: str = ''
+    poa: str = ''
+    object_negdat: str = ''
+    adjectives: str = ''
+    object: str = ''
 
     def astuple(self):
         return (v for v in self.__dict__.values())
@@ -28,11 +29,40 @@ class TripleExtraction:
     def __str__(self):
         return ' '.join((str(v) for v in self.astuple() if v))
 
-    def lemmatized(self):
-        self.object = self.object.lemma_
-        self.verb = self.verb.lemma_
-        self.subject = self.subject.lemma_
-        return self
+
+@dataclass
+class TripleExtraction:
+    subject_negdat: Optional[Token] = None
+    subject: Optional[Token] = None
+    neg_adverb: Optional[Token] = None
+    aux_verb: Optional[Token] = None
+    verb: Optional[Token] = None
+    poa: Optional[Token] = None
+    object_negdat: Optional[Token] = None
+    adjectives: Optional[List[Token]] = None
+    object: Optional[Token] = None
+
+    def flatten(self, lemmatize=False) -> TripleExtractionFlattened:
+        kwargs = {k: v for k, v in self.__dict__.items() if v is not None}
+
+        if lemmatize:
+            if self.object:
+                kwargs['object'] = self.object.lemma_
+            if self.verb:
+                kwargs['verb'] = self.verb.lemma_
+            if self.subject:
+                kwargs['subject'] = self.subject.lemma_
+
+        if self.adjectives:
+            kwargs['adjectives'] = ' '.join((adj.text for adj in self.adjectives))
+
+        for k, v in kwargs.items():
+            if type(v) != str:
+                kwargs[k] = str(v)
+
+        return TripleExtractionFlattened(
+            **kwargs
+        )
 
 
 def is_root(token: Token):

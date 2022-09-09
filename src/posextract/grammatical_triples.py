@@ -137,11 +137,10 @@ def post_process_combine_adj(extractions: List[TripleExtraction]):
                 if ext.object.i == ext_main.object.i:
                     continue
                 if ext.object.dep == advmod and not ext.poa:
-                    adjectives.append(str(ext.object))
+                    adjectives.append(ext.object)
                 else:
                     new_extractions.append(ext)
 
-            adjectives = ' '.join(adjectives)
             ext_main.adjectives = adjectives
             new_extractions.append(ext_main)
 
@@ -154,7 +153,8 @@ def post_process_combine_adj(extractions: List[TripleExtraction]):
 
 
 def extract(input_object: Union[str, Iterable[str]], combine_adj: bool = False, lemmatize: bool = False,
-            add_aux: bool = False, verbose: bool = False, want_dataframe: bool = False,) -> Union[List[TripleExtraction], pandas.DataFrame]:
+            add_aux: bool = False, verbose: bool = False,
+            want_dataframe: bool = False) -> Union[List[TripleExtractionFlattened], pandas.DataFrame]:
     output_extractions = []
 
     if type(input_object) == str:
@@ -178,8 +178,7 @@ def extract(input_object: Union[str, Iterable[str]], combine_adj: bool = False, 
                     triple.aux_verb = child
                     break
 
-    if lemmatize:
-        output_extractions = [triple.lemmatized() for triple in output_extractions]
+    output_extractions = [triple.flatten(lemmatize=lemmatize) for triple in output_extractions]
 
     if want_dataframe:
         extractions_df = pd.DataFrame([t.__dict__ for t in output_extractions])
