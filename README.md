@@ -22,10 +22,12 @@ Optional Paramters:
 
 Interactively: 
 
+Extract grammatical triples.
+
 ```
 from posextract import extract_triples
 
-triples = extract_triples(['Landlords may exercise oppression.', 'The soldiers were ill.'])
+triples = grammatical_triples.extract(['Landlords may exercise oppression.', 'The soldiers were ill.'])
 
 for triple in triples:
     print(triple)
@@ -33,6 +35,17 @@ for triple in triples:
 # Output: Landlords exercise oppression, soldiers were ill
 ```
 
+Or extract adjectives and the nouns they modify. 
+
+```
+
+```
+
+Or subjects and their verbs. 
+
+```
+
+```
 
 Over CLI: 
 
