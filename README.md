@@ -38,13 +38,17 @@ for triple in triples:
 Or extract adjectives and the nouns they modify. 
 
 ```
+from posextract import adj_noun_pairs
 
+adj_noun = adj_noun_pairs.extract()
 ```
 
 Or subjects and their verbs. 
 
 ```
+from posextract import subj_verb_pairs
 
+subj_verb = subj_verb_pairs.extract()
 ```
 
 Over CLI: 
