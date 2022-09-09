@@ -20,7 +20,7 @@ Optional Paramters:
 
 ### Examples
 
-Interactively: 
+#### Interactive: 
 
 Extract grammatical triples.
 
@@ -51,7 +51,7 @@ from posextract import subj_verb_pairs
 subj_verb = subj_verb_pairs.extract()
 ```
 
-Over CLI: 
+#### Over CLI: 
 
 posextract can extract grammatical triples from text: 
 
