@@ -43,7 +43,7 @@ from posextract import adj_noun_pairs
 adj_noun = adj_noun_pairs.extract()
 ```
 
-Or subjects and their verbs. 
+Or extract subjects and their verbs. 
 
 ```
 from posextract import subj_verb_pairs
