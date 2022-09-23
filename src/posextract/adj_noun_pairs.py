@@ -85,6 +85,21 @@ def extract(input_object, lemmatize: bool = False, want_dataframe: bool = False,
     return pairs
 
 
+def extract_df(df, text_column, letter_case: str = 'default', lemmatize: bool = False):
+    pair_df_list = []
+
+    def extract_row(row):
+        pairs = extract(row[text_column], want_dataframe=True, letter_case=letter_case, lemmatize=lemmatize)
+        pairs[list(row.index)] = row
+        pair_df_list.append(pairs)
+
+    df.apply(extract_row, axis=1)
+
+    output_df = pd.concat(pair_df_list, axis=0)
+    output_df.reset_index(drop=True, inplace=True)
+    return output_df
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='adj_noun_pairs')
     parser.add_argument('input', metavar='input', type=str,
