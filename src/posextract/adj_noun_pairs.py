@@ -5,7 +5,7 @@ import warnings;
 warnings.simplefilter('ignore')
 import pandas as pd
 import spacy
-from spacy.symbols import amod, acomp, NOUN
+from spacy.symbols import amod, acomp, NOUN, ADJ
 import collections
 from typing import List
 
@@ -46,7 +46,8 @@ class AdjNounPair(NamedTuple):
 def rule(doc, lemmatize=False, verbose=False, letter_case='default') -> List[AdjNounPair]:
     pairs = []
     for adjective in doc:
-        if adjective.dep == amod or adjective.dep == acomp and adjective.head.pos == NOUN:
+        #if adjective.dep == amod or adjective.dep == acomp and adjective.head.pos == NOUN:
+        if adjective.pos == ADJ and adjective.head.pos == NOUN:
             # or adjective.dep == ccomp or adjective.dep == conj
             noun = adjective.head
 
