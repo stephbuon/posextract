@@ -100,16 +100,15 @@ def graph_tokens(doc: Doc, verbose=False) -> List[TripleExtraction]:
         if verbose: print('Could not find root verb.')
         return []
 
-    extraction_set = set()
+    extraction_dict = {}
     triple_extractions = list(visit_verb(root_verb, [], [], verbose=verbose))
-    triple_extractions_no_duplicates = []
 
     for triple in triple_extractions:
-        if str(triple) not in extraction_set:
-            triple_extractions_no_duplicates.append(triple)
-            extraction_set.add(str(triple))
+        h = triple.get_triple_hash()
+        if h not in extraction_dict:
+            extraction_dict[h] = triple
 
-    return triple_extractions
+    return list(extraction_dict.values())
 
 
 def post_process_combine_adj(extractions: List[TripleExtraction]):

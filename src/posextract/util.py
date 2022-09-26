@@ -64,6 +64,10 @@ class TripleExtraction:
             **kwargs
         )
 
+    def get_triple_hash(self) -> int:
+        default_empty_str = lambda x: x.text.lower() if x else ''
+        return hash((default_empty_str(self.subject), default_empty_str(self.verb), default_empty_str(self.object)))
+
 
 def is_root(token: Token):
     return token.dep_ == 'ROOT'
