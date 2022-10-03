@@ -1,0 +1,1523 @@
+1.0	Here	be incurred by	purchaser large
+0.6670637460781558	Here	was	certain expense
+1.0	Here	be incurred by	purchaser
+1.0	Here	was	certain
+0.6670637460781558	Here	was	expense
+1.0	they	put	taxation
+1.0	both	were	taxed
+1.0	they	put taxation upon	our own
+1.0	both	were	taxed equally
+1.0	effects	are	bad
+1.0	selection	is	careless
+1.0	I	do admit for	not moment
+1.0	he	would read	extract
+0.14059619431790493	he	would read extract	If House would allow
+0.14059619431790493	he	would read extract	House would allow
+1.0	House	would allow	him
+1.0	he	would read	extract from letter
+1.0	one	has	has consulted
+0.5084621503917639	I	thought	to taken
+1.0	I	thought	ought
+0.5084621503917639	I	thought	taken
+1.0	ought	be	taken
+1.0	I	thought	whose opinion
+1.0	thing	be unwarrantable	liberty
+1.0	would unwarrantable interference	is with	individual liberty
+1.0	has forty years	is in	corn trade
+1.0	I	have	letter from gentleman
+1.0	I	have	letter
+1.0	copy	laid upon	Table
+1.0	introduction	speedily be followed by	proceeding in reference in portion of realm
+1.0	similar proceeding	is in	portion of realm
+1.0	introduction	speedily be followed by	similar proceeding in reference to Church in portion of realm
+1.0	introduction	be followed by	proceeding in reference
+1.0	introduction	be followed by	similar proceeding in portion of realm
+1.0	introduction	speedily be followed by	similar proceeding in portion of realm
+1.0	introduction	be followed by	proceeding in reference in portion of realm
+1.0	introduction	speedily be followed by	similar proceeding in reference in portion
+1.0	introduction	be followed by	similar proceeding in reference to Church in portion
+1.0	introduction	be followed by	similar proceeding in portion
+1.0	introduction	speedily be followed by	similar proceeding in reference
+1.0	introduction	be followed by	proceeding in reference to Church in portion
+1.0	introduction	speedily be followed by	proceeding in portion of realm
+1.0	introduction	speedily be followed by	similar proceeding in reference to Church in portion
+1.0	introduction	be followed by	similar proceeding in reference in portion
+1.0	introduction	be followed by	proceeding in reference to Church in portion of realm
+1.0	similar proceeding	is in	reference to Church
+1.0	introduction	be followed by	similar proceeding in reference
+1.0	introduction	be followed by	proceeding in reference to Church
+1.0	introduction	be followed by	proceeding in portion
+1.0	introduction	be followed by	proceeding
+1.0	introduction	speedily be followed by	proceeding in reference to Church
+1.0	introduction	be followed by	similar proceeding in reference to Church
+1.0	introduction	speedily be followed by	similar proceeding in portion
+1.0	introduction	speedily be followed by	proceeding in reference to Church in portion
+1.0	introduction	speedily be followed by	similar proceeding in reference in portion of realm
+1.0	introduction	be followed by	similar proceeding in reference to Church in portion of realm
+1.0	introduction	speedily be followed by	proceeding in reference to Church in portion of realm
+1.0	introduction	speedily be followed by	proceeding in portion
+1.0	introduction	be followed by	similar proceeding
+1.0	introduction	speedily be followed by	proceeding in reference in portion
+1.0	introduction	be followed by	similar proceeding in reference in portion of realm
+1.0	introduction	be followed by	proceeding in portion of realm
+1.0	introduction	speedily be followed by	similar proceeding in reference to Church
+1.0	introduction	be followed by	proceeding in reference in portion
+1.0	introduction	speedily be followed by	proceeding in reference
+1.0	introduction	speedily be followed by	proceeding
+1.0	introduction	speedily be followed by	similar proceeding
+1.0	Register	is in	Belfast
+1.0	Member	succeeded	names of great artizans
+1.0	others	succeeded	names of great artizans
+1.0	Member	succeeded	names of many artizans
+1.0	others	succeeded	names of artizans
+1.0	Member	succeeded	names of artizans
+1.0	others	succeeded	names of great many artizans
+1.0	others	succeeded	names of many artizans
+1.0	Member	succeeded	names of great many artizans
+0.41057137891482354	we	long reduce	duty on goods
+0.41057137891482354	we	before long reduce	duty from country
+0.41057137891482354	we	reduce	duty
+0.41057137891482354	we	long reduce	duty on manufactured goods from country
+0.41057137891482354	we	reduce duty in	in manner
+0.41057137891482354	we	long reduce	duty on manufactured goods
+0.41057137891482354	we	before long reduce	duty on manufactured goods
+0.41057137891482354	we	long reduce duty in	in manner
+0.41057137891482354	we	reduce	duty on goods from country
+0.41057137891482354	we	reduce	duty on manufactured goods
+1.0	we	be	able
+0.41057137891482354	we	long reduce	duty from country
+0.41057137891482354	we	before long reduce	duty on goods from country
+0.41057137891482354	we	reduce	duty from country
+0.41057137891482354	we	before long reduce	duty
+0.41057137891482354	we	reduce	duty on manufactured goods from country
+0.41057137891482354	we	before long reduce	duty on manufactured goods from country
+0.41057137891482354	we	before long reduce duty in	in manner
+0.41057137891482354	we	long reduce	duty on goods from country
+0.41057137891482354	we	reduce	duty on goods
+0.41057137891482354	we	long reduce	duty
+0.41057137891482354	we	before long reduce	duty on goods
+1.0	we	look forward with	greatest interest to provisions of Bill
+1.0	we	look forward with	interest
+1.0	it	be found	compared with remuneration arising
+1.0	we	look with	greatest interest
+1.0	it	be found	If compared with remuneration arising
+1.0	I	thank	right hon.
+1.0	it	be found	very inadequate
+1.0	we	all look forward with	greatest interest
+1.0	we	all look with	interest to provisions of Bill
+1.0	we	look forward with	greatest interest
+1.0	it	be found	to very inadequate
+1.0	it	be found	If compared
+1.0	it	be found	If compared with remuneration
+1.0	it	be found	inadequate
+1.0	we	look forward with	interest to provisions of Bill
+1.0	it	be	found
+1.0	it	be found	to inadequate
+1.0	it	be found	If compared in detail
+1.0	we	look forward with	greatest interest to provisions
+1.0	we	all look forward with	greatest interest to provisions
+1.0	it	be found	compared
+1.0	we	look with	interest to provisions of Bill
+1.0	we	look with	interest
+1.0	we	all look with	greatest interest
+1.0	we	all look with	greatest interest to provisions
+1.0	we	look with	greatest interest to provisions of Bill
+1.0	it	be found	If compared in detail with remuneration
+1.0	we	all look with	greatest interest to provisions of Bill
+1.0	we	all look forward with	interest
+1.0	we	look forward with	interest to provisions
+1.0	it	be found	compared in detail with remuneration
+1.0	it	be found	If compared in detail with remuneration arising
+1.0	we	all look with	interest
+1.0	we	all look with	interest to provisions
+1.0	I	thank	hon.
+1.0	we	all look forward with	greatest interest to provisions of Bill
+1.0	we	all look forward with	interest to provisions of Bill
+1.0	it	be found	compared with remuneration
+1.0	it	be found	compared in detail with remuneration arising
+1.0	we	look with	greatest interest to provisions
+1.0	we	all look forward with	interest to provisions
+1.0	we	look with	interest to provisions
+1.0	it	be found	compared in detail
+1.0	beans	been	abundant
+1.0	pease	been	abundant
+1.0	I	mooted	question of education
+0.718461057722813	I	question of	industrial education
+1.0	I	mooted	question
+1.0	it	grown into	hobby with me
+1.0	I	first mooted	question
+0.718461057722813	I	question of	education
+1.0	I	first mooted	question of education
+1.0	I	mooted question in	House
+1.0	I	first mooted	question of industrial education
+1.0	I	mooted	question of industrial education
+1.0	hobby	is with	me
+1.0	I	first mooted question in	House
+1.0	it	grown into	hobby
+1.0	he	consented to	part of Address
+1.0	he	consented to	part
+1.0	we	are have	National Gallery
+1.0	it	is	desirable
+1.0	we	are have National Gallery at	all
+0.5941149391736583	income tax	expired	as it now stood
+0.5941149391736583	income tax	expired	it stood
+0.5941149391736583	income tax	expired	as it stood
+0.5941149391736583	income tax	expired on	31st
+1.0	time	is in	respect
+0.5941149391736583	income tax	expired on	31st of March
+0.5941149391736583	income tax	expired	it now stood
+1.0	House	give	calm consideration
+1.0	House	simply give	consideration
+1.0	House	give	consideration
+1.0	House	simply give	calm consideration
+1.0	He	requested	House
+1.0	House	give consideration to	question
+1.0	House	simply give consideration to	question
+1.0	it	therefore was scarcely unfair	for him to assume
+1.0	it	therefore was unfair Under	circumstances
+1.0	it	therefore was unfair	for him assume
+1.0	it	was scarcely unfair	him to assume
+1.0	it	therefore was scarcely unfair Under	circumstances
+1.0	it	therefore was scarcely unfair	for him assume
+1.0	it	therefore was unfair	him assume
+1.0	it	therefore was unfair	him to assume
+1.0	it	was scarcely unfair	for him to assume
+1.0	number	keep up	ineffective force
+1.0	it	was	unfair
+1.0	it	was contemplated	either
+1.0	it	was	scarcely unfair
+1.0	it	therefore was unfair	for him to assume
+1.0	it	therefore was scarcely unfair	him to assume
+1.0	it	was scarcely unfair	him assume
+1.0	it	was	therefore unfair
+1.0	it	was scarcely unfair	for him assume
+1.0	it	was unfair	for him to assume
+1.0	number	keep up	force
+1.0	it	was unfair Under	circumstances
+1.0	it	was	therefore scarcely unfair
+1.0	it	therefore was scarcely unfair	him assume
+1.0	it	was unfair	him assume
+1.0	it	was unfair	for him assume
+1.0	it	was unfair	him to assume
+1.0	it	was scarcely unfair Under	circumstances
+1.0	Amendment	were	agreed to
+1.0	Amendment	were	if agreed
+1.0	Amendment	were	agreed
+1.0	scale	be	imperfect
+1.0	Amendment	were	if agreed to
+1.0	terms	are	stated
+1.0	terms	are correctly stated in	paragraph
+1.0	terms	are correctly stated in	first paragraph
+1.0	terms	are	correctly stated
+1.0	terms	are stated in	first paragraph
+1.0	terms	are stated in	paragraph
+1.0	it	was understood	duties
+0.5497573025935627	He	would remind	Committee
+0.7876149965134818	it	duties of	authority
+0.5497573025935627	He	would remind again	Committee
+1.0	it	was understood	duties of authority
+0.7876149965134818	it	duties of	authority of town
+1.0	it	was understood	duties of authority of town
+1.0	there	is religion of	origin
+1.0	there	is religion sacred of	origin
+1.0	there	is	religion infinitely sacred
+1.0	there	is religion more sacred of	origin
+1.0	there	is	religion of origin more sacred than those
+1.0	there	is religion infinitely more sacred of	origin
+1.0	there	is	religion infinitely more sacred than those
+1.0	there	is	religion of origin infinitely sacred than those
+1.0	there	is	religion infinitely more sacred
+1.0	truth	is in	fact
+1.0	there	is sacred	origin
+1.0	there	is	religion
+1.0	there	is	religion sacred
+1.0	there	is	religion of origin sacred than those
+1.0	there	is	religion more sacred
+1.0	there	is religion infinitely sacred of	origin
+1.0	there	is	religion sacred than those
+1.0	there	is	religion more sacred than those
+1.0	there	is	religion of origin infinitely more sacred than those
+1.0	there	is	religion infinitely sacred than those
+1.0	condition	enable	chancellor of exchequer
+0.36651726788220995	prosperous condition	enable	repeal
+1.0	prosperous condition	enable	chancellor
+1.0	condition	enable	chancellor
+0.36651726788220995	prosperous condition	enable	to repeal
+0.5839040200316618	condition	chancellor of	exchequer
+1.0	prosperous condition	enable	chancellor of exchequer
+0.36651726788220995	condition	enable	repeal
+0.36651726788220995	condition	enable	to repeal
+0.5839040200316618	prosperous condition	chancellor of	exchequer
+1.0	Bill	will	will strictly confined to issue
+1.0	Bill	will	will strictly confined to particular issue
+1.0	Bill	will	will confined to issue
+1.0	Bill	will	will strictly confined
+1.0	Bill	will	will confined to particular issue
+1.0	Bill	will	will confined
+0.3797024321575439	I	forms at_time	year
+1.0	they	were obtained for	sums of money
+1.0	they	were	as obtained
+1.0	they	were obtained for	sums
+1.0	they	were	as obtained for sums of money
+1.0	they	were	obtained
+1.0	they	were	as obtained for sums
+1.0	textile workers	is in	country
+1.0	I	asked	him
+1.0	prominent leaders	is in	Yorkshire of textile workers
+1.0	whether Bill	were	his views upon it
+1.0	Bill	were	his views
+1.0	Bill	were	his views upon it
+1.0	he	was for	whether Bill
+1.0	whether Bill	were	his views
+1.0	he	was for	Bill
+1.0	I	naturally asked	him
+0.5084621503917639	men	thought of	it
+1.0	me	answer	it
+0.8341894336094484	he	was of	sufficient importance to brought under notice of House
+1.0	speakers	had omitted	refer to one fact
+0.8341894336094484	he	was of	sufficient importance brought under notice
+1.0	previous speakers	had omitted	refer
+0.8341894336094484	he	was of	sufficient importance to brought
+1.0	he	thought of	importance to brought under notice
+1.0	he	thought of	sufficient importance brought
+1.0	previous speakers	refer to	one fact
+0.8341894336094484	he	was of	importance brought under notice
+1.0	he	thought of	sufficient importance brought under notice
+1.0	speakers	refer to	one fact
+1.0	he	thought of	sufficient importance brought under notice of House
+1.0	previous speakers	had omitted	to refer to one fact
+1.0	speakers	had omitted	to refer
+1.0	he	thought of	importance brought under notice of House
+1.0	he	thought of	importance brought under notice
+1.0	previous speakers	had omitted	refer to one fact
+0.8341894336094484	he	was of	sufficient importance brought under notice of House
+0.8341894336094484	he	was of	sufficient importance brought
+1.0	he	thought of	sufficient importance to brought under notice
+1.0	speakers	had omitted	refer
+0.8341894336094484	he	was of	importance to brought under notice of House
+1.0	previous speakers	had omitted	to refer
+1.0	he	thought of	sufficient importance to brought
+1.0	speakers	had omitted	to refer to one fact
+0.8341894336094484	he	was of	importance brought under notice of House
+0.8341894336094484	he	was of	importance to brought
+1.0	he	thought of	importance to brought under notice of House
+0.8341894336094484	he	was of	importance to brought under notice
+1.0	he	thought of	sufficient importance to brought under notice of House
+0.8341894336094484	he	was of	importance brought
+1.0	he	thought of	importance brought
+0.8341894336094484	he	was of	sufficient importance to brought under notice
+1.0	he	thought of	importance to brought
+1.0	landowner	be	many cases able
+1.0	landowner	do	work
+1.0	landowner	do more efficiently and economically	work
+1.0	landowner	be	in many cases able
+1.0	landowner	do efficiently and economically	work
+1.0	landowner	do more efficiently	work
+1.0	landowner	do efficiently	work
+1.0	landowner	be	in cases able
+1.0	landowner	be	cases able
+1.0	Roman Catholics	had sat in	32nd year of Charles 2nd
+1.0	Roman Catholics	had sat in	32nd year
+1.0	Roman Catholics	had sat in	year
+1.0	Catholics	had sat in	32nd year
+1.0	Catholics	had sat in	32nd year of Charles 2nd
+1.0	Catholics	had sat in	parliament
+1.0	Catholics	had sat in	year
+1.0	Roman Catholics	had sat in	year of Charles 2nd
+1.0	Roman Catholics	had sat in	parliament
+1.0	Others	entertained	opinion
+1.0	Catholics	had sat in	year of Charles 2nd
+1.0	Others	however entertained	different opinion
+1.0	Others	entertained	different opinion
+1.0	Others	however entertained	opinion
+1.0	Attorney General	would remember	fact
+1.0	this	was	moot
+1.0	Attorney General	would probably remember	fact
+1.0	old persons	were relieved in	great majority of cases
+1.0	old persons	were relieved out	workhouse
+1.0	old persons	were relieved in	great majority
+1.0	persons	were relieved in	majority
+1.0	old persons	were relieved in	majority
+1.0	persons	were relieved out	workhouse
+1.0	old persons	were relieved in	majority of cases
+1.0	persons	were relieved in	great majority of cases
+1.0	old persons	were	relieved
+1.0	persons	were relieved in	great majority
+1.0	persons	were relieved in	majority of cases
+1.0	persons	were	relieved
+1.0	he	had embarked for	mutual convenience of establishing among themselves by purchase
+1.0	he	had embarked for	convenience
+1.0	he	had embarked for	mutual convenience of establishing
+1.0	he	had embarked for	mutual convenience of establishing among themselves
+1.0	he	had embarked for	convenience of establishing by purchase
+1.0	he	had embarked in	publication
+1.0	he	had embarked for	mutual convenience
+1.0	he	had embarked for	convenience of establishing among themselves
+1.0	he	had embarked for	convenience of establishing among themselves by purchase
+1.0	he	had embarked for	mutual convenience among themselves
+1.0	he	had embarked for	convenience by purchase
+1.0	he	had embarked for	convenience of establishing
+1.0	he	had embarked for	convenience among themselves
+0.587515639488994	stationers company bad	kept	books
+1.0	he	had embarked for	mutual convenience among themselves by purchase
+1.0	he	had embarked for	convenience among themselves by purchase
+1.0	he	had embarked for	mutual convenience by purchase
+0.587515639488994	stationers company	kept	books
+1.0	he	had embarked for	mutual convenience of establishing by purchase
+1.0	publisher	entered	copy
+1.0	that holders	is in	counties
+1.0	Queen	except	Government
+1.0	centuries	is in	march of civilization
+1.0	advocate	is in	Scotch appeals
+1.0	Government	instructed Mr. Scarlett in	their first communication to Tuscan Government
+1.0	reparation	be	given
+1.0	late Government	expressed	their expectation
+1.0	late Government	instructed Mr. Scarlett in	their communication to Tuscan Government
+1.0	Government	instructed Mr. Scarlett in	their first communication
+1.0	Mr. Scarlett	demand	reparation
+1.0	Government	instructed	Mr. Scarlett
+1.0	reparation	be	promptly given
+1.0	Government	expressed	their expectation
+1.0	late Government	instructed Mr. Scarlett in	their first communication
+1.0	late Government	instructed	Mr. Scarlett
+1.0	Government	instructed Mr. Scarlett in	their communication
+1.0	late Government	instructed Mr. Scarlett in	their first communication to Tuscan Government
+1.0	late Government	instructed Mr. Scarlett in	their communication
+1.0	Mr. Scarlett	demand	ample reparation
+1.0	Government	instructed Mr. Scarlett in	their communication to Tuscan Government
+1.0	accelerating promotion	is in	navy
+1.0	they	did in	past
+0.550980233932247	They	will encourage	us
+1.0	He	could tell	hon.
+1.0	Irish people	had	stronger desire
+1.0	He	learned Gentleman Member for	Deptford
+1.0	they	came from	Ireland
+1.0	people	had	much stronger desire
+1.0	Irish people	had	desire
+1.0	it	was	innocent alone
+1.0	Irish people	had	much stronger desire
+1.0	people	had	desire
+1.0	He	learned	Gentleman Member
+1.0	it	was	alone
+1.0	people	had	stronger desire
+1.0	he	begged of	their Lordships
+1.0	All	was	attention
+1.0	All	was amplest attention to	case
+1.0	All	was attention to	case
+1.0	All	was	amplest attention
+1.0	abstract	was	made
+1.0	number	must	must altered
+1.0	number	must	if must altered
+1.0	whole scheme	was	when produced
+1.0	whole scheme	was	produced
+1.0	scheme	was	produced
+1.0	scheme	was	when produced
+0.9002735699076103	he	obtained	large grant near port
+0.9002735699076103	he	obtained grant on	conditions
+0.9002735699076103	he	obtained	grant of land
+1.0	party	is in	America
+0.9002735699076103	he	obtained	large grant of land near port
+0.9002735699076103	he	obtained	grant near port
+0.9002735699076103	he	obtained grant on	certain conditions
+0.9002735699076103	he	obtained	large grant
+1.0	agents	were	for part connected with party
+1.0	agents	were	for part connected with party in America
+1.0	agents	were	for most part connected with party
+0.9002735699076103	he	obtained grant from	Government
+0.9002735699076103	he	obtained	grant
+1.0	agents	were connected for	most part
+1.0	agents	were connected for	part
+1.0	agents	were	for most part connected with party in America
+0.9002735699076103	he	obtained	grant of land near port
+0.9002735699076103	he	obtained	large grant of land
+0.9002735699076103	he	obtained grant from	local Government
+1.0	I	bore	willing tribute other evening
+1.0	it	be called	Shah Soojah
+1.0	I	bore	tribute other evening
+1.0	he	had	had left
+1.0	I	bore	willing tribute evening
+0.06141471494456796	it	be	called
+1.0	I	bore	tribute evening
+0.9012739378641826	I	am	sure
+1.0	your Lordships	will understand	me
+1.0	It	be seen after	meeting on Epsom Downs gipsies
+1.0	It	be seen after	convivial meeting on Epsom Downs gipsies
+1.0	It	be seen after	convivial meeting
+1.0	It	be seen after	certain meeting
+1.0	It	be seen after	certain convivial meeting on Epsom Downs gipsies
+1.0	pigs	strayed into	it
+1.0	It	be seen after	certain meeting on Epsom Downs gipsies
+1.0	animals	strayed into	it
+1.0	It	be seen after	certain convivial meeting
+1.0	cattle	strayed into	it
+1.0	other animals	strayed into	it
+1.0	It	be seen after	meeting
+1.0	It	be	seen
+1.0	landlord	has	equipment
+1.0	He thought	was evidence of	security to existing property of Church in mutual rivalry of sects
+1.0	He thought	was	evidence
+1.0	He thought	was evidence of	security to property of Church
+1.0	He thought	was evidence of	security to existing property of Church in mutual rivalry
+1.0	He thought	was evidence of	security to property in mutual rivalry of sects
+1.0	He thought	was evidence of	security to property of Church in rivalry of sects
+1.0	He thought	was evidence of	security to property in rivalry of sects
+1.0	He thought	was evidence of	security to existing property in rivalry of sects
+1.0	He thought	was evidence of	security to existing property of Church
+1.0	existing property	is in	mutual rivalry of sects
+1.0	He thought	was evidence of	security to existing property of Church in rivalry
+1.0	He thought	was evidence of	security to property
+1.0	He thought	was evidence of	security to existing property
+1.0	He thought	was evidence of	security to property in rivalry
+1.0	He thought	was evidence of	security to property of Church in mutual rivalry of sects
+1.0	He thought	was evidence of	security to existing property in mutual rivalry
+1.0	He thought	was evidence of	security to existing property in mutual rivalry of sects
+1.0	He thought	was evidence of	security to property of Church in mutual rivalry
+1.0	He thought	was evidence of	security to existing property in rivalry
+1.0	He thought	was evidence of	security to property in mutual rivalry
+1.0	He thought	was evidence of	security to property of Church in rivalry
+1.0	He thought	was evidence of	security to existing property of Church in rivalry of sects
+1.0	He thought	was evidence of	security
+1.0	I	will say nothing on	question
+1.0	I	will say	nothing
+1.0	I	will say nothing on	question of model farms
+0.13382134206666407	I	will say on	question of model farms
+0.13382134206666407	I	will say on	question
+1.0	We came	is	sufficient
+1.0	We came	is sufficient for	soldier
+1.0	We	came to	unanimous conclusion
+1.0	We	came to	conclusion
+1.0	I	have anticipated in	degree
+1.0	I	have addressed to	your Lordships
+0.13382134206666407	I	say on	important head
+1.0	I	have already anticipated in	observations
+1.0	I	have anticipated in	observations
+0.13382134206666407	I	say on	head
+1.0	I	have already anticipated in	degree
+1.0	it	have	late sittings
+1.0	I	say	necessary
+1.0	it	is	necessary
+1.0	it	have	sittings
+1.0	attention	is	bad
+1.0	it	is	if necessary
+1.0	practice	is	bad
+1.0	I	say	if necessary
+1.0	he	is bound	to speak to people of England
+1.0	he	is	bound
+1.0	he	is bound	speak to people
+1.0	he	speak to	people
+1.0	he	is bound	speak frankly to people of England
+1.0	he	speak frankly to	people of England
+1.0	he	is bound	to speak frankly to people of England
+1.0	he	is bound	speak to people of England
+1.0	It	is	subject
+1.0	he	is bound	speak frankly
+1.0	he	speak frankly to	people
+1.0	he	is bound	speak frankly to people
+1.0	It	is subject	bound
+1.0	he	is bound	speak
+1.0	he	is bound	to speak frankly to people
+1.0	he	is bound	to speak frankly
+1.0	he	is bound	to speak
+1.0	he	speak to	people of England
+1.0	he	is bound	to speak to people
+0.6281121926052929	lawlessness	roused	their passions
+1.0	it	is	if pursued
+1.0	it	is	if logically pursued
+1.0	it	is	pursued
+1.0	we	desire	everybody
+1.0	it	is	logically pursued
+1.0	I	ask	Secretary
+1.0	I	ask Secretary to	Admiralty
+1.0	it	have collections in	many centres as possible
+1.0	it	was	better
+1.0	it	have collections in	as many centres as possible
+1.0	it	have collections in	centres as possible
+1.0	it	was neccessary inconvenience	they were effect
+1.0	it	was neccessary inconvenience	if they were to effect
+1.0	it	was neccessary inconvenience	if they were effect
+1.0	he	would remind	their Lordships
+1.0	it	was neccessary inconvenience	they were to effect
+1.0	it	was neccessary inconvenience to	risk
+1.0	effect	is in	respect
+1.0	list	been under	impression
+0.41184739515305946	they	vote of	want
+1.0	they	signing	vote
+0.41184739515305946	they	vote of	want of confidence
+1.0	list	had	nothing
+0.41184739515305946	they	vote of	want of confidence in Sandhurst system
+1.0	they	signing	vote of want of confidence
+1.0	they	signing	vote of want
+1.0	memorialists	list of been	impression
+1.0	they	signing	vote of want of confidence in Sandhurst system
+1.0	confidence	is in	Sandhurst system
+1.0	He	however has detailed	guard of honour
+1.0	He	has detailed guard of	Battalion Derbyshire Regiment
+1.0	He	however has detailed guard of	3rd Battalion Derbyshire Regiment
+1.0	He	however has detailed	guard
+1.0	He	has detailed	guard of honour of Volunteer Battalion Welsh Fusiliers
+1.0	He	however has detailed guard of	Battalion Derbyshire Regiment
+1.0	He	however has detailed	guard of honour of 3rd Volunteer Battalion Welsh Fusiliers
+1.0	He	has detailed	guard of honour
+1.0	He	however has detailed	guard of honour of Volunteer Battalion Welsh Fusiliers
+1.0	He	has detailed guard of	3rd Battalion Derbyshire Regiment
+1.0	He	has detailed	guard
+1.0	He	has detailed	guard of honour of 3rd Volunteer Battalion Welsh Fusiliers
+1.0	I	can say as	my own experience
+1.0	I	can say as	my own life long experience
+1.0	His unstinted tribute	will	will appreciated by them
+1.0	I	can say as	my life long experience
+1.0	His tribute	will	will appreciated by them
+1.0	I	can say as	my experience
+1.0	Member	concluded by	moving
+1.0	leave	bring in	Bill
+1.0	he	had pass	examination
+1.0	he	was fairly efficient in	driving
+1.0	he	had pass examination in	France
+1.0	he	was efficient in	driving
+1.0	he	Now had pass	examination
+1.0	he	was	fairly efficient
+1.0	driver	obtained	licence
+1.0	he	was	efficient
+1.0	he	Now had pass examination in	France
+1.0	serious danger	was after	passing
+1.0	Government	send out	four regiments
+1.0	danger	was after	shortly passing of Act
+1.0	serious danger	was after	passing of Act
+1.0	danger	was after	passing of Act
+1.0	serious danger	was after	shortly passing of Act of 1784
+1.0	alarm	being felt with	safety of our Eastern dominions
+1.0	serious danger	is with	France
+1.0	alarm	being	felt
+1.0	alarm	being felt with	safety
+1.0	serious danger	was after	Very shortly passing of Act
+1.0	danger	was after	Very shortly passing of Act of 1784
+1.0	serious danger	was after	passing of Act of 1784
+1.0	serious danger	was after	shortly passing
+1.0	danger	was after	passing
+1.0	alarm	being felt in	country
+1.0	danger	was after	Very shortly passing
+1.0	serious danger	was after	shortly passing of Act
+1.0	serious danger	was after	Very shortly passing
+1.0	danger	was after	shortly passing
+1.0	danger	was after	shortly passing of Act of 1784
+1.0	serious danger	was after	Very shortly passing of Act of 1784
+1.0	alarm	being felt with	safety of our dominions
+1.0	danger	was after	passing of Act of 1784
+1.0	danger	was after	Very shortly passing of Act
+1.0	He	objected to	even three Commissioners
+1.0	He	objected to	three Commissioners
+0.3982539095399279	we	are employ	ourselves
+1.0	land question	is in	Ireland
+1.0	connection	is with	land question in Ireland
+1.0	preliminary documents	were perfected in	case
+1.0	Lord Fermoy	subsequently withdrew	his sanction
+1.0	preliminary documents	were	perfected
+1.0	I	ask	Chief Secretary
+1.0	he	is	if aware
+1.0	documents	were perfected in	case of Lord Fermoy
+1.0	I	ask Chief Secretary	aware
+1.0	documents	were perfected in	case
+1.0	he	is	aware
+1.0	he	is	aware
+1.0	tenants	paid	price
+1.0	other lands	is in	parishes of Herbertstown
+1.0	Lord Fermoy	withdrew	his sanction
+1.0	preliminary documents	were perfected in	case of Lord Fermoy
+1.0	documents	were	perfected
+1.0	tenants	paid	higher price
+1.0	I	ask Chief Secretary	if aware
+1.0	reduction	is in	number of licences
+0.7681676053038357	he	be termed	tribunals
+0.747868296121924	commanding officer	power of	dispensing mercy
+0.747868296121924	officer	power of	mercy
+0.747868296121924	commanding officer	power of	mercy
+1.0	officer	had power for	for cases
+1.0	commanding officer	had power for	for cases
+0.747868296121924	officer	power of	dispensing mercy
+0.7681676053038357	he	be termed	paternal tribunals
+1.0	children	were within	mill
+1.0	It	say within	whilst mill
+1.0	It	say within	mill
+1.0	children	were within	whilst mill
+1.0	it	will	will competent first
+1.0	him	be committed to	custody
+1.0	him	attend in	his place
+1.0	Member	has committed	flagrant
+1.0	him	be	committed
+1.0	it	will	will competent
+1.0	him	be committed to	custody of Serjeant at Arms
+1.0	them	inquire as	situation of parties in receipt of dividends
+1.0	them	inquire as	situation in receipt
+1.0	he	was in	office with his noble Friend
+1.0	he	was in	office with his noble Friend ten years ago
+1.0	he	was in	when office with his noble Friend
+1.0	he	was in	office with his Friend ten years ago
+1.0	situation	is in	receipt of dividends
+1.0	he	was in	when office ten years ago
+1.0	office	is with	his noble Friend
+1.0	he	was in	office with his Friend
+1.0	it	became	for them to inquire
+1.0	them	inquire as	situation in receipt of dividends
+1.0	his	Friend	Lord Ripon
+1.0	he	was in	office
+1.0	he	was in	when office with his Friend ten years ago
+1.0	he	was in	when office with his noble Friend ten years ago
+1.0	he	was in	when office
+1.0	it	became	them to inquire
+1.0	he	was in	when office with his Friend
+1.0	them	inquire as	situation
+1.0	it	became	necessary
+1.0	he	was in	office ten years ago
+1.0	them	inquire as	situation of parties in receipt
+1.0	them	inquire as	situation of parties
+1.0	it	became	for them inquire
+1.0	it	became	them inquire
+1.0	object	was improvement of	administration of justice in Wales
+1.0	object	was improvement of	administration
+1.0	object	was	improvement
+1.0	administration	is in	Wales
+1.0	object	was improvement of	administration of justice
+1.0	object	was improvement of	administration in Wales
+1.0	representative	preserve	integrity of kingdom
+1.0	representative	was	anxious
+0.5480663389436716	He	was	happy
+1.0	representative	preserve	integrity
+1.0	he	was	anxious
+1.0	Mulvihill	of	house
+1.0	Member	made complaint as	continuance of Debate
+1.0	Member	made	complaint
+1.0	Member	made complaint as	continuance
+1.0	Temporalities	contains	list of names of persons
+1.0	payments	were	made
+1.0	Temporalities	contains	list of names
+1.0	Temporalities	contains	list
+1.0	payments	were made under	Irish Church Act 1869
+1.0	they	set law at	defiance
+1.0	they	set	law
+1.0	I	hope With	noble Lord
+1.0	I	hope With	Lord opposite
+1.0	allusion	being contrary	law
+1.0	I	sincerely hope With	noble Lord
+1.0	I	hope With	Lord
+1.0	I	hope With	noble Lord opposite
+1.0	allusion	has	has made
+1.0	I	sincerely hope With	Lord
+1.0	I	sincerely hope With	Lord opposite
+1.0	I	sincerely hope With	noble Lord opposite
+1.0	It	was deputation of	sorters
+1.0	It	was deputation of	sorters working
+1.0	It	was	deputation
+1.0	It	was deputation of	sorters working in Post Office
+1.0	I	move Amendment	to provide
+1.0	I	move Amendment	provide
+1.0	I	move	Amendment
+1.0	money	be devoted under	Bill
+1.0	money	be	devoted under Bill to cathedral services
+1.0	I	move	Amendment to Clause 1
+1.0	money	be	devoted
+1.0	money	be devoted to	cathedral services
+0.7951532513216769	teachers	are	unanimous
+0.7951532513216769	teachers	are unanimous against	half time system
+0.7951532513216769	teachers	are	absolutely unanimous
+0.7951532513216769	teachers	are absolutely unanimous against	half time system
+1.0	optional power	be	could well entrusted
+1.0	justices	were	efficient body
+1.0	justices	were efficient body of	people
+1.0	optional power	be	could entrusted
+1.0	justices	were body	could well entrusted
+1.0	power	be	could entrusted
+1.0	justices	were efficient body	could well entrusted
+1.0	justices	were	where efficient body
+1.0	justices	were efficient	entrusted
+1.0	justices	were	where body of people
+1.0	justices	were	body
+1.0	justices	were	where body
+1.0	justices	were body	could entrusted
+1.0	justices	were efficient body	could entrusted
+1.0	justices	were	where efficient body of people
+1.0	power	be	could well entrusted
+1.0	justices	were body of	people
+1.0	Great Britain	carry out	great schemes of humanitarianism
+1.0	Great Britain	carry out	great schemes
+1.0	Member	referred to	days
+1.0	Great Britain	carry out	schemes of humanitarianism
+1.0	Great Britain	was	when able
+1.0	Great Britain	carry out	schemes
+1.0	Great Britain	was	able
+1.0	Don Pedro	ceased	emperor
+1.0	Don Pedro	be	emperor
+1.0	Don Pedro	ceased	to emperor
+1.0	Bill	gave to	criminal
+0.5696338145168732	he	did on	not eighth day of Session
+0.5696338145168732	he	did so on	not eighth day of Session
+1.0	rents	were	high
+1.0	rents	were	too high
+1.0	rents	is in	Ireland
+1.0	burdens	existed At	former period
+1.0	jury court	had	had introduced into Scotland
+1.0	jury court	had	had lately introduced
+1.0	jury court	had	had introduced
+1.0	jury court	had	had lately introduced into Scotland
+1.0	inventors	great mass of were	as in country poor inventors
+1.0	mass	were	inventors
+1.0	risk	coming down with	their wealth
+1.0	mass	were poor inventors in	in country
+1.0	risk	coming upon	him
+1.0	inventors	mass of were	inventors in legislating for House
+1.0	inventors	mass of were	as in country poor inventors in legislating
+1.0	inventors	great mass of were	as in country inventors for House
+1.0	inventors	great mass of were	as in country poor inventors in legislating
+1.0	mass	were inventors in	legislating
+1.0	mass	were	poor inventors
+1.0	mass	were inventors in	in country
+1.0	inventors	great mass of were	as in country poor inventors in legislating for House
+1.0	mass	were	inventors in legislating for House
+1.0	inventors	mass of were	as in country poor inventors for House
+1.0	mass	were	as in country inventors in legislating for House
+1.0	risk	crushing	him
+1.0	great mass	were poor inventors in	legislating
+1.0	inventors	great mass of were	inventors in legislating
+1.0	mass	were	poor inventors in legislating for House
+1.0	great mass	were poor inventors in	in country
+1.0	great mass	were inventors in	legislating
+1.0	poor inventors	is in	legislating on matter
+1.0	mass	were poor inventors in	legislating
+1.0	inventors	great mass of were	as in country inventors
+1.0	mass	were	as in country poor inventors in legislating for House
+1.0	inventors	great mass of were	as in country inventors in legislating
+1.0	inventors	mass of were	as in country inventors
+1.0	inventors	mass of were	poor inventors in legislating for House
+1.0	mass	were	as in country inventors for House
+1.0	inventors	mass of were	inventors
+1.0	inventors	mass of were	poor inventors for House
+1.0	inventors	mass of were	as in country inventors for House
+1.0	inventors	great mass of were	as in country poor inventors for House
+1.0	great mass	were	poor inventors in legislating for House
+1.0	mass	were	as in country inventors in legislating
+1.0	great mass	were	inventors
+1.0	inventors	mass of were	as in country poor inventors
+1.0	inventors	mass of were	as in country inventors in legislating
+1.0	inventors	great mass of were	poor inventors for House
+1.0	inventors	great mass of were	inventors
+1.0	inventors	great mass of were	inventors in legislating for House
+1.0	great mass	were	as in country inventors for House
+1.0	inventors	mass of were	poor inventors in legislating
+1.0	inventors	mass of were	as in country inventors in legislating for House
+1.0	great mass	were	as in country poor inventors for House
+1.0	inventors	great mass of were	inventors for House
+1.0	great mass	were inventors in	in country
+1.0	great mass	were poor inventors for	House
+1.0	mass	were poor inventors for	House
+1.0	great mass	were	inventors in legislating for House
+1.0	provisions	should	should enacted
+1.0	inventors	great mass of were	as in country inventors in legislating for House
+1.0	mass	were inventors for	House
+1.0	inventors	great mass of were	poor inventors
+1.0	inventors	great mass of were	poor inventors in legislating
+1.0	great mass	were inventors for	House
+1.0	inventors	mass of were	inventors for House
+1.0	inventors	great mass of were	poor inventors in legislating for House
+1.0	great mass	were	poor inventors
+1.0	mass	were	as in country poor inventors for House
+1.0	inventors	mass of were	as in country poor inventors in legislating for House
+1.0	great mass	were	as in country inventors in legislating for House
+1.0	inventors	mass of were	inventors in legislating
+1.0	great mass	were	as in country poor inventors in legislating for House
+1.0	risk	coming down upon	him
+1.0	inventors	mass of were	poor inventors
+1.0	mass	were	as in country poor inventors in legislating
+1.0	great mass	were	as in country poor inventors in legislating
+1.0	great mass	were	as in country inventors in legislating
+1.0	risk	coming with	their wealth
+1.0	he	find	solution
+1.0	he	find	solution for it
+1.0	Sir	will lay	drafts of Bill
+0.02038138290973901	Sir	will lay	if hon. learned Gentleman
+1.0	Sir	will lay drafts	if learned Gentleman
+1.0	Sir	will lay	drafts
+1.0	Sir	will lay drafts	if hon. Gentleman
+1.0	Sir	will lay drafts	if hon. learned Gentleman
+0.02038138290973901	Sir	will lay	if learned Gentleman
+0.02038138290973901	Sir	will lay upon	Table
+1.0	Sir	will lay	several drafts
+1.0	I	will give	name
+1.0	Sir	will lay drafts	learned Gentleman
+1.0	Sir	will lay drafts upon	Table
+0.02038138290973901	Sir	will lay	learned Gentleman
+0.7935030578141623	I	name of	my informant
+1.0	Sir	will lay drafts	hon. learned Gentleman
+1.0	I	will give	name of my informant
+0.02038138290973901	Sir	will lay	if hon. Gentleman
+0.02038138290973901	Sir	will lay	hon. learned Gentleman
+1.0	Sir	will lay drafts	hon. Gentleman
+0.02038138290973901	Sir	will lay	hon. Gentleman
+1.0	he	had listened to	his speech
+1.0	he	must qualify satisfaction In	one respect
+1.0	he	indeed must qualify	satisfaction
+1.0	he	indeed must qualify satisfaction In	one respect
+1.0	he	must qualify	satisfaction
+1.0	he	had listened	he must say
+1.0	he	set	admirable example
+1.0	he	set	most admirable example
+1.0	he	set	example
+1.0	noble Earl	leader of	party opposite
+1.0	he	trusted on	sides of House
+1.0	it	belonged to	Government
+1.0	matters	is in	regard to Bill
+1.0	it	was	because quite impossible for departments of Government
+1.0	it	was	impossible
+1.0	it	was	because impossible for departments concerned
+1.0	it	was impossible for	departments
+1.0	representatives	come after	three quarters of hour 's debate
+1.0	it	was quite impossible for	departments of Government concerned
+1.0	it	was impossible for	departments of Government concerned
+1.0	it	was impossible for	departments concerned
+1.0	hour	of	debate
+1.0	it	was	quite impossible
+1.0	it	would	would improper
+1.0	representatives	come to	decision upon it
+1.0	it	was	because impossible
+1.0	it	would	would obviously most improper for House
+1.0	it	was	because quite impossible
+1.0	it	was	because impossible for departments of Government concerned
+1.0	representatives	come after	three quarters
+1.0	it	would	would improper for House
+1.0	it	would	would most improper
+1.0	it	was	because quite impossible for departments
+1.0	it	was	because impossible for departments of Government
+1.0	it	would	would obviously improper for House
+1.0	it	was impossible for	departments of Government
+1.0	it	was quite impossible for	departments
+1.0	it	was quite impossible for	departments of Government
+1.0	it	was	because quite impossible for departments of Government concerned
+1.0	it	was quite impossible for	departments concerned
+1.0	it	was	because quite impossible for departments concerned
+1.0	it	would	would obviously most improper
+1.0	it	would	would obviously improper
+1.0	representatives	come to	decision
+1.0	it	would	would most improper for House
+1.0	it	was	because impossible for departments
+1.0	directors	is in	case
+1.0	Grand Committee	House in	miniature
+1.0	Grand Committee	was	microcosm
+1.0	Grand Committee	be provided with	Ministerial majority
+1.0	Ministerial majority	be	would able
+0.7897009724214786	Ministerial majority	override	proposition brought forward by minority of House
+1.0	House	is in	miniature
+1.0	Grand Committee	be provided with	Ministerial majority calculated
+1.0	Ministerial majority	be	just would able
+1.0	Ministerial majority	is in	House
+1.0	Grand Committee	was	to microcosm
+1.0	Ministerial majority	be	as would able
+1.0	Ministerial majority	be	just as would able
+1.0	Grand Committee	be	provided
+1.0	they	were	If rejected
+1.0	they	were	rejected
+1.0	noble Earl	told	us
+1.0	noble Earl	told	arrangements
+1.0	Earl	told	arrangements
+1.0	Earl	told	us
+1.0	cause	would	then would removed
+1.0	cause	would	would removed
+1.0	he	object to	it
+1.0	Its effect	must	must beneficial
+1.0	Sir W. White	says in	previous Despatch
+1.0	Sir W. White	says As	immigration into Armenia from Caucasus
+1.0	Sir W. White	says in	Despatch to Lord Salisbury
+1.0	Sir W. White	says in	previous Despatch to Lord Salisbury
+1.0	Sir W. White	says As	immigration from Caucasus
+1.0	Sir W. White	says in	Despatch
+1.0	Sir W. White	says As	immigration into Armenia
+1.0	Sir W. White	says As	immigration
+0.9497181273536534	imperfect inquiry	will	will greatest obstacle to complete inquiry hereafter
+0.9497181273536534	imperfect inquiry	will	will obstacle to complete inquiry
+0.9497181273536534	imperfect inquiry	will	will greatest obstacle to more complete inquiry hereafter
+0.9497181273536534	inquiry	will	will greatest obstacle
+0.9497181273536534	imperfect inquiry	will	will obstacle
+0.9497181273536534	inquiry	will	will obstacle to more complete inquiry hereafter
+0.9497181273536534	imperfect inquiry	will	will obstacle to inquiry hereafter
+0.9497181273536534	inquiry	will	will greatest obstacle to complete inquiry
+0.9497181273536534	inquiry	will	will obstacle to more complete inquiry
+0.9497181273536534	inquiry	will	will greatest obstacle to more complete inquiry
+0.9497181273536534	imperfect inquiry	will	will greatest obstacle to inquiry hereafter
+0.9497181273536534	inquiry	will	will obstacle to inquiry
+0.5937307392657369	I think	ought	remember
+1.0	I	think	your Lordships
+0.9497181273536534	inquiry	will	will greatest obstacle to more complete inquiry hereafter
+0.9497181273536534	inquiry	will	will obstacle to complete inquiry
+0.9497181273536534	inquiry	will	will greatest obstacle to inquiry hereafter
+0.9497181273536534	imperfect inquiry	will	will obstacle to inquiry
+0.9497181273536534	inquiry	will	will obstacle to complete inquiry hereafter
+0.9497181273536534	inquiry	will	will greatest obstacle to inquiry
+0.5899268689266982	imperfect inquiry	taking now	place
+0.9497181273536534	imperfect inquiry	will	will obstacle to more complete inquiry
+0.9497181273536534	imperfect inquiry	will	will obstacle to more complete inquiry hereafter
+0.9497181273536534	imperfect inquiry	will	will obstacle to complete inquiry hereafter
+0.5899268689266982	inquiry	taking	place
+0.9497181273536534	inquiry	will	will obstacle to inquiry hereafter
+0.9497181273536534	imperfect inquiry	will	will greatest obstacle to inquiry
+0.5899268689266982	imperfect inquiry	taking	place
+0.9497181273536534	imperfect inquiry	will	will greatest obstacle to more complete inquiry
+0.9497181273536534	imperfect inquiry	will	will greatest obstacle
+0.9497181273536534	imperfect inquiry	will	will greatest obstacle to complete inquiry
+0.9497181273536534	inquiry	will	will obstacle
+0.5899268689266982	inquiry	taking now	place
+0.5937307392657369	I think	ought	to remember
+0.9497181273536534	inquiry	will	will greatest obstacle to complete inquiry hereafter
+0.5937307392657369	I think	is without	almost parallel
+0.5937307392657369	I think	is without	almost parallel in history of Irish administration for past century
+1.0	Bill	accomplished	nothing else
+0.5937307392657369	I think	is without	parallel for past century
+0.5937307392657369	I think	is without	almost parallel in history for past century
+0.5937307392657369	I think	is without	almost parallel in history of Irish administration
+0.5937307392657369	I think	is without	parallel in history of Irish administration
+0.5937307392657369	I think	is without	parallel in history of Irish administration certainly for past century
+0.5937307392657369	I think	is without	parallel in history
+0.5937307392657369	I think	is without	parallel in history of administration certainly for past century
+0.5937307392657369	I think	is without	parallel in history certainly for past century
+1.0	parallel	is in	history of Irish administration
+0.5937307392657369	I think	is without	almost parallel in history certainly for past century
+0.5937307392657369	I think	is without	almost parallel in history of administration certainly for past century
+0.5937307392657369	I think	is without	parallel in history for past century
+0.5937307392657369	I think	is without	parallel certainly for past century
+0.5937307392657369	I think	is without	parallel in history of administration
+1.0	Bill	accomplished	nothing
+0.5937307392657369	I think	is without	almost parallel in history
+0.5937307392657369	I think	is without	parallel in history of administration for past century
+0.5937307392657369	I think	is without	almost parallel in history of administration for past century
+0.5937307392657369	I think	is without	almost parallel in history of administration
+0.5937307392657369	I think	is without	almost parallel in history of Irish administration certainly for past century
+0.5937307392657369	I think	is without	parallel in history of Irish administration for past century
+0.5937307392657369	I think	is without	almost parallel for past century
+0.5937307392657369	I think	is without	parallel
+0.5937307392657369	I think	is without	almost parallel certainly for past century
+1.0	peace	has	that has restored in Ireland
+1.0	peace	has	has restored in Ireland
+1.0	peace	has	has restored
+1.0	it	would	would incumbent
+1.0	Gentleman	were there none in	own
+1.0	Gentleman	were there none in	his own
+1.0	I	now come to	certain sins
+1.0	I	now come to	alleged sins
+1.0	I	come to	alleged sins of commission
+1.0	I	now come to	certain alleged sins of commission
+1.0	I	come to	certain alleged sins
+1.0	I	now come to	certain sins of commission
+1.0	I	come to	certain sins
+1.0	I	come to	alleged sins
+1.0	I	now come to	alleged sins of commission
+1.0	I	come to	certain sins of commission
+1.0	I	come to	sins of commission
+1.0	I	now come to	sins
+1.0	I	now come to	certain alleged sins
+1.0	I	come to	sins
+1.0	I	now come to	sins of commission
+1.0	I	come to	certain alleged sins of commission
+1.0	I	wishing to	weary
+1.0	it	been much nearer	mark
+1.0	it	been	much
+0.06141471494456796	it	had called	clog
+0.06141471494456796	it	had called	independent clog
+1.0	it	had called	itself
+1.0	day	is in	House of Commons
+1.0	they	have	confidence in administration
+1.0	they	have	confidence in administration of country at present time
+1.0	they	have	confidence in financial administration of country at time
+1.0	they	have	confidence at time
+1.0	they	have	confidence in administration at time
+1.0	they	have	confidence
+1.0	they	have	confidence in financial administration of country at present time
+1.0	they	have	confidence in administration of country
+1.0	they	will take	courage
+1.0	they	have	confidence in financial administration
+1.0	confidence	is in	financial administration of country
+1.0	they	have	confidence in financial administration at present time
+1.0	they	have	confidence at present time
+1.0	they	have	confidence in administration of country at time
+1.0	they	have	confidence in financial administration at time
+1.0	they	have	confidence in financial administration of country
+1.0	they	have	confidence in administration at present time
+1.0	Amendments	were discussed in	when not Chair
+1.0	it	is	If to appeal against action of bishop
+1.0	empowered	is refuse institution by	existing law
+1.0	it	is	simply appeal
+1.0	it	is	If appeal against action
+1.0	it	is	If to appeal
+1.0	it	is	to appeal against action
+1.0	it	is	If to appeal against action
+1.0	it	is	simply appeal against action of bishop
+1.0	should appeal	stating	subjects
+1.0	it	is	If simply appeal against action
+1.0	bishop	is refuse institution by	law
+1.0	it	is	to appeal against action of bishop
+1.0	it	is	If to simply appeal
+1.0	bishop	is refuse institution by	existing law
+1.0	empowered	is refuse institution by	law
+1.0	it	is	appeal against action
+1.0	it	is	simply appeal against action
+1.0	it	is	If simply appeal
+1.0	it	is	If to simply appeal against action of bishop
+1.0	it	is	If appeal
+1.0	should appeal	stating	generally subjects
+1.0	it	is	to simply appeal
+1.0	it	is	If to simply appeal against action
+1.0	it	should	should appeal
+1.0	it	is	If appeal against action of bishop
+1.0	it	is	appeal
+1.0	it	is	to simply appeal against action
+1.0	it	is	to simply appeal against action of bishop
+1.0	it	is	appeal against action of bishop
+1.0	it	is	If simply appeal against action of bishop
+1.0	it	is	to appeal
+1.0	things	are done	prorogued
+1.0	things	are	done
+1.0	Parliament	is	before prorogued
+1.0	things	are	if done
+1.0	things	are done	before prorogued
+1.0	Parliament	is	prorogued
+1.0	condition	is in	agricultural village
+1.0	condition	is at	present
+1.0	condition	is at	present most hazardous
+1.0	condition	is at	present hazardous
+1.0	it	be	corn
+1.0	I	suppose on	principle
+1.0	Judges	is in	Ireland
+1.0	their decision	is in	favour of one line of politics
+1.0	favour	in another is	that
+1.0	part	remained	entirely
+1.0	part	Therefore remained	entirely
+1.0	part	remained	entirely of colony
+1.0	part	Therefore remained	entirely of colony
+1.0	part	Therefore remained from	time
+1.0	part	remained from	time
+1.0	remarkable correspondence	is in	figures
+1.0	he	was	accredited
+1.0	time	is	important matter
+1.0	time	is	very important matter
+1.0	Act	is come into	operation
+1.0	time	is	important
+1.0	time	is	matter
+1.0	he	proposed	provision for those retiring from service
+1.0	he	called	it payment of public debt of gratitude
+1.0	he	called	it payment of public debt
+0.4663741442073318	he	liberal provision for	those
+1.0	he	proposed provision at	close of war
+0.4663741442073318	he	provision for	those
+1.0	he	proposed	more liberal provision for those retiring from service
+1.0	he	proposed	more liberal provision
+0.4663741442073318	he	more liberal provision for	those
+0.4663741442073318	he	provision for	those retiring
+1.0	he	called	it payment
+1.0	he	proposed	provision for those retiring
+1.0	he	proposed	liberal provision
+1.0	principle	was	clear
+1.0	he	proposed provision at	close of late war
+1.0	he	proposed	provision for those
+1.0	it	payment of	public debt of gratitude
+1.0	he	proposed	more liberal provision for those retiring
+0.4663741442073318	he	more liberal provision for	those retiring from service
+1.0	he	proposed	more liberal provision for those
+1.0	he	proposed	liberal provision for those
+0.4663741442073318	he	liberal provision for	those retiring
+1.0	he	proposed	provision
+1.0	he	proposed	liberal provision for those retiring
+1.0	he	proposed provision at	close
+1.0	he	called	it payment of debt of gratitude
+1.0	it	payment of	debt
+1.0	it	payment of	debt of gratitude
+1.0	he	proposed	liberal provision for those retiring from service
+1.0	principle	was	so clear
+0.4663741442073318	he	more liberal provision for	those retiring
+0.4663741442073318	he	provision for	those retiring from service
+1.0	it	payment of	public debt
+0.4663741442073318	he	liberal provision for	those retiring from service
+1.0	he	called	it payment of debt
+1.0	it	especially regards	habitations of working classes
+1.0	it	should	if should fortune
+1.0	it	should	should fortune of Government
+1.0	it	regards	habitations of classes
+1.0	it	regards	habitations
+1.0	it	should	if should good fortune of Government
+1.0	benches	legislate wisely on	matters
+1.0	benches	legislate on	sanitary matters
+1.0	it	especially regards	habitations of classes
+1.0	it	should	should good fortune
+1.0	it	regards habitations in	London
+1.0	it	especially regards habitations in	London
+1.0	it	should	should fortune
+1.0	it	should	if should fortune of Government
+1.0	their Administration	is with	credit
+1.0	benches	legislate on	matters
+1.0	it	especially regards	habitations
+1.0	they	surround names with	lustre
+1.0	benches	legislate wisely on	sanitary matters
+1.0	it	should	should good fortune of Government
+1.0	it	should	if should good fortune
+1.0	it	regards	habitations of working classes
+1.0	I	think	children
+0.6926422780520853	teaching	is	absurd
+0.7825990019762142	I	be	protected
+1.0	a writ	was	served in Kilmainham Prison on Mr. Patrick Fury
+1.0	a	was served on	instant
+1.0	a writ	was served on	prisoner under Act for Better Protection of Person
+1.0	a	was	served
+1.0	a	was	served on 16th instant in Kilmainham Prison on Mr. Patrick Fury
+1.0	a	was served on	prisoner under Act for Better Protection in Ireland
+1.0	a writ	was	served on 16th instant in Kilmainham Prison
+1.0	a writ	was served in	Kilmainham Prison
+1.0	a	was served on	prisoner
+1.0	a writ	was served on	prisoner under Act
+1.0	a	was served in	Kilmainham Prison
+1.0	a writ	was served on	Mr. Patrick Fury
+1.0	a writ	was	served on 16th instant in Kilmainham Prison on Mr. Patrick Fury
+1.0	a writ	was served on	16th instant
+1.0	a writ	was served on	prisoner under Act for Better Protection of Person in Ireland
+1.0	a	was served on	prisoner under Act for Better Protection of Person in Ireland
+1.0	a writ	was served on	prisoner under Act for Better Protection in Ireland
+1.0	a	was	served on 16th instant on Mr. Patrick Fury
+1.0	a writ	was	served
+1.0	Mr. Patrick Fury	prisoner under	Act for Better Protection of Person in Ireland
+1.0	a writ	was	served on 16th instant on Mr. Patrick Fury
+1.0	a	was served on	Mr. Patrick Fury
+1.0	a writ	was	served on instant in Kilmainham Prison
+1.0	a	was served on	prisoner under Act
+1.0	Better Protection	is in	Ireland
+1.0	a writ	was	served on instant in Kilmainham Prison on Mr. Patrick Fury
+1.0	a	was	served on instant in Kilmainham Prison on Mr. Patrick Fury
+1.0	a	was	served in Kilmainham Prison on Mr. Patrick Fury
+1.0	a writ	was served on	prisoner under Act for Better Protection
+1.0	a	was served on	16th instant
+1.0	a writ	was served on	instant
+1.0	a writ	was served on	prisoner
+1.0	a	was	served on instant in Kilmainham Prison
+1.0	a writ	was	served on instant on Mr. Patrick Fury
+1.0	a	was	served on instant on Mr. Patrick Fury
+1.0	a	was served on	prisoner under Act for Better Protection
+1.0	a	was	served on 16th instant in Kilmainham Prison
+1.0	a	was served on	prisoner under Act for Better Protection of Person
+1.0	to	is	Messrs. Kynoch
+1.0	Mr. Speaker	Government 's	Majesty
+1.0	Prince	declared	war
+1.0	Prince	left	Cettigne
+1.0	they	received	news
+1.0	they	received news about	same time
+1.0	Majesty	from	Consul at Ragusa
+1.0	he	placed	himself
+1.0	they	received news from	Her Majesty 's Consul at Ragusa
+1.0	Queen	from	Ambassador at Constantinople
+1.0	they	received news about	time
+1.0	Majesty	has	Government
+1.0	they	received news from	Her Majesty 's Consul
+1.0	Servians	crossed	frontier
+1.0	I	had	considerable amount of sympathy opposite
+1.0	I	far had	considerable amount with noble Lords opposite
+1.0	I	had	amount of sympathy with noble Lords
+1.0	I	far had	amount of sympathy with noble Lords opposite
+0.68586371919523	I	amount opposite of	sympathy
+0.68586371919523	I	considerable amount with	noble Lords
+1.0	I	far had	amount with Lords opposite
+1.0	I	had	amount
+1.0	I	far had	amount opposite
+0.68586371919523	I	amount with	noble Lords
+1.0	I	far had	amount
+0.68586371919523	I	amount opposite with	noble Lords
+1.0	I	far had	amount of sympathy opposite
+1.0	I	far had	considerable amount with noble Lords
+1.0	I	as far had	amount
+1.0	I	as far had	amount of sympathy with noble Lords
+1.0	I	confess	my Lords
+1.0	I	as far had	amount opposite
+1.0	I	had	considerable amount of sympathy
+1.0	I	far had	considerable amount with Lords opposite
+1.0	I	had	considerable amount with Lords
+1.0	I	had	amount with noble Lords opposite
+1.0	I	as far had	amount with noble Lords opposite
+1.0	I	as far had	amount with Lords opposite
+1.0	I	had	amount with noble Lords
+1.0	I	as far had	considerable amount with noble Lords
+1.0	I	as far had	amount with noble Lords
+1.0	I	as far had	considerable amount with noble Lords opposite
+1.0	I	as far had	considerable amount
+1.0	I	had	considerable amount with noble Lords opposite
+1.0	I	far had	considerable amount with Lords
+1.0	I	as far had	amount of sympathy with Lords opposite
+1.0	I	had	amount with Lords
+0.68586371919523	I	amount with	Lords
+0.68586371919523	I	amount opposite with	Lords
+1.0	I	had	considerable amount with noble Lords
+1.0	I	take part in	discussion upon Roman Catholic oath
+1.0	I	had	considerable amount of sympathy with noble Lords
+1.0	I	had	amount of sympathy with noble Lords opposite
+1.0	I	as far had	amount of sympathy opposite
+1.0	I	had	considerable amount of sympathy with Lords opposite
+1.0	I	far had	amount with Lords
+1.0	I	far had	amount with noble Lords
+1.0	I	far had	amount of sympathy with Lords
+1.0	I	far had	amount of sympathy
+1.0	I	as far had	considerable amount opposite
+1.0	I	far had	amount with noble Lords opposite
+0.68586371919523	I	considerable amount opposite of	sympathy
+1.0	I	far had	amount of sympathy with Lords opposite
+1.0	I	as far had	amount of sympathy with Lords
+1.0	I	had	considerable amount
+0.68586371919523	I	considerable amount of	sympathy
+1.0	I	had	amount of sympathy with Lords
+0.68586371919523	I	considerable amount opposite with	Lords
+1.0	I	as far had	considerable amount with Lords opposite
+1.0	I	had	amount with Lords opposite
+1.0	considerable amount	is with	noble Lords
+1.0	I	as far had	considerable amount with Lords
+1.0	I	had	considerable amount of sympathy with Lords
+1.0	I	had	considerable amount of sympathy with noble Lords opposite
+1.0	I	far had	amount of sympathy with noble Lords
+1.0	I	as far had	amount of sympathy
+1.0	I	as far had	amount with Lords
+1.0	I	had	amount of sympathy
+0.68586371919523	I	considerable amount with	Lords
+1.0	I	as far had	amount of sympathy with noble Lords opposite
+1.0	I	had	amount of sympathy opposite
+0.68586371919523	I	amount of	sympathy
+1.0	I	had	amount opposite
+0.68586371919523	I	considerable amount opposite with	noble Lords
+1.0	I	far had	considerable amount
+1.0	I	had	considerable amount with Lords opposite
+1.0	I	far had	considerable amount of sympathy with noble Lords opposite
+1.0	I	as far had	considerable amount of sympathy with noble Lords opposite
+1.0	I	had	amount of sympathy with Lords opposite
+1.0	I	far had	considerable amount opposite
+1.0	I	had	considerable amount opposite
+0.5958995775935539	Gentleman opposite	were	men of enlightened mind
+1.0	they	had	power to place of education
+0.5958995775935539	Gentleman opposite	were men of	mind
+1.0	King	for	Lynn
+1.0	they	had	power
+0.5819949678001203	they	power to	place of education
+0.5958995775935539	noble Lord	were men of	enlightened mind
+1.0	they	would send	those
+0.5958995775935539	Gentleman opposite	were men of	enlightened mind
+1.0	they	had	power to place
+0.5958995775935539	noble Lord	were men of	mind
+0.5958995775935539	noble Lord	were	men
+0.5958995775935539	Lord	were men of	mind
+0.5958995775935539	Gentleman opposite	were	men of mind
+0.5958995775935539	Lord	were	men
+0.5958995775935539	Lord	were men of	enlightened mind
+1.0	it	was	same thing
+0.5819949678001203	they	power to	place
+0.5958995775935539	Gentleman opposite	were	men
+1.0	decision	was	come to by noble Lord late Secretary
+1.0	cause	was	this
+1.0	cause	was	simply this
+1.0	decision	was	come to by noble Lord late Secretary of State
+1.0	decision	was	come to by noble Lord Secretary of State
+1.0	decision	was	come to by Lord late Secretary
+1.0	decision	was	come to by Lord Secretary of State
+1.0	decision	was	come to by noble Lord Secretary
+0.7475971636256471	decision	late Secretary of	State
+1.0	decision	was	come to by Lord Secretary
+1.0	decision	was	come to by Lord late Secretary of State
+0.7475971636256471	decision	Secretary of	State
+1.0	it	Thus appeared	that
+1.0	it	appeared	that
+1.0	harbour	is	place
+1.0	harbour	is admittedly most suitable place for	harbour
+1.0	harbour	is most suitable place for	harbour
+1.0	harbour	is place for	harbour upon coast
+1.0	harbour	is	suitable place
+1.0	harbour	is admittedly most suitable place for	harbour upon coast
+1.0	harbour	is admittedly place for	harbour upon coast
+1.0	harbour	is place for	harbour
+1.0	harbour	is	admittedly most suitable place
+1.0	harbour	is suitable place for	harbour upon coast
+1.0	harbour	is	admittedly place
+1.0	harbour	is admittedly suitable place for	harbour upon coast
+1.0	harbour	is most suitable place for	harbour upon coast
+1.0	harbour	is suitable place for	harbour
+1.0	harbour	is	most suitable place
+1.0	harbour	is admittedly suitable place for	harbour
+1.0	harbour	is	admittedly suitable place
+1.0	harbour	is admittedly place for	harbour
+1.0	themselves	felt	bit
+1.0	Members	felt	little bit
+0.2906918565133637	themselves	little bit at	sea
+1.0	themselves	visiting	some
+1.0	themselves	felt	little bit at sea
+0.2906918565133637	themselves	bit at	sea
+1.0	Members	felt	little bit at sea
+1.0	Members	felt	bit at sea
+1.0	Members	felt	bit
+1.0	I	am long way	having found
+1.0	I	am long way	from having found
+1.0	they	may	perhaps may able
+0.5772851209731934	themselves	Members of	House
+1.0	they	may	for then perhaps may able
+1.0	they	may	for then may able
+1.0	themselves	felt	bit at sea
+1.0	I	am way	from having found
+1.0	themselves	visiting	some our ships
+1.0	themselves	felt	little bit
+1.0	themselves	visiting	some of our ships
+1.0	they	extend	sympathy
+1.0	I	am long	found
+1.0	they	extend	little sympathy
+1.0	I	am way	having found
+1.0	they	may	may able
+1.0	He	would go fully into	question
+1.0	He	would go into	question
+1.0	Fear	is	intelligible argument in favour
+1.0	my Lords	is	perfectly intelligible argument
+1.0	Lords	is intelligible	favour
+1.0	Fear	is	argument
+1.0	Fear	is	perfectly intelligible argument in favour of anything
+1.0	my Lords	is intelligible argument in	favour of anything
+1.0	Fear	is intelligible argument in	favour
+1.0	my Lords	is perfectly intelligible argument in	favour
+1.0	Fear	is perfectly intelligible argument in	favour
+1.0	Fear	is	argument in favour of anything
+1.0	my Lords	is	argument
+1.0	Fear	is	intelligible argument
+1.0	my Lords	is perfectly intelligible argument in	favour of anything
+1.0	Fear	is	argument in favour
+1.0	my Lords	is intelligible argument in	favour
+1.0	Fear	is intelligible argument in	favour of anything
+1.0	Fear	is	intelligible argument in favour of anything
+1.0	my Lords	is argument in	favour of anything
+1.0	my Lords	is	intelligible argument
+1.0	intelligible argument	is in	favour of anything
+1.0	Fear	is argument in	favour of anything
+1.0	my Lords	is argument in	favour
+1.0	Fear	is perfectly intelligible argument in	favour of anything
+1.0	Fear	is	perfectly intelligible argument
+1.0	Fear	is intelligible	favour
+1.0	Fear	is	perfectly intelligible argument in favour
+1.0	Fear	is argument in	favour
+1.0	they	had	had entrapped
+1.0	they	had	because had entrapped
+1.0	system	is In	greater portion of France
+1.0	marine	be	for to obliged
+0.5649818551229421	it	was	for to obliged
+1.0	poor marine	be	for obliged
+1.0	marine	be	for obliged
+1.0	marine	be	to obliged
+0.5649818551229421	it	was	to obliged
+0.5649818551229421	it	was	for obliged
+1.0	poor marine	be	obliged
+0.5649818551229421	it	was	obliged
+1.0	marine	be	obliged
+1.0	poor marine	be	to obliged
+1.0	poor marine	be	for to obliged
+1.0	it	astonished	him
+1.0	it	really astonished	him
+1.0	pensioner	has	signature
+1.0	pension officer	is	required
+1.0	pension officer	witness	pensioner 's signature
+1.0	certain provision	was	established
+1.0	certain provision	year by	year
+1.0	portion	was	paid
+1.0	portion	was paid off	off last year
+1.0	larger portion	was paid off	off last year
+1.0	portion	was paid off	off year
+1.0	larger portion	was	paid
+1.0	provision	was	established
+1.0	effect	is in	year
+1.0	larger portion	was paid off	off year
+1.0	he	was deserving	reproach
+1.0	Lieutenant Burnes	is taken for	having
+1.0	Lieutenant Burnes	communicated	his negotiations
+1.0	Lieutenant Burnes	is taken	while employed
+1.0	Lieutenant Burnes	employed in	confidential mission
+1.0	Lieutenant Burnes	is	taken
+1.0	Lieutenant Burnes	employed in	mission to Affghanistan
+1.0	Lieutenant Burnes	is taken to	task
+1.0	Lieutenant Burnes	employed in	confidential mission to Affghanistan
+1.0	Lieutenant Burnes	is	in which taken
+1.0	Lieutenant Burnes	is	in which taken for having
+1.0	Lieutenant Burnes	is	in which taken to task for having
+1.0	Lieutenant Burnes	is	taken to task for having
+1.0	Lieutenant Burnes	is	in which taken to task
+1.0	Lieutenant Burnes	is taken	employed
+1.0	Lieutenant Burnes	employed in	mission
+1.0	wide differences	is in	many respects
+1.0	Bill	is in	purposes
+0.5362149089735653	I	abandon case	if can proved
+0.5362149089735653	I	abandon	case
+1.0	abuse	can	if can proved
+1.0	abuse	can	can proved
+0.5362149089735653	I	abandon case	can proved
+1.0	discussion	be useful	exercise
+1.0	Mr. Wolfe Barry	made	recommendation
+1.0	it	be surrounded with	iron bands
+1.0	it	be	surrounded
+0.24335796315102098	it	would redound	if carried vigorously
+1.0	theory	were carried vigorously into	effect
+1.0	theory	were carried into	effect
+1.0	theory	were	if carried vigorously into effect
+1.0	theory	were	carried vigorously
+1.0	it	would redound	much
+1.0	he	should confess in	his opinion
+0.24335796315102098	it	would redound	if carried vigorously into effect
+0.24335796315102098	it	would redound to	happiness of Ireland
+0.24335796315102098	it	would redound	carried vigorously
+1.0	theory	were	carried
+1.0	theory	were	if carried
+0.24335796315102098	it	would redound	carried
+0.24335796315102098	it	would redound	carried vigorously into effect
+0.24335796315102098	it	would redound	carried into effect
+1.0	noble Earl opposite	had enunciated at_time	evening
+1.0	Earl opposite	had enunciated at_time	evening
+0.24335796315102098	it	would redound to	happiness
+1.0	theory	were	if carried vigorously
+1.0	theory	were	if carried into effect
+0.24335796315102098	it	would redound	if carried
+0.24335796315102098	it	would redound	if carried into effect
+1.0	He	learned	Gentleman
+1.0	He	learned	Recorder
+1.0	He	learned	Recorder for Dublin
+1.0	strong government	folding	its arms
+1.0	government	folding	its arms
+1.0	it	depends	we chose
+1.0	we	chose	put on word
+1.0	we	chose	put
+1.0	we	chose	to put
+1.0	we	chose	to put on word
+1.0	we	shall frame	future Budget
+1.0	it	depends	whether we chose
+1.0	we	put on	word
+1.0	main cliam	was	financial
+1.0	claim	was of	financial character
+1.0	financial	was of	character
+1.0	financial	was of	financial character
+1.0	cliam	was	financial
+1.0	financial	was of	purely financial character
+1.0	claim	was of	purely financial character
+1.0	claim	was of	character
+1.0	It	is summed up in	word
+1.0	It	is summed up perhaps in	word
+1.0	number	was	though so small
+1.0	Large sums	provide for	support of Protestant Church in places
+1.0	Large sums	provide for	support of Protestant Church
+1.0	sums	provide for	support of Protestant Church in places
+1.0	Large sums	provide for	support
+1.0	number	was	so small
+1.0	sums	provide for	support
+1.0	sums	provide for	support in places
+1.0	support	is in	places
+1.0	sums	provide for	support of Protestant Church
+1.0	number	was	small
+1.0	Large sums	provide for	support in places
+1.0	number	was	though small
+1.0	he	devote	any of ample funds
+1.0	he	devote	any of funds
+1.0	he	devote	any
+1.0	Colonelcy	would carry pay	if held by officer
+1.0	Colonelcy	would carry pay	held
+1.0	Colonelcy	held by	officer
+1.0	Colonelcy	would carry	pay
+1.0	Colonelcy	would carry pay	held by officer
+1.0	Colonelcy	would carry pay	if held
+1.0	Motion	be	discussed as soon
+1.0	Motion	be	discussed
+1.0	he	had ascertained Since	yesterday
+1.0	Motion	be	discussed soon
+1.0	That	be	serious
+1.0	Opposite	affected in	manner

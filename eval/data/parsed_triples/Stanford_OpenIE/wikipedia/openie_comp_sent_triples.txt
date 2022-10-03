@@ -1,0 +1,369 @@
+1.0	Dan	stay	clean
+1.0	brothers	rediscover	their love
+1.0	Manny	inspire	Dan
+1.0	brothers	rediscover	their mutual love
+0.9825847521588487	ground	watching	aerial combat
+0.9825847521588487	Creamer	was on	ground
+0.9825847521588487	German Luftwaffe 's offensive operation	was on	During Operation Bodenplatte ground
+0.9825847521588487	Luftwaffe 's last offensive operation	was on	During Operation Bodenplatte ground
+0.9825847521588487	Luftwaffe 's last operation	was on	ground
+0.9825847521588487	German Luftwaffe 's offensive operation	was on	ground
+0.9825847521588487	German Luftwaffe 's operation	was on	ground
+0.9825847521588487	Luftwaffe 's last offensive operation	was on	ground
+0.7698055534103468	Creamer	watching	aerial combat
+0.9825847521588487	German Luftwaffe 's last operation	was on	During Operation Bodenplatte ground
+0.9825847521588487	German Luftwaffe 's last offensive operation	was on	ground
+0.7698055534103468	Creamer	watching	combat around him
+0.9825847521588487	Luftwaffe 's offensive operation	was on	During Operation Bodenplatte ground
+0.9825847521588487	German Luftwaffe 's operation	was on	During Operation Bodenplatte ground
+0.9825847521588487	Luftwaffe 's offensive operation	was on	ground
+0.9825847521588487	Creamer	was on	During Operation Bodenplatte ground
+0.7698055534103468	Creamer	watching	combat
+0.9825847521588487	ground	watching	aerial combat around him
+0.9825847521588487	Luftwaffe 's operation	was on	ground
+0.9825847521588487	Luftwaffe 's operation	was on	During Operation Bodenplatte ground
+0.9825847521588487	German Luftwaffe 's last offensive operation	was on	During Operation Bodenplatte ground
+0.9825847521588487	ground	watching	combat around him
+1.0	German Luftwaffe	has	last offensive operation
+0.9825847521588487	German Luftwaffe 's last operation	was on	ground
+0.7698055534103468	Creamer	watching	aerial combat around him
+0.9825847521588487	Luftwaffe 's last operation	was on	During Operation Bodenplatte ground
+0.9825847521588487	ground	watching	combat
+1.0	She	was	Spanish Women
+0.9900979130909273	She	was	multiple Women 's Chess championships participant
+0.9900979130909273	She	was	Spanish Women 's Chess championships participant
+0.9900979130909273	She	was	multiple Spanish Women 's Chess championships participant
+0.6722673698430697	She	winning	seven gold medals
+0.9900979130909273	Women 's Chess championships participant	winning	seven gold medals
+1.0	She	was	multiple Women
+0.9900979130909273	multiple Spanish Women 's Chess championships participant	winning	seven gold medals
+0.9900979130909273	Spanish Women 's Chess championships participant	winning	seven gold medals
+0.9900979130909273	She	was	Women 's Chess championships participant
+0.9900979130909273	multiple Women 's Chess championships participant	winning	seven gold medals
+1.0	municipality	has	population of 86 inhabitants
+1.0	municipality	has population According	2004 census
+1.0	municipality	has	population
+1.0	Tonga	has	Fekitamoeloa ' Utoikamanu
+1.0	Tonga	has	Utoikamanu
+1.0	it	being	serious pest
+1.0	it	being	pest
+1.0	it	being pest of	olive
+1.0	important pests	is in	especially Mediterranean area
+1.0	it	being serious	olive
+1.0	it	being serious pest of	olive
+0.7248745881441943	U-174	bound for	eastern seaboard of North America
+0.7248745881441943	U-174	bound for	seaboard
+0.7248745881441943	U-174	bound for	seaboard of North America
+0.7248745881441943	U-174	bound for	eastern seaboard
+0.5399668780564828	she	married	Croatian basketball player Marko Sandrić
+0.5399668780564828	she	married basketball player Marko Sandrić In	August 2015
+0.5399668780564828	she	married	basketball player Marko Sandrić
+0.5624514432690371	Jenkins	went to	Yaddo
+0.5624514432690371	Jenkins	went	to work on screenplay
+0.5624514432690371	Jenkins	went after	her marriage
+0.5624514432690371	Jenkins	went	to work
+0.5624514432690371	Jenkins	went after	Shortly her marriage
+1.0	Jenkins	went	artists ' colony
+1.0	Jenkins	went	artists ' colony in Saratoga Springs
+1.0	artists ' colony	work on	screenplay
+1.0	2007	has	Savages
+1.0	artists ' colony	is in	Saratoga Springs
+0.5624514432690371	Jenkins	went	work on screenplay
+0.5624514432690371	Jenkins	went	work
+1.0	El Diablo	is	song recorded by Greek singer Elena Tsagrinou released as single on 28 February 2021 for her album
+1.0	El Diablo	is	song recorded by Greek singer Elena Tsagrinou released as single for her album with name
+1.0	El Diablo	is	song recorded by singer Elena Tsagrinou released as single on 28 February 2021 for her album with same name
+1.0	El Diablo	is	song recorded by Greek singer Elena Tsagrinou released on 28 February 2021 for her album
+1.0	El Diablo	is	song released for her album with same name
+1.0	El Diablo	is	song released as single on 28 February 2021 for her album with name
+1.0	El Diablo	is	song recorded by singer Elena Tsagrinou released as single for her album with same name
+1.0	El Diablo	is	song recorded by singer Elena Tsagrinou released for her album with name
+1.0	El Diablo	is	song recorded released as single on 28 February 2021 for her album with same name
+1.0	El Diablo	is	song recorded by singer Elena Tsagrinou released as single
+1.0	El Diablo	is	song recorded by Greek singer Elena Tsagrinou released as single on 28 February 2021
+1.0	El Diablo	is	song recorded released as single for her album with name
+1.0	El Diablo	is	song recorded by singer Elena Tsagrinou released on 28 February 2021 for her album with same name
+1.0	El Diablo	is	song recorded by singer Elena Tsagrinou released on 28 February 2021 for her album
+1.0	El Diablo	is	song recorded by singer Elena Tsagrinou released
+1.0	El Diablo	is	song released
+1.0	El Diablo	is	song recorded by singer Elena Tsagrinou released on 28 February 2021
+1.0	El Diablo	is	song recorded by singer Elena Tsagrinou released as single on 28 February 2021 for her album
+1.0	El Diablo	is	song recorded by Greek singer Elena Tsagrinou released for her album with name
+1.0	El Diablo	is	song recorded released as single on 28 February 2021 for her album with name
+1.0	El Diablo	is	song recorded released as single
+1.0	El Diablo	is	song recorded by singer Elena Tsagrinou released as single for her album with name
+1.0	El Diablo	is	song recorded released for her album with name
+1.0	El Diablo	is	song recorded by Greek singer Elena Tsagrinou released as single on 28 February 2021 for her album with same name
+1.0	El Diablo	is	song recorded released on 28 February 2021 for her album
+1.0	El Diablo	is	song
+1.0	El Diablo	is	song released as single
+1.0	El Diablo	is	song recorded released
+1.0	El Diablo	is	song released for her album
+1.0	El Diablo	is	song recorded by Greek singer Elena Tsagrinou released on 28 February 2021 for her album with name
+1.0	El Diablo	is	song released as single for her album with same name
+1.0	El Diablo	is	song released as single on 28 February 2021
+1.0	El Diablo	is	song released as single for her album
+1.0	El Diablo	is	song recorded by Greek singer Elena Tsagrinou released for her album
+1.0	El Diablo	is	song recorded by singer Elena Tsagrinou released for her album with same name
+1.0	El Diablo	is	song released for her album with name
+1.0	El Diablo	is	song recorded by singer Elena Tsagrinou released as single for her album
+1.0	El Diablo	is	song recorded released as single for her album with same name
+1.0	El Diablo	is	song recorded released as single on 28 February 2021 for her album
+1.0	El Diablo	is	song recorded by Greek singer Elena Tsagrinou released as single for her album with same name
+1.0	El Diablo	is	song recorded released as single for her album
+1.0	El Diablo	is	song recorded released for her album
+1.0	El Diablo	is	song recorded by singer Elena Tsagrinou
+1.0	El Diablo	is	song recorded by Greek singer Elena Tsagrinou released on 28 February 2021 for her album with same name
+1.0	her album	is with	same name
+1.0	El Diablo	is	song released on 28 February 2021 for her album
+1.0	El Diablo	is	song recorded by singer Elena Tsagrinou released on 28 February 2021 for her album with name
+1.0	El Diablo	is	song released on 28 February 2021 for her album with same name
+1.0	El Diablo	is	song recorded by Greek singer Elena Tsagrinou released
+1.0	El Diablo	is	song recorded released for her album with same name
+1.0	El Diablo	is	song released as single on 28 February 2021 for her album with same name
+1.0	El Diablo	is	song recorded by Greek singer Elena Tsagrinou
+1.0	El Diablo	is	song recorded released on 28 February 2021 for her album with name
+1.0	El Diablo	is	song recorded by Greek singer Elena Tsagrinou released as single on 28 February 2021 for her album with name
+1.0	El Diablo	is	song recorded by singer Elena Tsagrinou released for her album
+1.0	El Diablo	is	song recorded released as single on 28 February 2021
+1.0	El Diablo	is	song recorded by singer Elena Tsagrinou released as single on 28 February 2021 for her album with name
+1.0	El Diablo	is	song recorded released on 28 February 2021 for her album with same name
+1.0	El Diablo	is	song recorded
+1.0	El Diablo	is	song released on 28 February 2021
+1.0	El Diablo	is	song recorded by Greek singer Elena Tsagrinou released on 28 February 2021
+1.0	El Diablo	is	song recorded by singer Elena Tsagrinou released as single on 28 February 2021
+1.0	El Diablo	is	song recorded by Greek singer Elena Tsagrinou released as single
+1.0	El Diablo	is	song released as single for her album with name
+1.0	El Diablo	is	song released on 28 February 2021 for her album with name
+1.0	El Diablo	is	song recorded released on 28 February 2021
+1.0	El Diablo	is	song recorded by Greek singer Elena Tsagrinou released as single for her album
+1.0	El Diablo	is	song released as single on 28 February 2021 for her album
+1.0	El Diablo	is	song recorded by Greek singer Elena Tsagrinou released for her album with same name
+1.0	Nuer	is in	Jonglei
+1.0	Lou Nuer	is in	Jonglei state
+1.0	George Athor	of	South Sudan Democratic Movement
+0.5399668780564828	declaration	marked escalation in	clashes
+0.5399668780564828	declaration	marked	escalation
+1.0	particular judges	is in	court
+1.0	Dutch	wished	to focus instead on misconduct of judges in court
+1.0	Dutch	wished	focus on misconduct of judges
+1.0	Dutch	believed	court
+0.36557685961113096	Dutch	believed on	hand
+0.36557685961113096	Dutch	believed	have fundamentally competent
+1.0	Dutch	wished	to focus instead on misconduct of particular judges in court
+1.0	Dutch	wished	focus instead
+1.0	Dutch	wished	focus instead on misconduct of judges
+1.0	Dutch	wished	focus on misconduct of judges in court
+1.0	Dutch	wished	focus instead on misconduct
+1.0	Dutch	wished	to focus on misconduct of judges
+1.0	Dutch	wished	focus on misconduct of particular judges
+1.0	Dutch	wished	to focus instead on misconduct of judges
+1.0	Dutch	wished	to focus on misconduct
+1.0	Dutch	wished	focus instead on misconduct of judges in court
+1.0	Dutch	wished	focus instead on misconduct of particular judges
+0.36557685961113096	Dutch	believed on	other hand
+1.0	Dutch	wished	to focus
+0.36557685961113096	Dutch	believed	to have fundamentally competent
+1.0	Dutch	wished	to focus instead
+1.0	Dutch	wished	to focus instead on misconduct
+1.0	Dutch	wished	focus on misconduct of particular judges in court
+0.36557685961113096	Dutch	believed	have competent
+1.0	Dutch	wished	to focus instead on misconduct of particular judges
+1.0	Dutch	wished	focus instead on misconduct of particular judges in court
+1.0	Dutch	wished	to focus on misconduct of particular judges
+1.0	Dutch	wished	focus on misconduct
+0.36557685961113096	Dutch	believed	to have competent
+1.0	Dutch	wished	to focus on misconduct of judges in court
+1.0	Dutch	wished	to focus on misconduct of particular judges in court
+1.0	Dutch	wished	focus
+1.0	building	was	built
+1.0	present building	was built between	end of 16th century
+1.0	present building	was	built
+1.0	building	was built between	end
+1.0	present building	was built between	end
+1.0	present building	was built between	end of century
+1.0	building	was built between	end of 16th century
+1.0	building	was built between	end of century
+1.0	moving escalator 's drive chain	snapped during	morning rush hour
+1.0	moving escalator 's drive chain	snapped according	Shanghai Shentong Metro Group
+1.0	moving escalator 's drive chain	snapped according	city 's metro operator
+1.0	moving escalator	has	drive chain
+1.0	escalator 's drive chain	snapped according	city 's metro operator
+1.0	city	has	metro operator
+1.0	escalator 's drive chain	snapped according	Shanghai Shentong Metro Group
+1.0	escalator 's drive chain	snapped during	morning rush hour
+1.0	Shanghai Shentong Metro Group	operator 's	city
+1.0	preparation	use root In	traditional medicine
+1.0	preparation	use root In	traditional Cambodian medicine
+1.0	bark	is	used
+1.0	preparation	use root In	Cambodian medicine
+1.0	preparation	use root In	medicine
+1.0	preparation	use	root
+1.0	preparation	use	root of palm
+1.0	preparation	use root	used
+1.0	preparation	use root	while used
+1.0	bark	treat	tuberculosis
+1.0	bark	is	while used
+1.0	Malpica	In Sisargas is	small archipelago used as shelter by numerous marine birds
+1.0	state legislature	malapportion	districts
+0.5704059491895723	example	being addition to	line
+1.0	his backing band	disband for	undecided amount of time
+0.5704059491895723	pertinent example	being addition of	Dan Luscombe
+0.5704059491895723	pertinent example	being	addition
+1.0	his	band	Alpha Males
+0.14059619431790493	his backing band	disband	allow
+0.5704059491895723	pertinent example	being addition to	line
+0.5704059491895723	example	being addition to	line up of Drones
+1.0	his backing band	disband for	amount
+1.0	his backing band	disband for	undecided amount
+0.5704059491895723	example	being	addition of Dan Luscombe to line up of Drones
+0.5704059491895723	example	being addition of	Dan Luscombe
+1.0	Kelly	announced	his backing band
+1.0	individual members	focus on	other projects
+1.0	members	focus on	projects
+0.5704059491895723	pertinent example	being	addition of Dan Luscombe to line
+0.5704059491895723	pertinent example	being addition to	line up of Drones
+0.5704059491895723	example	being	addition of Dan Luscombe to line
+0.5704059491895723	pertinent example	being	addition of Dan Luscombe to line up of Drones
+0.5704059491895723	example	being	addition
+0.14059619431790493	his backing band	disband	to allow
+1.0	individual members	focus on	projects
+1.0	his backing band	disband for	amount of time
+1.0	members	focus on	other projects
+1.0	Boloria jerdoni	is	butterfly
+1.0	Boloria jerdoni	silverspot 's	Jerdon
+1.0	Boloria jerdoni	is butterfly of	family Nymphalidae
+1.0	Jerdon	has	silverspot
+1.0	Laker	in	opening game of 1949 50 season
+1.0	He	scoring	two points
+1.0	He	committing	personal foul
+1.0	He	appeared in	Laker 's opening game
+1.0	He	committing	foul
+1.0	his son	is in	law
+0.5156843331948976	future fighter	serving as	advisor
+1.0	future fighter	stood in	modern times
+1.0	future fighter	president of	Abkhazia Vladislav Ardzinba
+0.5156843331948976	future fighter	serving as	advisor of political activities in Soviet parliament
+0.5156843331948976	future fighter	serving as	advisor of activities
+0.5156843331948976	future fighter	serving as	advisor of political activities in Soviet parliament of USSR people 's deputy
+0.5156843331948976	future fighter	serving as	advisor of activities in Soviet parliament
+1.0	future fighter	stood in	times
+1.0	Arshba	stood in	times
+1.0	USSR people	of	deputy
+0.5156843331948976	future fighter	serving as	advisor of activities in parliament
+0.5156843331948976	future fighter	serving as	advisor of activities in parliament of USSR people 's deputy
+1.0	Arshba	stood in	modern times
+1.0	independence	for fighter is	first president of Abkhazia Vladislav Ardzinba
+0.5156843331948976	future fighter	serving as	advisor of political activities in parliament of USSR people 's deputy
+0.5156843331948976	future fighter	serving as	advisor of activities in Soviet parliament of USSR people 's deputy
+0.5156843331948976	future fighter	serving as	advisor of political activities in parliament
+0.5156843331948976	future fighter	serving as	advisor of political activities
+1.0	political activities	is in	Soviet parliament of USSR people 's deputy
+1.0	her husband	was	killed
+1.0	Natalie	broken after	death
+1.0	Natalie	completely broken after	death of her husband
+1.0	her husband	was	where killed
+1.0	Natalie	completely broken after	death
+1.0	Natalie	broken after	death of her husband
+0.89950270648495	New Mexico Sunrise	sending	pilot
+1.0	New Mexico Sunrise	hit power lines In	October 2013
+0.89950270648495	New Mexico Sunrise	sending pilot to	hospital
+1.0	New Mexico Sunrise	hit	power lines
+1.0	Good Lovelies	toured in	UK
+1.0	trio	released	physical version
+0.3695919422009908	trio	version of	Shapeshifters
+1.0	Good Lovelies	released	digital version
+1.0	Good Lovelies	released version In	February 2018
+1.0	Good Lovelies	released version In	March 2019
+1.0	trio	released	version
+1.0	trio	released	version of Shapeshifters
+1.0	trio	released	physical version of Shapeshifters
+1.0	Good Lovelies	released	version
+0.3695919422009908	trio	physical version of	Shapeshifters
+1.0	slow progress	is in	Daytona USA port
+0.9984989249371985	services	using	3 car 183 series EMUs trains
+1.0	Pop Wasteland	album by	Folkestone band Phenomenal Cat
+1.0	it	falls under	jurisdiction of Eshkol Regional Council
+1.0	it	falls under	jurisdiction
+1.0	Julian	goes after	Reggie
+1.0	Julian	goes in	psychopathic state
+1.0	Julian	goes in	state
+1.0	Hari Rao	has	accession to throne
+1.0	Hari Rao 's accession	was result of	popular uprising against adoption of child by Krishna Bai Holkar
+1.0	Hari Rao 's accession	was	result
+1.0	Hari Rao 's accession	was result of	uprising against adoption of child
+1.0	Hari Rao 's accession	was result of	uprising by Krishna Bai Holkar
+1.0	Hari Rao 's accession	was result of	popular uprising against adoption
+1.0	Hari Rao 's accession	was result of	popular uprising against adoption of child
+1.0	Hari Rao 's accession	was result of	uprising against adoption of child by Krishna Bai Holkar
+1.0	Hari Rao 's accession	was result of	popular uprising by Krishna Bai Holkar
+1.0	Hari Rao 's accession	was result of	popular uprising against adoption by Krishna Bai Holkar
+1.0	Hari Rao 's accession	was result of	uprising
+1.0	Hari Rao 's accession	was result of	uprising against adoption by Krishna Bai Holkar
+1.0	Hari Rao 's accession	was result of	uprising against adoption
+1.0	Krishna Bai Holkar	mother of	deceased Maharaja Malhar Rao Holkar III
+1.0	Hari Rao 's accession	was result of	popular uprising
+0.551412288169415	cradleboards	have effect In	first few months of infancy
+0.551412288169415	cradleboards	have effect In	first months of infancy
+0.551412288169415	cradleboards	have effect In	few months of infancy
+0.551412288169415	cradleboards	have effect In	months of infancy
+0.531081218269325	cradleboards	effect on	babies
+0.531081218269325	cradleboards	soothing effect on	babies
+1.0	show	been	stretched
+1.0	show	been	ever stretched
+1.0	show	been	ever stretched before
+1.0	show	been	stretched before
+1.0	drawing attention	battled problems for	years
+1.0	he	battled problems for	years
+1.0	Bell 's career	be headed in	right direction
+1.0	Bell 's career	appeared	headed in direction
+1.0	Bell 's career	appeared	to headed in right direction
+1.0	Bell 's career	appeared	to headed
+1.0	attention	battled problems for	years
+1.0	Bell 's career	appeared	headed in right direction
+1.0	Bell 's career	be	headed
+1.0	Bell 's career	appeared	to headed in direction
+1.0	Bell	has	career
+1.0	Bell 's career	appeared	headed
+1.0	Bell 's career	be headed in	direction
+1.0	PFF Women 's League	league in	Philippines
+1.0	PFF Women	in	League
+1.0	top flight domestic women 's football league	is in	Philippines
+1.0	League	league 's	women
+1.0	PFF Women	's League is	top flight domestic football league in Philippines
+0.7803813072250974	film	tale of	bar owner
+0.7803813072250974	film	tale of	shifty sleazy bar owner
+1.0	private detective	kill	his wife
+1.0	film	tells	tale of shifty bar owner
+1.0	film	tells	tale
+1.0	film	tells	tale of shifty sleazy bar owner
+0.7803813072250974	film	tale of	shifty bar owner
+0.7803813072250974	film	tale of	sleazy bar owner
+1.0	film	tells	tale of bar owner
+1.0	detective	kill	his wife
+1.0	film	tells	tale of sleazy bar owner
+0.5399668780564828	Bataan briefly	led Dragons In	East Harlem
+0.5399668780564828	Bataan briefly	led	local Puerto Rican street gang
+0.5399668780564828	Bataan briefly	led	Dragons
+0.5399668780564828	Bataan briefly	led	Rican street gang
+0.5399668780564828	Bataan briefly	led	Puerto Rican street gang
+0.5399668780564828	Bataan briefly	led	street gang
+0.5399668780564828	Bataan briefly	led	local Rican street gang
+0.8853596899604499	She	created music for	games available
+0.8853596899604499	She	created	music
+0.8853596899604499	She	created music for	games available on Xbox
+0.8853596899604499	She	created music for	games
+1.0	00	include	survey
+1.0	00	include	survey of aesthetic of century museums
+1.0	00	include	survey of architectural aesthetic
+1.0	00	include	survey of aesthetic
+1.0	GCG	example of	food carts
+1.0	GCG	example of	highly successful food carts
+1.0	GCG	example of	successful food carts
+1.0	he	formed part at_time	year
+1.0	they	lost to	Creighton
+1.0	they	lost in	round of NCAA Tournament
+1.0	2012 SEC Men	of	Basketball Tournament
+1.0	they	lost in	second round of NCAA Tournament
+1.0	they	lost in	round
+1.0	they	lost in	second round

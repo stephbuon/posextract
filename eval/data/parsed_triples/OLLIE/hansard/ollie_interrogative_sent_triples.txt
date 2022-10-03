@@ -1,0 +1,203 @@
+What course did you pursue with respect to him?
+0.864: (you; What course did pursue with; respect)
+0.738: (What course; did pursue with; respect)
+0.656: (you; did pursue; What course)
+
+What authority had they for supposing that such coercion would produce the effect desired?
+0.686: (What authority; had; they)
+0.666: (such coercion; would produce; the effect desired)
+
+What proportion could possibly be paid by the tenantry of this amount?
+0.937: (What proportion; could possibly be paid by; the tenantry of this amount)
+
+"What confidence could they in future have in Chancellors of the Exchequer if they came forward to trade upon the divisions existing in that House, in order to carry their respective measures?"
+0.89: (they; " could have in; Chancellors of the Exchequer)[enabler=if they came forward to trade upon the divisions existing in that House , in order to carry their respective measures]
+0.846: (What confidence; " could have in; Chancellors of the Exchequer)[enabler=if they came forward to trade upon the divisions existing in that House , in order to carry their respective measures]
+0.799: (they; " could have in; future)[enabler=if they came forward to trade upon the divisions existing in that House , in order to carry their respective measures]
+0.728: (What confidence; " could have in; future)[enabler=if they came forward to trade upon the divisions existing in that House , in order to carry their respective measures]
+0.484: (the divisions; existing in; that House)
+0.379: (they; came forward to trade upon; the divisions existing in that House)
+0.247: (they; to trade upon; the divisions existing in that House)
+
+What principle of justice would there be in asking the accused person to come forward and be examined as a witness?
+No extractions found.
+
+What steps are the government taking to remedy these evils?
+No extractions found.
+
+What minister had ever been rewarded on the scale now proposed?
+No extractions found.
+
+"What sort of government are we getting in Ireland with these sixty-seven boards spending £7,500,000?"
+0.596: (What sort of government; are getting in; Ireland)
+0.494: (we; are getting in; Ireland)
+0.474: (these sixty-seven boards; spending; £7,500,000)
+
+What wrong have these men done that their money should thus be taken from them for no purpose whatever?
+0.89: (their money; should thus be taken from; them)
+0.851: (their money; should thus be taken for; no purpose)
+
+What steps do the Liberals take to provide these raw materials?
+No extractions found.
+
+What message are my colleagues and myself to take home to our people?
+0.846: (myself; to take; home)
+0.843: (myself; to take home to; our people)
+0.798: (What message; to take; home)
+0.793: (What message; to take home to; our people)
+0.636: (home; to take to be; our people)
+
+"What purpose could its retention answer, but to bring his Majesty's Government into disrepute?"
+0.667: (his Majesty 's Government; to be bring into; disrepute)
+
+What right had they to make any bargain?
+0.825: (they; to make; any bargain)
+
+What standard shall we adopt in interpreting the treaty?
+No extractions found.
+
+What chance was there of the Second Reading Debate on the Rating Bill being concluded on the following night?
+0.645: (the Second Reading Debate; being concluded on; the following night)
+
+"Which regiments should we assign to home service, and which should we banish to India?"
+0.668: (Which regiments; should assign should to; home service)
+0.649: (Which regiments; should should banish to; India)
+0.549: (we; should should banish to; India)
+0.394: (we; should assign should to; home service)
+
+What difference could it make to the British working man if the goods came into this country although they were wit sold by British tradesmen?
+0.761: (they; were; wit sold by British tradesmen)
+0.758: (What difference; could make to; the British working man)[enabler=if the goods came into this country although they were wit sold by British tradesmen]
+0.661: (it; could make to; the British working man)[enabler=if the goods came into this country although they were wit sold by British tradesmen]
+0.561: (wit; be sold by; British tradesmen)
+0.286: (the goods; came into; this country)[enabler=although they were wit sold by British tradesmen]
+0.065: (the goods; came to; this country)[enabler=although they were wit sold by British tradesmen]
+
+"What sort of sofas were they that were put under the tent on those occasions; was not one an iron bedstead, and the other a sofa?"
+0.903: (they; were were put under; the tent)
+0.862: (What sort of sofas; were were put under; the tent)
+
+"What prospect was it for a poor marine to be obliged to serve in all parts of the globe, and not to be allowed to retire until a medical officer certified that he was no longer able to serve?"
+0.664: (What prospect; was; it)
+0.579: (he; was no longer; able)
+0.53: (a poor marine; to retire until; a medical officer certified that he was no longer able to serve)
+
+"What chance had he of doing that, what chance had he of coping with the vindictive counsel conducting the prosecution, who would re-examine and take advantage of all the inexperienced slips?"
+0.702: (advantage; would be take of; all the inexperienced slips)
+
+"What value will he attach to the dogmas and pramtices of his worship when he will know that under the same roof and same protection these dogmas, and these practices are represented to some of his fellow-students as so many superstitions?"
+0.868: (these dogmas , and these practices; are represented as; many superstitions)[attrib=he will know]
+0.754: (these dogmas , and these practices; are represented under; the same roof and same protection)[attrib=he will know]
+0.682: (What value; will attach to; the dogmas and pramtices of his worship)[enabler=when he will know that under the same roof and same protection these dogmas , and these practices are represented to some of his fellow-students as so many superstitions]
+0.586: (he; will attach to; the dogmas and pramtices of his worship)[enabler=when he will know that under the same roof and same protection these dogmas , and these practices are represented to some of his fellow-students as so many superstitions]
+
+What nation could give us any equivalent for our colonial trade?
+0.798: (What nation; could give us; any equivalent)
+0.435: (What nation; be any equivalent for; our colonial trade)
+
+What effect is such a declaration likely to produce?
+0.734: (What effect; is; such a declaration likely)
+
+What effect did they think it would have upon the child's mind?
+0.757: (it; would have upon; the child 's mind)
+0.588: (they; did think; What effect)
+
+"Why define costermongers, and not define ratcatchers?"
+No extractions found.
+
+What species of government might we then hope for?
+No extractions found.
+
+What events occurred subsequent to this transaction?
+0.841: (events; occurred subsequent to; this transaction)
+
+What capitalist would settle in a population of which sixty-three per cent were paupers?
+0.89: (What capitalist; would settle in; a population of which sixty-three per cent were paupers)
+0.695: (sixty-three; were; paupers)
+
+"Why talk of the credit of the country, which the Income-tax was to maintain, or of its military renown, which it was to give the means of upholding; or talk, again, of the glory of our commerce and manufactures, which your tariff, without any adaptation to the effect, is yet in some miraculous way to restore?"
+0.852: (your tariff; which is yet in; some miraculous way to restore)
+0.729: (it; was of; the glory of our commerce)
+
+What encouragement is there to managers of schools to go to the expense and trouble of training pupil teachers if the grant the Government gives for their training depends on the accident of their passing one of these examinations or not?
+0.759: (the Government; gives for; their training)
+0.303: (the grant the Government gives for their training; depends on; the accident of their passing one of these examinations)
+
+What language had he used towards the liberal and enlightened gentry of England?
+0.782: (he; enlightened; gentry of England)
+0.737: (What language; be used towards; the liberal)
+0.696: (he; used towards; the liberal)
+
+What ground has the noble Lord for suggesting that there was any pressure in regard to the decision which the Court have now held that the action of the local authority was ultra vires ?
+0.757: (What ground; has; the noble Lord)
+0.601: (the action of the local authority; was; ultra vires)
+0.399: (ultra vires; be the action of; the local authority)
+
+"What opportunity had I, having got to take part in that Debate, to make myself acquainted with the provisions of the Bill?"
+0.9: (myself; acquainted with; the provisions of the Bill)
+0.521: (part; to be take in; that Debate)
+
+What guarantee had they that those persons would not still deal in that Cornish article of manufacture—a member of parliament?
+0.814: (those persons; would not still deal in; that Cornish article of manufacture—a member of parliament)
+
+What effect had been produced by the execution of the Act?
+0.866: (What effect; had been produced by; the execution of the Act)
+
+"What evidence is there, I ask, that the parents of the children for whom this religious instruction is provided are dissatisfied?"
+0.543: (this religious instruction; is provided in; the children)
+0.465: (dissatisfied; be the parents of; the children for whom this religious instruction is provided)
+
+"Which plan, then, held out the inducement to use force with the landlord; that which gave a reduction of 20 per cent on all rents at once, and an assurance that the time would come when there would be no rent, or that which promises an increase of rent—a perpetual rent—and only offers a security against eviction?"
+0.646: (force; to be use with; the landlord)
+
+What interest was it to Captain Hartigan to pass bad horses?
+0.677: (What interest; was; it)
+
+"What course, then, ought he to take on that occasion?"
+0.576: (What course; then ought to take on; that occasion)
+0.473: (he; then ought to take on; that occasion)
+
+"What reason I ask is there for wonder or surprise that the millions of people who were under the sway of the Neapolitan Bourbons should declare that they could bear the burden no longer, and should ask the assistance of the King of Sardinia in order that they might enjoy the benefits of constitutional government, without suffering from a constant fear of Royal perjury?"
+0.87: (What reason I ask; is there for; wonder or surprise)
+0.709: (they; might enjoy; the benefits of constitutional government)
+0.688: (people; were under; the sway of the Neapolitan Bourbons)[enabler=should declare that they could bear the burden no longer]
+0.665: (the assistance of the King of Sardinia; should be ask in; order)
+0.485: (they; could bear no longer; the burden)
+
+What sort of assistance have we given in the past in the work of exploration?
+0.888: (What sort of assistance; have given in; the work of exploration)
+0.869: (What sort of assistance; have given in; the past)
+
+What justification does the noble Lord offer for this Bill?
+0.693: (Lord; offer for; this Bill)
+
+What rights of sovereignty then had we to preserve?
+No extractions found.
+
+What claim has he to share in the surplus property of the Church?
+0.813: (he; to share in; the surplus property of the Church)
+
+"What advice was given, and on what points?"
+No extractions found.
+
+What official presumes the liability to Income Tax?
+0.835: (What official; presumes the liability to; Income Tax)
+0.797: (What official; presumes; the liability)
+
+What influence had that great calamity upon the condition of the people?
+0.705: (influence; had; that great calamity)
+
+"What objection, then, could there be to the country banks issuing their paper, provided that paper was convertible into gold?"
+0.682: (paper; was convertible into; gold)
+0.624: (paper; was; convertible)
+
+"What object, what motive, but a sense of justice could have influenced Ministers to grant the renewals to two such individuals?"
+0.766: (Ministers; to grant the renewals to; two such individuals)
+0.765: (Ministers; to grant; the renewals)
+0.59: (the renewals; to grant to be; two such individuals)
+
+"What view do the Government take of their position as conservators of the peace in Belfast in view of the solemn warnings given by the four Commissioners, and in view of the fact that Belfast is a town in which formidable riots may break out at any moment?"
+0.799: (formidable riots; may break out at; any moment)
+0.676: (Belfast; is; a town in which formidable riots may break out at any moment)
+0.655: (the solemn warnings; be given by; the four Commissioners)
+
