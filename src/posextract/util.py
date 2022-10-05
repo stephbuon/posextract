@@ -181,7 +181,7 @@ def get_verb_neg(token):
 
 def get_subject_neg(token):
     for child in token.children:
-        if child.dep == det and child.text.lower() == "no":
+        if child.dep == det and child.text.lower() in ("no", "not", "never"):
             return child
 
     return None
@@ -189,6 +189,9 @@ def get_subject_neg(token):
 
 def get_object_neg(token):
     for child in token.children:
+        if child.dep == det and child.text.lower() in ("no", "not", "never"):
+            return child
+
         if child.dep == neg:
             return child
 
