@@ -7,7 +7,7 @@ from . import rules
 import argparse
 import os
 from spacy.tokens import Doc
-from spacy.symbols import aux
+from spacy.symbols import aux, NOUN, pobj
 from .util import *
 import pandas as pd
 
@@ -151,9 +151,43 @@ def post_process_combine_adj(extractions: List[TripleExtraction]):
     return new_extractions
 
 
+
+
+def post_process_prep_phrase(extraction: TripleExtraction):
+    # Rule 1: check if the prep "of" or "to" is the child of the object, and if it is, check to see if a noun is the child of the preposition.
+    # Rule 2: check if the prep "with" is the child of the verb, and it if is, see if the pobj is the child of the preposition.
+
+    for child in extraction.object.children:
+        if child.text in ('of', 'to'):
+            nouns = [childchild for childchild in child.children if childchild.pos == NOUN or childchild.dep == pobj]
+
+            if len(nouns) != 1:
+                continue
+
+            extraction.object_prep = child
+            extraction.object_prep_noun = nouns[0]
+
+            return extraction
+
+    # for child in extraction.verb.children:
+    #     if child == extraction.poa:
+    #         continue
+    #     if child.text == 'with':
+    #         pobjs = [childchild for childchild in child.children if childchild.dep == pobj]
+    #
+    #         if len(pobjs) != 1:
+    #             continue
+    #
+    #         extraction.object_prep = child
+    #         extraction.object_prep_noun = pobjs[0]
+    #         return extraction
+
+    return extraction
+
+
 def extract(input_object: Union[str, Iterable[str]], combine_adj: bool = False, lemmatize: bool = False,
             add_aux: bool = False, verbose: bool = False,
-            want_dataframe: bool = False) -> Union[List[TripleExtractionFlattened], pandas.DataFrame]:
+            want_dataframe: bool = False, prep_phrase: bool = False) -> Union[List[TripleExtractionFlattened], pandas.DataFrame]:
     output_extractions = []
 
     if type(input_object) == str:
@@ -177,7 +211,13 @@ def extract(input_object: Union[str, Iterable[str]], combine_adj: bool = False, 
                     triple.aux_verb = child
                     break
 
+    if prep_phrase:
+        output_extractions = list(map(post_process_prep_phrase, output_extractions))
+
     output_extractions = [triple.flatten(lemmatize=lemmatize) for triple in output_extractions]
+
+    for triple in output_extractions:
+        print(str(triple))
 
     if want_dataframe:
         extractions_df = pd.DataFrame([t.__dict__ for t in output_extractions])
@@ -203,6 +243,7 @@ if __name__ == '__main__':
     parser.add_argument('--lemma', action='store_true')
     parser.add_argument('--add-auxiliary', action='store_true')
     parser.add_argument('--verbose', action='store_true')
+    parser.add_argument('--prep-phrase', action='store_true')
     args = parser.parse_args()
     is_file = os.path.isfile(args.input)
 
@@ -239,7 +280,8 @@ if __name__ == '__main__':
 
     for i, data_str in enumerate(input_values):
         triples_df = extract(data_str, combine_adj=args.post_combine_adj, lemmatize=args.lemma,
-                             add_aux=args.add_auxiliary, verbose=args.verbose, want_dataframe=True)
+                             add_aux=args.add_auxiliary, verbose=args.verbose, want_dataframe=True,
+                             prep_phrase=args.prep_phrase)
         extraction_count += len(triples_df)
         if df is not None:
             triples_df['sentence_id'] = df.index[i]

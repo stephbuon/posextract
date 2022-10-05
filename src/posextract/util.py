@@ -22,6 +22,8 @@ class TripleExtractionFlattened:
     object_negdat: str = ''
     adjectives: str = ''
     object: str = ''
+    object_prep: str = ''
+    object_prep_noun: str = ''
 
     def astuple(self):
         return (v for v in self.__dict__.values())
@@ -41,6 +43,8 @@ class TripleExtraction:
     object_negdat: Optional[Token] = None
     adjectives: Optional[List[Token]] = None
     object: Optional[Token] = None
+    object_prep: Optional[Token] = None
+    object_prep_noun: Optional[Token] = None
 
     def flatten(self, lemmatize=False) -> TripleExtractionFlattened:
         kwargs = {k: v for k, v in self.__dict__.items() if v is not None}
@@ -52,6 +56,9 @@ class TripleExtraction:
                 kwargs['verb'] = self.verb.lemma_
             if self.subject:
                 kwargs['subject'] = self.subject.lemma_
+        else:
+            if (self.verb and self.subject) and (self.verb.i < self.subject.i):
+                kwargs['verb'] = self.verb.lemma_
 
         if self.adjectives:
             kwargs['adjectives'] = ' '.join((adj.text for adj in self.adjectives))
