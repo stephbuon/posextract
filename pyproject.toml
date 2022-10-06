@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "posextract"
-version = "1.0.8"
+version = "1.1.0"
 description = "Grammatical information extraction methods designed for the analysis of historical and contemporary textual corpora."
 readme = "README.md"
 requires-python = ">=3.6"
