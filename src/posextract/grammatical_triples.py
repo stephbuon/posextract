@@ -140,7 +140,7 @@ def post_process_combine_adj(extractions: List[TripleExtraction]):
                 else:
                     new_extractions.append(ext)
 
-            ext_main.adjectives = adjectives
+            ext_main.object_adjectives = adjectives
             new_extractions.append(ext_main)
 
         except StopIteration:
@@ -187,7 +187,7 @@ def post_process_prep_phrase(extraction: TripleExtraction):
 
 def extract(input_object: Union[str, Iterable[str]], combine_adj: bool = False, lemmatize: bool = False,
             add_aux: bool = False, verbose: bool = False,
-            want_dataframe: bool = False, prep_phrase: bool = False) -> Union[List[TripleExtractionFlattened], pandas.DataFrame]:
+            want_dataframe: bool = False, prep_phrase: bool = False, compound_subject: bool = True) -> Union[List[TripleExtractionFlattened], pandas.DataFrame]:
     output_extractions = []
 
     if type(input_object) == str:
@@ -204,6 +204,12 @@ def extract(input_object: Union[str, Iterable[str]], combine_adj: bool = False, 
         if verbose: print('Combining triples...')
         output_extractions = post_process_combine_adj(output_extractions)
 
+    for triple in output_extractions:
+        if triple.subject.text.lower() == 'which':
+            print('possible', triple)
+            if triple.subject.head.pos == NOUN:
+                triple.subject = triple.subject.head
+
     if add_aux:
         for triple in output_extractions:
             for child in triple.verb.children:
@@ -214,7 +220,7 @@ def extract(input_object: Union[str, Iterable[str]], combine_adj: bool = False, 
     if prep_phrase:
         output_extractions = list(map(post_process_prep_phrase, output_extractions))
 
-    output_extractions = [triple.flatten(lemmatize=lemmatize) for triple in output_extractions]
+    output_extractions = [triple.flatten(lemmatize=lemmatize, compound_subject=compound_subject) for triple in output_extractions]
 
     for triple in output_extractions:
         print(str(triple))
@@ -244,6 +250,7 @@ if __name__ == '__main__':
     parser.add_argument('--add-auxiliary', action='store_true')
     parser.add_argument('--verbose', action='store_true')
     parser.add_argument('--prep-phrase', action='store_true')
+    parser.add_argument('--no-compound-subject', action='store_true')
     args = parser.parse_args()
     is_file = os.path.isfile(args.input)
 
@@ -281,7 +288,7 @@ if __name__ == '__main__':
     for i, data_str in enumerate(input_values):
         triples_df = extract(data_str, combine_adj=args.post_combine_adj, lemmatize=args.lemma,
                              add_aux=args.add_auxiliary, verbose=args.verbose, want_dataframe=True,
-                             prep_phrase=args.prep_phrase)
+                             prep_phrase=args.prep_phrase, compound_subject=False if args.no_compound_subject else True)
         extraction_count += len(triples_df)
         if df is not None:
             triples_df['sentence_id'] = df.index[i]

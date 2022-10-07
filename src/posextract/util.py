@@ -1,5 +1,5 @@
 from spacy.symbols import *
-from spacy.tokens import Token
+from spacy.tokens import *
 from typing import NamedTuple, Optional, List
 from dataclasses import dataclass
 import dataclasses
@@ -41,12 +41,12 @@ class TripleExtraction:
     verb: Optional[Token] = None
     poa: Optional[Token] = None
     object_negdat: Optional[Token] = None
-    adjectives: Optional[List[Token]] = None
+    object_adjectives: Optional[List[Token]] = None
     object: Optional[Token] = None
     object_prep: Optional[Token] = None
     object_prep_noun: Optional[Token] = None
 
-    def flatten(self, lemmatize=False) -> TripleExtractionFlattened:
+    def flatten(self, lemmatize=False, compound_subject=True) -> TripleExtractionFlattened:
         kwargs = {k: v for k, v in self.__dict__.items() if v is not None}
 
         if lemmatize:
@@ -60,12 +60,17 @@ class TripleExtraction:
             if (self.verb and self.subject) and (self.verb.i < self.subject.i):
                 kwargs['verb'] = self.verb.lemma_
 
-        if self.adjectives:
-            kwargs['adjectives'] = ' '.join((adj.text for adj in self.adjectives))
+        if self.object_adjectives:
+            kwargs['adjectives'] = ' '.join((adj.text for adj in self.object_adjectives))
 
         for k, v in kwargs.items():
             if type(v) != str:
                 kwargs[k] = str(v)
+
+        if compound_subject:
+            for child in self.subject.children:
+                if child.dep_ == "compound":
+                    kwargs['subject'] = child.text + ' ' + kwargs['subject']
 
         return TripleExtractionFlattened(
             **kwargs
