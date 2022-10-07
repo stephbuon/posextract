@@ -37,7 +37,7 @@ def visit_verb(verb, parent_subjects, parent_objects, verbose=False):
         print('\tparent_objects=', parent_objects)
 
     # Search for the subject.
-    subjects = subject_search(verb) + parent_subjects
+    subjects = subject_search(verb)
 
     # Search for the objects.
     objects = object_search(verb) + parent_objects
