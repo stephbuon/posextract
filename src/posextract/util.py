@@ -72,6 +72,9 @@ class TripleExtraction:
                 if child.dep_ == "compound":
                     kwargs['subject'] = child.text + ' ' + kwargs['subject']
 
+        if self.object.pos == ADV and self.object.head.pos == ADJ:
+            kwargs['object'] += ' ' + self.object.head.text
+
         return TripleExtractionFlattened(
             **kwargs
         )
