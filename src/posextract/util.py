@@ -179,10 +179,15 @@ def subject_search(token: Token):
     return objects
 
 
-def get_verb_neg(token):
+def get_verb_neg(token, up=True):
     for child in token.children:
         if child.dep == neg:
             return child
+
+    if up and token.head.pos == VERB:
+        parent_negation = get_verb_neg(token.head, up=False)
+        if parent_negation:
+            return parent_negation
 
     return None
 
