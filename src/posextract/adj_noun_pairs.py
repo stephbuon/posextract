@@ -2,6 +2,8 @@ import argparse
 import os
 import warnings;
 
+from .util import get_subject_neg
+
 warnings.simplefilter('ignore')
 import pandas as pd
 import spacy
@@ -10,7 +12,7 @@ import collections
 from typing import List
 
 
-nlp = spacy.load('en_core_web_sm', disable=['tagger', 'ner', 'attribute_ruler'])
+nlp = spacy.load('en_core_web_sm', disable=['ner', ])
 
 
 from typing import NamedTuple
@@ -35,21 +37,27 @@ def extract_old(hansard, col, **kwargs):
     return hansard
 
 
-class AdjNounPair(NamedTuple):
-    adjective: str
-    noun: str
+class AdjNounExtraction(NamedTuple):
+    neg_det: str = ''
+    adjective: str = ''
+    noun: str = ''
 
     def __str__(self):
         return ' '.join(self)
 
 
-def rule(doc, lemmatize=False, verbose=False, letter_case='default') -> List[AdjNounPair]:
+def rule(doc, lemmatize=False, verbose=False, letter_case='default') -> List[AdjNounExtraction]:
     pairs = []
     for adjective in doc:
         #if adjective.dep == amod or adjective.dep == acomp and adjective.head.pos == NOUN:
         if adjective.pos == ADJ and adjective.head.pos == NOUN:
             # or adjective.dep == ccomp or adjective.dep == conj
             noun = adjective.head
+            neg_det = get_subject_neg(noun)
+            if neg_det is None:
+                neg_det = ''
+            else:
+                neg_det = neg_det.text
 
             if lemmatize:
                 adjective = adjective.lemma_
@@ -58,12 +66,14 @@ def rule(doc, lemmatize=False, verbose=False, letter_case='default') -> List[Adj
                 adjective = adjective.text
                 noun = noun.text
 
-            if letter_case == 'upper':
-                adjective, noun = adjective.upper(), noun.upper()
-            elif letter_case == 'lower':
-                adjective, noun = adjective.lower(), noun.lower()
+            ext = AdjNounExtraction(neg_det=neg_det, adjective=adjective, noun=noun)
 
-            pairs.append(AdjNounPair(adjective=adjective, noun=noun))
+            if letter_case == 'upper':
+                ext = AdjNounExtraction(*(x.upper() for x in ext))
+            elif letter_case == 'lower':
+                ext = AdjNounExtraction(*(x.lower() for x in ext))
+
+            pairs.append(ext)
     return pairs
 
 
