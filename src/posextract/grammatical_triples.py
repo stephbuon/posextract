@@ -227,7 +227,7 @@ def extract(input_object: Union[str, Iterable[str]], combine_adj: bool = False, 
     if add_aux:
         for triple in output_extractions:
             for child in triple.verb.children:
-                if child.dep == aux and child.text == 'will':
+                if child.dep == aux:
                     triple.aux_verb = child
                     break
 
