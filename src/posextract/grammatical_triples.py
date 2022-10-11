@@ -236,8 +236,9 @@ def extract(input_object: Union[str, Iterable[str]], combine_adj: bool = False, 
 
     output_extractions = [triple.flatten(lemmatize=lemmatize, compound_subject=compound_subject) for triple in output_extractions]
 
-    for triple in output_extractions:
-        print(str(triple))
+    if verbose:
+        for triple in output_extractions:
+            print(str(triple))
 
     if want_dataframe:
         extractions_df = pd.DataFrame([t.__dict__ for t in output_extractions])
