@@ -1,4 +1,5 @@
 import collections
+import copy
 from typing import List, Union, Iterable
 
 import pandas
@@ -200,13 +201,26 @@ def extract(input_object: Union[str, Iterable[str]], combine_adj: bool = False, 
         extractions = graph_tokens(doc, verbose=verbose)
         output_extractions.extend(extractions)
 
+    # Look for additional triples due to conj dependency
+    for triple in output_extractions:
+        for child in triple.subject.children:
+            if child.pos == NOUN and child.dep == conj:
+                new_triple = copy.copy(triple)
+                new_triple.subject = child
+                output_extractions.append(new_triple)
+
+        for child in triple.object.children:
+            if child.pos == NOUN and child.dep == conj:
+                new_triple = copy.copy(triple)
+                new_triple.object = child
+                output_extractions.append(new_triple)
+
     if combine_adj:
         if verbose: print('Combining triples...')
         output_extractions = post_process_combine_adj(output_extractions)
 
     for triple in output_extractions:
         if triple.subject.text.lower() == 'which':
-            print('possible', triple)
             if triple.subject.head.pos == NOUN:
                 triple.subject = triple.subject.head
 
