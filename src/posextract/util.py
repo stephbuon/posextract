@@ -92,6 +92,9 @@ def is_verb(token: Token):
     if token.dep_ == 'ROOT':
         return True
 
+    if token.pos == PROPN and token.dep == conj:
+        return False
+
     return token.dep in VERB_DEP_TAGS
 
 
