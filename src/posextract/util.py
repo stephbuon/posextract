@@ -20,7 +20,7 @@ class TripleExtractionFlattened:
     verb: str = ''
     poa: str = ''
     object_negdat: str = ''
-    adjectives: str = ''
+    object_adjectives: str = ''
     object: str = ''
     object_prep: str = ''
     object_prep_noun: str = ''
@@ -61,7 +61,7 @@ class TripleExtraction:
                 kwargs['verb'] = self.verb.lemma_
 
         if self.object_adjectives:
-            kwargs['adjectives'] = ' '.join((adj.text for adj in self.object_adjectives))
+            kwargs['object_adjectives'] = ' '.join((adj.text for adj in self.object_adjectives))
 
         for k, v in kwargs.items():
             if type(v) != str:
@@ -72,8 +72,8 @@ class TripleExtraction:
                 if child.dep_ == "compound":
                     kwargs['subject'] = child.text + ' ' + kwargs['subject']
 
-        if self.object.pos == ADV and self.object.head.pos == ADJ:
-            kwargs['object'] += ' ' + self.object.head.text
+        # if self.object.pos == ADV and self.object.head.pos == ADJ:
+        #     kwargs['object'] += ' ' + self.object.head.text
 
         return TripleExtractionFlattened(
             **kwargs
