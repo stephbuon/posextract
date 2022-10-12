@@ -17,9 +17,9 @@ Optional Paramters:
 - `--id_column` specify a unique ID field if csv file is given.
 - `--file-delimiter` specify comma, pipe, or tab. Default is comma. 
 - `--post-combine-adj` combine triples (adjective predicate with object) 
-- `--add-auxiliary` Extract future and past tense triples. 
-- `--prep-phrase` ENTER
-- `--no-compound-subject` ENTER
+- `--add-auxiliary` extract future and past tense triples. 
+- `--prep-phrase` extract the . Default set to false. 
+- `--no-compound-noun` Extract just the subject or object (e.g. "Indian Government" is extracted as just "Government"). By default is set to false.
 - `--lemma` specify whether to lemmatize parts-of-speech. Default is non-lemmatized. 
 - `--verbose` print
 
