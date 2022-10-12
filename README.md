@@ -13,10 +13,15 @@ Required Paramters:
 - `output` name of the output file
 
 Optional Paramters: 
-- `--data_column` specify the column to extract triples from
-- `--id_column` specify a unique ID field if csv file is given
-- `--lemma` specify whether to lemmatize parts-of-speech
-- `--post-combine-adj` combine triples (adjective predicate with object)
+- `--data_column` specify the column to extract triples from.
+- `--id_column` specify a unique ID field if csv file is given.
+- `--file-delimiter` specify comma, pipe, or tab. Default is comma. 
+- `--post-combine-adj` combine triples (adjective predicate with object) 
+- `--add-auxiliary` Extract future and past tense triples. 
+- `--prep-phrase` ENTER
+- `--no-compound-subject` ENTER
+- `--lemma` specify whether to lemmatize parts-of-speech. Default is non-lemmatized. 
+- `--verbose` print
 
 ### Examples
 
