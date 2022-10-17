@@ -76,7 +76,7 @@ def visit_verb(verb, parent_subjects, parent_objects, verbose=False):
             else:
                 if verbose: print('\tNo matching rule found.\n')
 
-    yield from visit_token(verb, parent_subjects=subjects, verbose=verbose)
+    yield from visit_token(verb, parent_subjects=[], verbose=verbose)
 
 
 def visit_token(token, parent_subjects, verbose=False):

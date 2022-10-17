@@ -177,6 +177,11 @@ def subject_search(token: Token):
 
         parent = candidate.head
         if parent not in visited:
+            if parent.pos == VERB and candidate.dep == conj:
+                continue
+
+            # print('(verb=%s) considering parent:' % token, parent.text, 'with POS=', parent.pos_)
+            # print('dependency of %s->%s:' % (parent, candidate), candidate.dep_)
             considering.append(parent)
 
     return objects
