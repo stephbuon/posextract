@@ -2,15 +2,14 @@ import argparse
 import os
 import warnings;
 
-from .util import get_subject_neg
+from .util import get_subject_neg, get_verb_neg
 
 warnings.simplefilter('ignore')
 import pandas as pd
 import spacy
-from spacy.symbols import amod, acomp, NOUN, ADJ
+from spacy.symbols import *
 import collections
-from typing import List
-
+from typing import List, Optional
 
 nlp = spacy.load('en_core_web_sm', disable=['ner', ])
 
@@ -38,6 +37,7 @@ def extract_old(hansard, col, **kwargs):
 
 
 class AdjNounExtraction(NamedTuple):
+    verb_neg: str = ''
     neg_det: str = ''
     adjective: str = ''
     noun: str = ''
@@ -53,11 +53,22 @@ def rule(doc, lemmatize=False, verbose=False, letter_case='default') -> List[Adj
         if adjective.pos == ADJ and adjective.head.pos == NOUN:
             # or adjective.dep == ccomp or adjective.dep == conj
             noun = adjective.head
+
             neg_det = get_subject_neg(noun)
+            verb_neg: Optional[Token] = None
+
             if neg_det is None:
                 neg_det = ''
             else:
                 neg_det = neg_det.text
+
+            if noun.head.pos == AUX or noun.head.pos == VERB:
+                verb_neg = get_verb_neg(noun.head)
+
+            if verb_neg is None:
+                verb_neg = ''
+            else:
+                verb_neg = verb_neg.text
 
             if lemmatize:
                 adjective = adjective.lemma_
@@ -66,7 +77,7 @@ def rule(doc, lemmatize=False, verbose=False, letter_case='default') -> List[Adj
                 adjective = adjective.text
                 noun = noun.text
 
-            ext = AdjNounExtraction(neg_det=neg_det, adjective=adjective, noun=noun)
+            ext = AdjNounExtraction(verb_neg=verb_neg, neg_det=neg_det, adjective=adjective, noun=noun)
 
             if letter_case == 'upper':
                 ext = AdjNounExtraction(*(x.upper() for x in ext))
