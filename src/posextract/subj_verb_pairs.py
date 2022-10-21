@@ -2,6 +2,8 @@ import argparse
 import os
 import warnings;
 
+from .util import get_verb_neg
+
 warnings.simplefilter('ignore')
 import pandas as pd
 import spacy
@@ -10,7 +12,7 @@ import collections
 from typing import List
 
 
-nlp = spacy.load('en_core_web_sm', disable=['tagger', 'ner', 'attribute_ruler'])
+nlp = spacy.load('en_core_web_sm', disable=['ner'])
 
 
 from typing import NamedTuple
@@ -35,15 +37,16 @@ def extract_old(hansard, col, **kwargs):
     return hansard
 
 
-class SubjVerbPair(NamedTuple):
+class SubjVerbExtraction(NamedTuple):
     subject: str
+    verb_neg: str
     verb: str
 
     def __str__(self):
         return ' '.join(self)
 
 
-def rule(doc, lemmatize=False, verbose=False, letter_case='default') -> List[SubjVerbPair]:
+def rule(doc, lemmatize=False, verbose=False, letter_case='default') -> List[SubjVerbExtraction]:
     pairs = []
     for verb in doc:
         if verb.pos == VERB:
@@ -54,6 +57,13 @@ def rule(doc, lemmatize=False, verbose=False, letter_case='default') -> List[Sub
             for child in verb.children:
                 if child.dep == nsubj or child.dep == nsubjpass:
                     subject = child
+
+            verb_neg = get_verb_neg(verb)
+
+            if verb_neg is None:
+                verb_neg = ''
+            else:
+                verb_neg = verb_neg.text
 
             if lemmatize:
                 subject = subject.lemma_
@@ -67,7 +77,7 @@ def rule(doc, lemmatize=False, verbose=False, letter_case='default') -> List[Sub
             elif letter_case == 'lower':
                 subject, verb = subject.lower(), verb.lower()
 
-            pairs.append(SubjVerbPair(subject=subject, verb=verb))
+            pairs.append(SubjVerbExtraction(subject=subject, verb_neg=verb_neg, verb=verb))
     return pairs
 
 
