@@ -46,7 +46,7 @@ class TripleExtraction:
     object_prep: Optional[Token] = None
     object_prep_noun: Optional[Token] = None
 
-    def flatten(self, lemmatize=False, compound_subject=True) -> TripleExtractionFlattened:
+    def flatten(self, lemmatize=False, compound_subject=True, compound_object=True) -> TripleExtractionFlattened:
         kwargs = {k: v for k, v in self.__dict__.items() if v is not None}
 
         if lemmatize:
@@ -72,8 +72,10 @@ class TripleExtraction:
                 if child.dep_ == "compound":
                     kwargs['subject'] = child.text + ' ' + kwargs['subject']
 
-        # if self.object.pos == ADV and self.object.head.pos == ADJ:
-        #     kwargs['object'] += ' ' + self.object.head.text
+        if compound_object:
+            for child in reversed(list(self.object.children)):
+                if child.dep_ == "compound":
+                    kwargs['object'] = child.text + ' ' + kwargs['object']
 
         return TripleExtractionFlattened(
             **kwargs
@@ -148,15 +150,16 @@ def object_search(token: Token):
     return objects
 
 
-def subject_search(token: Token):
+def subject_search(token: Token, verbose=False):
     objects = []
 
     visited = set()
     considering = [token, ]
 
-    # print('Doing subject search for token: ', token)
-    # print('verb.head', token.head)
-    # print('verb.children', list(token.children))
+    if verbose:
+        print('\tDoing subject search for token: ', token)
+        print('\tverb.head', token.head)
+        print('\tverb.children', list(token.children))
 
     while considering:
         candidate = considering.pop(-1)
@@ -173,15 +176,19 @@ def subject_search(token: Token):
             if child not in visited:
                 if child.pos == VERB:
                     continue
+
+                if verbose:
+                    print('\t\t(verb=%s) considering child:' % token, child.text, 'with POS=', child.pos_)
+                    print('\t\tdependency of %s->%s:' % (candidate, child), child.dep_)
                 considering.append(child)
 
         parent = candidate.head
         if parent not in visited:
-            if parent.pos == VERB and candidate.dep == conj:
+            if (parent.pos == VERB or parent.pos == AUX) and (candidate.dep == conj or candidate.dep == advcl):
                 continue
 
-            # print('(verb=%s) considering parent:' % token, parent.text, 'with POS=', parent.pos_)
-            # print('dependency of %s->%s:' % (parent, candidate), candidate.dep_)
+            print('\t\t(verb=%s) considering parent:' % token, parent.text, 'with POS=', parent.pos_)
+            print('\t\tdependency of %s->%s:' % (parent, candidate), candidate.dep_)
             considering.append(parent)
 
     return objects
