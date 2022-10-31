@@ -199,10 +199,10 @@ def get_verb_neg(token, up=True):
         if child.dep == neg:
             return child
 
-    if up and token.head.pos == VERB:
-        parent_negation = get_verb_neg(token.head, up=False)
-        if parent_negation:
-            return parent_negation
+    # if up and token.head.pos == VERB:
+    #     parent_negation = get_verb_neg(token.head, up=False)
+    #     if parent_negation:
+    #         return parent_negation
 
     return None
 
