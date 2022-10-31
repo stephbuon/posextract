@@ -76,11 +76,14 @@ class TripleExtraction:
             if self.object.head.pos == ADJ:
                 kwargs['object'] += ' ' + self.object.head.text
 
-
         if compound_object:
             for child in reversed(list(self.object.children)):
                 if child.dep_ == "compound":
                     kwargs['object'] = child.text + ' ' + kwargs['object']
+
+        for verb_child in self.verb.children:
+            if verb_child.pos == ADP and verb_child.dep == prt:
+                kwargs['verb'] += ' ' + verb_child.text
 
         return TripleExtractionFlattened(
             **kwargs
