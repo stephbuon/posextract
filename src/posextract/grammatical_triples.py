@@ -225,6 +225,13 @@ def extract(input_object: Union[str, Iterable[str]], combine_adj: bool = False, 
             if triple.subject.head.pos == NOUN:
                 triple.subject = triple.subject.head
 
+    for triple in output_extractions:
+        if triple.subject.text.lower() == 'who' and triple.subject.pos == PRON:
+            if triple.subject.head == triple.verb:
+                noun = triple.verb.head
+                if noun.pos in (NOUN, PROPN) and triple.verb.dep == relcl:
+                    triple.subject = noun
+
     if add_aux:
         for triple in output_extractions:
             for child in triple.verb.children:
