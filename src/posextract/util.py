@@ -72,6 +72,11 @@ class TripleExtraction:
                 if child.dep_ == "compound":
                     kwargs['subject'] = child.text + ' ' + kwargs['subject']
 
+        if self.object.dep == advmod and self.object.pos == ADV:
+            if self.object.head.pos == ADJ:
+                kwargs['object'] += ' ' + self.object.head.text
+
+
         if compound_object:
             for child in reversed(list(self.object.children)):
                 if child.dep_ == "compound":
