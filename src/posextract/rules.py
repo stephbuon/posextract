@@ -38,6 +38,8 @@ def rule2(verb_token: Token, subject_token: Token, object_token: Token, poa: Tok
         return verb_token == object_token.head
     elif object_token.dep in {acomp, amod, advmod}:
         return True
+    elif object_token.dep == attr:
+        return True
     else:
         return False
 

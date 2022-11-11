@@ -112,6 +112,12 @@ def is_object(token: Token):
     if token.pos == NOUN and token.dep == amod:
         return True
 
+    if token.pos == NOUN and token.dep == attr:
+        return True
+
+    if token.pos == PROPN and token.dep == attr:
+        return True
+
     if token.pos == ADV and token.dep == advmod:
         return True
 
@@ -122,7 +128,7 @@ def is_object(token: Token):
 
 
 def is_noun_attribute(token: Token):
-    return token.pos == NOUN and token.dep == attr
+    return (token.pos == NOUN or token.pos == PROPN) and token.dep == attr
 
 
 def is_poa(token: Token):
