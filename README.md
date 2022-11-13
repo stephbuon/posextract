@@ -30,7 +30,7 @@ Optional Paramters:
 Extract grammatical triples.
 
 ```
-from posextract import extract_triples
+from posextract import grammatical_triples
 
 triples = grammatical_triples.extract(['Landlords may exercise oppression.', 'The soldiers were ill.'])
 
