@@ -73,7 +73,7 @@ class TripleExtraction:
                     kwargs['subject'] = child.text + ' ' + kwargs['subject']
 
         if self.object.dep == advmod and self.object.pos == ADV:
-            if self.object.head.pos == ADJ:
+            if self.object.head.pos == ADJ and self.object.text.lower() in ('many', 'very'):
                 kwargs['object'] += ' ' + self.object.head.text
 
         if compound_object:
