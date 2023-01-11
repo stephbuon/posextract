@@ -274,9 +274,12 @@ class TripleExtraction:
     object_prep: Optional[Token] = None
     object_prep_noun: Optional[Token] = None
     rule_matched: str = ''
+    verb_phrase: bool = False
 
     def flatten(self, lemmatize=False, compound_subject=True, compound_object=True) -> TripleExtractionFlattened:
         kwargs = {k: v for k, v in self.__dict__.items() if v is not None}
+
+        del kwargs['verb_phrase']
 
         if lemmatize:
             if self.object:

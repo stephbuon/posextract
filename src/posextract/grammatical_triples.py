@@ -77,7 +77,8 @@ def visit_verb(verb: Union[Token, VerbPhrase], parent_subjects, parent_objects, 
                         subject_negdat=subject_negdat, subject=subject,
                         neg_adverb=neg_adverb, verb=verb,
                         poa=poa, object_negdat=obj_negdat, object=obj,
-                        rule_matched=' <%s>' % rule.__name__)
+                        rule_matched=' <%s>' % rule.__name__,
+                        verb_phrase=isinstance(verb, VerbPhrase))
                     yield extraction
                     break
             else:
@@ -261,11 +262,15 @@ def extract(input_object: Union[str, Iterable[str]], combine_adj: bool = False, 
     if prep_phrase:
         output_extractions = list(map(post_process_prep_phrase, output_extractions))
 
+    if verbose:
+        triple_debug = output_extractions
+
     output_extractions = [triple.flatten(lemmatize=lemmatize, compound_subject=compound_subject, compound_object=compound_object) for triple in output_extractions]
 
     if verbose:
-        for triple in output_extractions:
-            print(str(triple))
+        for i, triple in enumerate(output_extractions):
+            pre_flatten_triple = triple_debug[i]
+            print(str(triple), 'verb_phrase=%s' % pre_flatten_triple.verb_phrase)
 
     if want_dataframe:
         extractions_df = pd.DataFrame([t.__dict__ for t in output_extractions])
