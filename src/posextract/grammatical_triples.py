@@ -27,10 +27,10 @@ rule_funcs = [
     rules.rule12,
 ]
 
-nlp = spacy.load("en_core_web_sm")
+nlp = get_nlp()
 
 
-def visit_verb(verb, parent_subjects, parent_objects, verbose=False):
+def visit_verb(verb: Union[Token, VerbPhrase], parent_subjects, parent_objects, verbose=False):
     if verbose:
         print('beginning triple search for verb:', verb)
         print('verb dep=', verb.dep_)
@@ -38,10 +38,16 @@ def visit_verb(verb, parent_subjects, parent_objects, verbose=False):
         print('\tparent_objects=', parent_objects)
 
     # Search for the subject.
-    subjects = subject_search(verb, verbose=verbose)
+    if isinstance(verb, VerbPhrase):
+        subjects = subject_search(verb.subject_search_root, verbose=verbose)
+    else:
+        subjects = subject_search(verb, verbose=verbose)
 
     # Search for the objects.
-    objects = object_search(verb) + parent_objects
+    if isinstance(verb, VerbPhrase):
+        objects = object_search(verb.object_search_root) + parent_objects
+    else:
+        objects = object_search(verb) + parent_objects
 
     # Remove duplicates.
     subjects = list(set(subjects))
@@ -70,7 +76,8 @@ def visit_verb(verb, parent_subjects, parent_objects, verbose=False):
                     extraction = TripleExtraction(
                         subject_negdat=subject_negdat, subject=subject,
                         neg_adverb=neg_adverb, verb=verb,
-                        poa=poa, object_negdat=obj_negdat, object=obj)
+                        poa=poa, object_negdat=obj_negdat, object=obj,
+                        rule_matched=' <%s>' % rule.__name__)
                     yield extraction
                     break
             else:
@@ -103,6 +110,18 @@ def graph_tokens(doc: Doc, verbose=False) -> List[TripleExtraction]:
 
     extraction_dict = {}
     triple_extractions = list(visit_verb(root_verb, [], [], verbose=verbose))
+
+    dep_matcher = get_dep_matcher()
+    matches = dep_matcher(doc)
+
+    for match_id, token_ids in matches:
+        match_type = nlp.vocab[match_id].text
+        class_ = VERB_PHRASE_TABLE[match_type]
+        verb_phrase = class_(*(doc[ti] for ti in token_ids))
+        if verbose:
+            print('Matched verb phrase %s: %s' % (match_type, repr(verb_phrase)))
+
+        triple_extractions.extend(visit_verb(verb_phrase, [], [], verbose=verbose))
 
     for triple in triple_extractions:
         h = triple.get_triple_hash()
@@ -227,7 +246,7 @@ def extract(input_object: Union[str, Iterable[str]], combine_adj: bool = False, 
 
     for triple in output_extractions:
         if triple.subject.text.lower() == 'who' and triple.subject.pos == PRON:
-            if triple.subject.head == triple.verb:
+            if triple.verb == triple.subject.head:
                 noun = triple.verb.head
                 if noun.pos in (NOUN, PROPN) and triple.verb.dep == relcl:
                     triple.subject = noun
@@ -275,6 +294,8 @@ if __name__ == '__main__':
     parser.add_argument('--prep-phrase', action='store_true')
     parser.add_argument('--no-compound-subject', action='store_true')
     parser.add_argument('--no-compound-object', action='store_true')
+
+
     args = parser.parse_args()
     is_file = os.path.isfile(args.input)
 

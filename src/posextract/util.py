@@ -1,15 +1,242 @@
+from spacy.matcher import DependencyMatcher
 from spacy.symbols import *
 from spacy.tokens import *
-from typing import NamedTuple, Optional, List
+from typing import NamedTuple, Optional, List, Union
 from dataclasses import dataclass
 import dataclasses
 import spacy.tokens
 import copy
 
-
 VERB_DEP_TAGS = {ccomp, relcl, xcomp, acl, advcl, pcomp, csubj, csubjpass, conj}
-OBJ_DEP_TAGS = {dobj, pobj, acomp} # dative?
+OBJ_DEP_TAGS = {dobj, pobj, acomp}  # dative?
 
+__NLP = None
+__DEP_MATCHER = None
+
+
+@dataclass
+class VerbPhrase:
+    first: Token
+    second: Token
+
+    def __hash__(self):
+        return hash(self.first) + hash(self.second)
+    @property
+    def dep(self):
+        raise NotImplementedError
+
+    @property
+    def dep_(self):
+        raise NotImplementedError
+
+    @property
+    def children(self):
+        raise NotImplementedError
+
+    @property
+    def subject_search_root(self):
+        raise NotImplementedError
+
+    @property
+    def object_search_root(self):
+        raise NotImplementedError
+
+    @property
+    def head(self):
+        raise NotImplementedError
+
+    @property
+    def pos(self):
+        raise NotImplementedError
+
+    @property
+    def text(self):
+        raise NotImplementedError
+
+    @property
+    def lemma_(self):
+        raise NotImplementedError
+
+    def __contains__(self, item):
+        return item == self.first or item == self.second
+
+    def __str__(self):
+        return self.text
+
+    def __eq__(self, other):
+        if isinstance(other, VerbPhrase):
+            return self.first == other.first and self.second == other.second
+        else:
+            return other == self.first or other == self.second
+
+
+class ADVCLVerbPhrase(VerbPhrase):
+    @property
+    def dep(self):
+        return self.first.dep
+
+    @property
+    def dep_(self):
+        return self.first.dep_
+
+    @property
+    def children(self):
+        yield from self.first.children
+        yield from self.second.children
+
+    @property
+    def subject_search_root(self):
+        return self.first
+
+    @property
+    def object_search_root(self):
+        return self.second
+
+    @property
+    def head(self):
+        return self.first.head
+
+    @property
+    def pos(self):
+        return VERB
+
+    @property
+    def text(self):
+        return self.second.text
+
+    @property
+    def lemma_(self):
+        return self.second.lemma_
+
+
+class ConjVerbPhrase(VerbPhrase):
+    @property
+    def dep(self):
+        return self.first.dep
+
+    @property
+    def dep_(self):
+        return self.first.dep_
+
+    @property
+    def children(self):
+        yield from self.first.children
+        yield from self.second.children
+
+    @property
+    def subject_search_root(self):
+        return self.first
+
+    @property
+    def object_search_root(self):
+        return self.second
+
+    @property
+    def head(self):
+        return self.first.head
+
+    @property
+    def pos(self):
+        return VERB
+
+    @property
+    def text(self):
+        return self.second.text
+
+    @property
+    def lemma_(self):
+        return self.second.lemma_
+
+def get_nlp():
+    global __NLP
+    if __NLP is None:
+        __NLP = spacy.load("en_core_web_sm")
+    return __NLP
+
+
+def get_dep_matcher():
+    global __DEP_MATCHER
+
+    if __DEP_MATCHER is None:
+        matcher = DependencyMatcher(get_nlp().vocab)
+
+        matcher.add("advcl-verb-phrase", [
+            [
+                # anchor token: aux_verb
+                {
+                    "RIGHT_ID": "aux_verb",
+                    "RIGHT_ATTRS": {"POS": "AUX"}
+                },
+
+                # aux_verb -> verb
+                {
+                    "LEFT_ID": "aux_verb",
+                    "REL_OP": ">",
+                    "RIGHT_ID": "verb",
+                    "RIGHT_ATTRS": {"DEP": "advcl", "POS": "VERB"}
+                },
+            ],
+            [
+                # anchor token: verb1
+                {
+                    "RIGHT_ID": "verb1",
+                    "RIGHT_ATTRS": {"POS": "VERB"}
+                },
+
+                # verb1 -> verb2
+                {
+                    "LEFT_ID": "verb1",
+                    "REL_OP": ">",
+                    "RIGHT_ID": "verb2",
+                    "RIGHT_ATTRS": {"DEP": "advcl", "POS": "VERB"}
+                },
+            ]
+        ])
+
+        matcher.add("conj-verb-phrase", [
+            [
+                # anchor token: verb
+                {
+                    "RIGHT_ID": "verb",
+                    "RIGHT_ATTRS": {"POS": "VERB"}
+                },
+
+                # verb -> aux_verb
+                {
+                    "LEFT_ID": "verb",
+                    "REL_OP": ">",
+                    "RIGHT_ID": "aux_verb",
+                    "RIGHT_ATTRS": {"DEP": "conj", "POS": "AUX"}
+                },
+            ],
+
+            [
+                # anchor token: aux_verb
+                {
+                    "RIGHT_ID": "aux_verb",
+                    "RIGHT_ATTRS": {"POS": "AUX"}
+                },
+
+                # aux_verb -> verb
+                {
+                    "LEFT_ID": "aux_verb",
+                    "REL_OP": ">",
+                    "RIGHT_ID": "verb",
+                    "RIGHT_ATTRS": {"DEP": "conj", "POS": "VERB"}
+                },
+            ],
+
+        ])
+
+        __DEP_MATCHER = matcher
+
+    return __DEP_MATCHER
+
+
+VERB_PHRASE_TABLE = {
+    'advcl-verb-phrase': ADVCLVerbPhrase,
+    'conj-verb-phrase': ConjVerbPhrase,
+}
 
 @dataclass
 class TripleExtractionFlattened:
@@ -24,6 +251,7 @@ class TripleExtractionFlattened:
     object: str = ''
     object_prep: str = ''
     object_prep_noun: str = ''
+    rule_matched: str = ''
 
     def astuple(self):
         return (v for v in self.__dict__.values())
@@ -38,13 +266,14 @@ class TripleExtraction:
     subject: Optional[Token] = None
     neg_adverb: Optional[Token] = None
     aux_verb: Optional[Token] = None
-    verb: Optional[Token] = None
+    verb: Optional[Union[Token, VerbPhrase]] = None
     poa: Optional[Token] = None
     object_negdat: Optional[Token] = None
     object_adjectives: Optional[List[Token]] = None
     object: Optional[Token] = None
     object_prep: Optional[Token] = None
     object_prep_noun: Optional[Token] = None
+    rule_matched: str = ''
 
     def flatten(self, lemmatize=False, compound_subject=True, compound_object=True) -> TripleExtractionFlattened:
         kwargs = {k: v for k, v in self.__dict__.items() if v is not None}
@@ -57,7 +286,7 @@ class TripleExtraction:
             if self.subject:
                 kwargs['subject'] = self.subject.lemma_
         else:
-            if (self.verb and self.subject) and (self.verb.i < self.subject.i):
+            if hasattr(self.verb, 'i') and (self.verb and self.subject) and (self.verb.i < self.subject.i):
                 kwargs['verb'] = self.verb.lemma_
 
         if self.object_adjectives:
@@ -157,7 +386,7 @@ def object_search(token: Token):
 
         for child in candidate.children:
             if child not in visited:
-                if child.pos == VERB:
+                if child.pos == VERB or child.pos == AUX:
                     continue
                 considering.append(child)
 
@@ -201,14 +430,15 @@ def subject_search(token: Token, verbose=False):
             if (parent.pos == VERB or parent.pos == AUX) and (candidate.dep == conj or candidate.dep == advcl):
                 continue
 
-            print('\t\t(verb=%s) considering parent:' % token, parent.text, 'with POS=', parent.pos_)
-            print('\t\tdependency of %s->%s:' % (parent, candidate), candidate.dep_)
+            if verbose:
+                print('\t\t(verb=%s) considering parent:' % token, parent.text, 'with POS=', parent.pos_)
+                print('\t\tdependency of %s->%s:' % (parent, candidate), candidate.dep_)
             considering.append(parent)
 
     return objects
 
 
-def get_verb_neg(token, up=True):
+def get_verb_neg(token: Union[Token, VerbPhrase], up=True):
     for child in token.children:
         if child.dep == neg:
             return child
