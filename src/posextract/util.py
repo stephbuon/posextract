@@ -240,13 +240,13 @@ VERB_PHRASE_TABLE = {
 
 @dataclass
 class TripleExtractionFlattened:
-    subject_negdat: str = ''
+    subject_negdet: str = ''
     subject: str = ''
     neg_adverb: str = ''
     aux_verb: str = ''
     verb: str = ''
     poa: str = ''
-    object_negdat: str = ''
+    object_negdet: str = ''
     object_adjectives: str = ''
     object: str = ''
     object_prep: str = ''
@@ -262,13 +262,13 @@ class TripleExtractionFlattened:
 
 @dataclass
 class TripleExtraction:
-    subject_negdat: Optional[Token] = None
+    subject_negdet: Optional[Token] = None
     subject: Optional[Token] = None
     neg_adverb: Optional[Token] = None
     aux_verb: Optional[Token] = None
     verb: Optional[Union[Token, VerbPhrase]] = None
     poa: Optional[Token] = None
-    object_negdat: Optional[Token] = None
+    object_negdet: Optional[Token] = None
     object_adjectives: Optional[List[Token]] = None
     object: Optional[Token] = None
     object_prep: Optional[Token] = None
