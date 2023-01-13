@@ -382,10 +382,10 @@ def object_search(token: Token):
         visited.add(candidate)
 
         if is_object(candidate):
-            obj_negdat = get_object_neg(candidate)
+            obj_negdet = get_object_neg(candidate)
             # obj_adj = get_object_adj(candidate)
             poa = candidate.head if is_poa(candidate.head) else None
-            objects.append((poa, obj_negdat, candidate))
+            objects.append((poa, obj_negdet, candidate))
 
         for child in candidate.children:
             if child not in visited:
