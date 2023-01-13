@@ -65,8 +65,8 @@ def visit_verb(verb: Union[Token, VerbPhrase], parent_subjects, parent_objects, 
 
     neg_adverb = get_verb_neg(verb)
 
-    for subject_negdat, subject in subjects:
-        for poa, obj_negdat, obj in objects:
+    for subject_negdet, subject in subjects:
+        for poa, obj_negdet, obj in objects:
             if verbose: print('\tconsidering triple:', subject, verb, poa if poa else '', obj)
 
             for rule in rule_funcs:
@@ -74,9 +74,9 @@ def visit_verb(verb: Union[Token, VerbPhrase], parent_subjects, parent_objects, 
                     if verbose: print('\tmatched with', rule.__name__, '\n')
 
                     extraction = TripleExtraction(
-                        subject_negdat=subject_negdat, subject=subject,
+                        subject_negdet=subject_negdet, subject=subject,
                         neg_adverb=neg_adverb, verb=verb,
-                        poa=poa, object_negdat=obj_negdat, object=obj,
+                        poa=poa, object_negdet=obj_negdet, object=obj,
                         rule_matched=' <%s>' % rule.__name__,
                         verb_phrase=isinstance(verb, VerbPhrase))
                     yield extraction
