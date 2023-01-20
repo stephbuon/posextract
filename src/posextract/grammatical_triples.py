@@ -119,6 +119,10 @@ def graph_tokens(doc: Doc, verbose=False) -> List[TripleExtraction]:
         match_type = nlp.vocab[match_id].text
         class_ = VERB_PHRASE_TABLE[match_type]
         verb_phrase = class_(*(doc[ti] for ti in token_ids))
+
+        if not should_consider_verb_phrase(verb_phrase):
+            continue
+        
         if verbose:
             print('Matched verb phrase %s: %s' % (match_type, repr(verb_phrase)))
 

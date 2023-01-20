@@ -11,3 +11,6 @@ evaluation/sample_hansard.Rmd
 /dist
 /build
 /posextract.egg-info
+
+# virtual environment
+venv

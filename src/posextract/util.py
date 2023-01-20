@@ -238,6 +238,14 @@ VERB_PHRASE_TABLE = {
     'conj-verb-phrase': ConjVerbPhrase,
 }
 
+
+def should_consider_verb_phrase(verb_phrase: VerbPhrase):
+    for child in verb_phrase.first.children:
+        if child.dep == nsubj or child.dep == nsubjpass:
+            return False
+
+    return True
+
 @dataclass
 class TripleExtractionFlattened:
     subject_negdet: str = ''
