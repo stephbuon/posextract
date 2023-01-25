@@ -68,7 +68,7 @@ def rule4(verb_token: Union[Token, VerbPhrase], subject_token: Token, object_tok
     if verb_token.dep not in {xcomp, advcl, conj}:
         return False
 
-    if subject_token.head != verb_token and subject_token.head != verb_token.head:
+    if verb_token != subject_token.head and verb_token.head != subject_token.head:
         return False
 
     # Traverse until we reach the end or the verb is the subject's head.
