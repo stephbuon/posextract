@@ -240,7 +240,7 @@ VERB_PHRASE_TABLE = {
 
 
 def should_consider_verb_phrase(verb_phrase: VerbPhrase):
-    for child in verb_phrase.first.children:
+    for child in verb_phrase.second.children:
         if child.dep == nsubj or child.dep == nsubjpass:
             return False
 

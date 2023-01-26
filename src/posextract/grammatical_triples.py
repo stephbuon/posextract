@@ -121,6 +121,7 @@ def graph_tokens(doc: Doc, verbose=False) -> List[TripleExtraction]:
         verb_phrase = class_(*(doc[ti] for ti in token_ids))
 
         if not should_consider_verb_phrase(verb_phrase):
+            if verbose: print('Disregarding verb phrase: %s' % repr(verb_phrase))
             continue
         
         if verbose:
