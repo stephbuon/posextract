@@ -457,6 +457,14 @@ def get_verb_neg(token: Union[Token, VerbPhrase], up=True):
         if child.dep == neg:
             return child
 
+    if token.head.pos == VERB and token.head.text.lower() == 'failed' and token.dep == xcomp:
+        try:
+            child = next(token.children)
+            if child.pos == PART and child.text.lower() == 'to':
+                return token.head
+        except StopIteration:
+            return None
+
     # if up and token.head.pos == VERB:
     #     parent_negation = get_verb_neg(token.head, up=False)
     #     if parent_negation:
