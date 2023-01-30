@@ -268,6 +268,9 @@ class TripleExtractionFlattened:
         return ' '.join((str(v) for v in self.astuple() if v))
 
 
+EMPHASIS_ADJ_LIST = ('very', 'much', 'most', 'utterly', 'as')
+
+
 @dataclass
 class TripleExtraction:
     subject_negdet: Optional[Token] = None
@@ -313,7 +316,7 @@ class TripleExtraction:
                     kwargs['subject'] = child.text + ' ' + kwargs['subject']
 
         if self.object.dep == advmod and self.object.pos == ADV:
-            if self.object.head.pos == ADJ and self.object.text.lower() in ('many', 'very'):
+            if self.object.head.pos == ADJ and self.object.text.lower() in EMPHASIS_ADJ_LIST:
                 kwargs['object'] += ' ' + self.object.head.text
 
         if compound_object:
