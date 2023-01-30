@@ -259,7 +259,7 @@ class TripleExtractionFlattened:
     object: str = ''
     object_prep: str = ''
     object_prep_noun: str = ''
-    rule_matched: str = ''
+    rule: str = ''
 
     def astuple(self):
         return (v for v in self.__dict__.values())
@@ -284,7 +284,7 @@ class TripleExtraction:
     object: Optional[Token] = None
     object_prep: Optional[Token] = None
     object_prep_noun: Optional[Token] = None
-    rule_matched: str = ''
+    rule: str = ''
     verb_phrase: bool = False
 
     def flatten(self, lemmatize=False, compound_subject=True, compound_object=True) -> TripleExtractionFlattened:

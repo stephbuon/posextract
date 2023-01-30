@@ -77,7 +77,7 @@ def visit_verb(verb: Union[Token, VerbPhrase], parent_subjects, parent_objects, 
                         subject_negdet=subject_negdet, subject=subject,
                         neg_adverb=neg_adverb, verb=verb,
                         poa=poa, object_negdet=obj_negdet, object=obj,
-                        rule_matched=' <%s>' % rule.__name__,
+                        rule=' <%s>' % rule.__name__,
                         verb_phrase=isinstance(verb, VerbPhrase))
                     yield extraction
                     break
