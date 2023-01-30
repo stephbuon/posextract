@@ -262,7 +262,7 @@ class TripleExtractionFlattened:
     rule: str = ''
 
     def astuple(self):
-        return (v for v in self.__dict__.values())
+        return (v for k, v in self.__dict__.items() if k != 'rule')
 
     def __str__(self):
         return ' '.join((str(v) for v in self.astuple() if v))
