@@ -251,6 +251,7 @@ class TripleExtractionFlattened:
     subject_negdet: str = ''
     subject: str = ''
     neg_adverb: str = ''
+    neg_adverb_part: str = ''
     aux_verb: str = ''
     verb: str = ''
     poa: str = ''
@@ -276,6 +277,7 @@ class TripleExtraction:
     subject_negdet: Optional[Token] = None
     subject: Optional[Token] = None
     neg_adverb: Optional[Token] = None
+    neg_adverb_part: Optional[Token] = None
     aux_verb: Optional[Token] = None
     verb: Optional[Union[Token, VerbPhrase]] = None
     poa: Optional[Token] = None
@@ -455,22 +457,22 @@ def subject_search(token: Token, verbose=False):
 def get_verb_neg(token: Union[Token, VerbPhrase], up=True):
     for child in token.children:
         if child.dep == neg:
-            return child
+            return child, None
 
     if token.head.pos == VERB and token.head.text.lower() == 'failed' and token.dep == xcomp:
         try:
             child = next(token.children)
             if child.pos == PART and child.text.lower() == 'to':
-                return token.head
+                return token.head, child
         except StopIteration:
-            return None
+            return None, None
 
     # if up and token.head.pos == VERB:
     #     parent_negation = get_verb_neg(token.head, up=False)
     #     if parent_negation:
     #         return parent_negation
 
-    return None
+    return None, None
 
 
 def get_subject_neg(token):
