@@ -63,7 +63,7 @@ def visit_verb(verb: Union[Token, VerbPhrase], parent_subjects, parent_objects, 
     if not objects:
         if verbose: print('Could not find objects.')
 
-    neg_adverb = get_verb_neg(verb)
+    neg_adverb, neg_adverb_part = get_verb_neg(verb)
 
     for subject_negdet, subject in subjects:
         for poa, obj_negdet, obj in objects:
@@ -75,7 +75,7 @@ def visit_verb(verb: Union[Token, VerbPhrase], parent_subjects, parent_objects, 
 
                     extraction = TripleExtraction(
                         subject_negdet=subject_negdet, subject=subject,
-                        neg_adverb=neg_adverb, verb=verb,
+                        neg_adverb=neg_adverb, neg_adverb_part=neg_adverb_part, verb=verb,
                         poa=poa, object_negdet=obj_negdet, object=obj,
                         rule=' <%s>' % rule.__name__,
                         verb_phrase=isinstance(verb, VerbPhrase))

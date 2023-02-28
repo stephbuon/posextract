@@ -58,7 +58,7 @@ def rule(doc, lemmatize=False, verbose=False, letter_case='default') -> List[Sub
                 if child.dep == nsubj or child.dep == nsubjpass:
                     subject = child
 
-            verb_neg = get_verb_neg(verb)
+            verb_neg, _ = get_verb_neg(verb)
 
             if verb_neg is None:
                 verb_neg = ''

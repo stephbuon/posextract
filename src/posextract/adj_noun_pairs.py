@@ -63,7 +63,7 @@ def rule(doc, lemmatize=False, verbose=False, letter_case='default') -> List[Adj
                 neg_det = neg_det.text
 
             if noun.head.pos == AUX or noun.head.pos == VERB:
-                verb_neg = get_verb_neg(noun.head)
+                verb_neg, _ = get_verb_neg(noun.head)
 
             if verb_neg is None:
                 verb_neg = ''
