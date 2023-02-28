@@ -7,6 +7,16 @@ import dataclasses
 import spacy.tokens
 import copy
 
+
+class TripleExtractorOptions(NamedTuple):
+    compound_subject: bool = True
+    compound_object: bool = True
+    combine_adj: bool = False
+    add_auxiliary: bool = False
+    prep_phrase: bool = False
+    lemmatize: bool = False
+
+
 VERB_DEP_TAGS = {ccomp, relcl, xcomp, acl, advcl, pcomp, csubj, csubjpass, conj}
 OBJ_DEP_TAGS = {dobj, pobj, acomp}  # dative?
 

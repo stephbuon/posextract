@@ -123,7 +123,7 @@ def graph_tokens(doc: Doc, verbose=False) -> List[TripleExtraction]:
         if not should_consider_verb_phrase(verb_phrase):
             if verbose: print('Disregarding verb phrase: %s' % repr(verb_phrase))
             continue
-        
+
         if verbose:
             print('Matched verb phrase %s: %s' % (match_type, repr(verb_phrase)))
 
@@ -179,8 +179,6 @@ def post_process_combine_adj(extractions: List[TripleExtraction]):
     return new_extractions
 
 
-
-
 def post_process_prep_phrase(extraction: TripleExtraction):
     # Rule 1: check if the prep "of" or "to" is the child of the object, and if it is, check to see if a noun is the child of the preposition.
     # Rule 2: check if the prep "with" is the child of the verb, and it if is, see if the pobj is the child of the preposition.
@@ -213,10 +211,81 @@ def post_process_prep_phrase(extraction: TripleExtraction):
     return extraction
 
 
-def extract(input_object: Union[str, Iterable[str]], combine_adj: bool = False, lemmatize: bool = False,
-            add_aux: bool = False, verbose: bool = False,
-            want_dataframe: bool = False, prep_phrase: bool = False, compound_subject: bool = True,
-            compound_object: bool = True) -> Union[List[TripleExtractionFlattened], pandas.DataFrame]:
+def post_process_conj_triples(extractions: List[TripleExtraction]):
+    new_extractions = []
+
+    # Look for additional triples due to conj dependency
+    for triple in extractions:
+        for child in triple.subject.children:
+            if child.pos == NOUN and child.dep == conj:
+                new_triple = copy.copy(triple)
+                new_triple.subject = child
+                new_extractions.append(new_triple)
+
+        for child in triple.object.children:
+            if child.pos == NOUN and child.dep == conj:
+                new_triple = copy.copy(triple)
+                new_triple.object = child
+                new_extractions.append(new_triple)
+
+    return new_extractions
+
+
+def resolve_coreferences(triple: TripleExtraction):
+    if triple.subject.text.lower() == 'which':
+        if triple.subject.head.pos == NOUN:
+            triple.subject = triple.subject.head
+
+    if triple.subject.text.lower() == 'who' and triple.subject.pos == PRON:
+        if triple.verb == triple.subject.head:
+            noun = triple.verb.head
+            if noun.pos in (NOUN, PROPN) and triple.verb.dep == relcl:
+                triple.subject = noun
+
+
+def add_auxiliary_verb(triple: TripleExtraction):
+    for child in triple.verb.children:
+        if child.dep == aux:
+            triple.aux_verb = child
+            break
+
+
+def extract_one(doc: Doc, extractor_options: TripleExtractorOptions = None,
+                verbose: bool = False, flatten: bool = False):
+    if extractor_options is None:
+        extractor_options = TripleExtractorOptions()
+
+    extractions = graph_tokens(doc, verbose=verbose)
+    extractions.extend(post_process_conj_triples(extractions))
+
+    if extractor_options.combine_adj:
+        extractions = post_process_combine_adj(extractions)
+
+    for triple in extractions:
+        resolve_coreferences(triple)
+
+        if extractor_options.add_auxiliary:
+            add_auxiliary_verb(triple)
+
+        if extractor_options.prep_phrase:
+            post_process_prep_phrase(triple)
+
+    if flatten:
+        extractions = [
+            triple.flatten(lemmatize=extractor_options.lemmatize,
+                           compound_subject=extractor_options.compound_subject,
+                           compound_object=extractor_options.compound_object)
+            for triple in extractions]
+
+    return extractions
+
+
+def extract(input_object: Union[str, Iterable[str]], extractor_options: TripleExtractorOptions = None,
+            verbose: bool = False,
+            want_dataframe: bool = False) -> Union[List[TripleExtractionFlattened], pandas.DataFrame]:
+    if extractor_options is None:
+        extractor_options = TripleExtractorOptions()
+
     output_extractions = []
 
     if type(input_object) == str:
@@ -226,58 +295,8 @@ def extract(input_object: Union[str, Iterable[str]], combine_adj: bool = False, 
 
     for i, doc in enumerate(input_object):
         doc = nlp(doc)
-        extractions = graph_tokens(doc, verbose=verbose)
-        output_extractions.extend(extractions)
-
-    # Look for additional triples due to conj dependency
-    for triple in output_extractions:
-        for child in triple.subject.children:
-            if child.pos == NOUN and child.dep == conj:
-                new_triple = copy.copy(triple)
-                new_triple.subject = child
-                output_extractions.append(new_triple)
-
-        for child in triple.object.children:
-            if child.pos == NOUN and child.dep == conj:
-                new_triple = copy.copy(triple)
-                new_triple.object = child
-                output_extractions.append(new_triple)
-
-    if combine_adj:
-        if verbose: print('Combining triples...')
-        output_extractions = post_process_combine_adj(output_extractions)
-
-    for triple in output_extractions:
-        if triple.subject.text.lower() == 'which':
-            if triple.subject.head.pos == NOUN:
-                triple.subject = triple.subject.head
-
-    for triple in output_extractions:
-        if triple.subject.text.lower() == 'who' and triple.subject.pos == PRON:
-            if triple.verb == triple.subject.head:
-                noun = triple.verb.head
-                if noun.pos in (NOUN, PROPN) and triple.verb.dep == relcl:
-                    triple.subject = noun
-
-    if add_aux:
-        for triple in output_extractions:
-            for child in triple.verb.children:
-                if child.dep == aux:
-                    triple.aux_verb = child
-                    break
-
-    if prep_phrase:
-        output_extractions = list(map(post_process_prep_phrase, output_extractions))
-
-    if verbose:
-        triple_debug = output_extractions
-
-    output_extractions = [triple.flatten(lemmatize=lemmatize, compound_subject=compound_subject, compound_object=compound_object) for triple in output_extractions]
-
-    if verbose:
-        for i, triple in enumerate(output_extractions):
-            pre_flatten_triple = triple_debug[i]
-            print(str(triple), 'verb_phrase=%s' % pre_flatten_triple.verb_phrase)
+        output_extractions.extend(
+            extract_one(doc,extractor_options, flatten=True, verbose=verbose))
 
     if want_dataframe:
         extractions_df = pd.DataFrame([t.__dict__ for t in output_extractions])
@@ -307,9 +326,17 @@ if __name__ == '__main__':
     parser.add_argument('--no-compound-subject', action='store_true')
     parser.add_argument('--no-compound-object', action='store_true')
 
-
     args = parser.parse_args()
     is_file = os.path.isfile(args.input)
+
+    extractor_options = TripleExtractorOptions(
+        compound_subject=not args.no_compound_subject,
+        compound_object=not args.no_compound_object,
+        combine_adj=args.post_combine_adj,
+        add_auxiliary=args.add_auxiliary,
+        prep_phrase=args.prep_phrase,
+        lemmatize=args.lemma
+    )
 
     inputs = []
     outputs = []
@@ -343,10 +370,7 @@ if __name__ == '__main__':
     header = True
 
     for i, data_str in enumerate(input_values):
-        triples_df = extract(data_str, combine_adj=args.post_combine_adj, lemmatize=args.lemma,
-                             add_aux=args.add_auxiliary, verbose=args.verbose, want_dataframe=True,
-                             prep_phrase=args.prep_phrase, compound_subject=False if args.no_compound_subject else True,
-                             compound_object=False if args.no_compound_object else True)
+        triples_df = extract(data_str, extractor_options=extractor_options, verbose=args.verbose, want_dataframe=True)
         extraction_count += len(triples_df)
         if df is not None:
             triples_df['sentence_id'] = df.index[i]
@@ -358,4 +382,4 @@ if __name__ == '__main__':
     if args.verbose:
         print('Number of extractions: %d' % extraction_count)
 
-__all__ = ['extract', ]
+__all__ = ['extract', 'extract_one']
