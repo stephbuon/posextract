@@ -4,12 +4,12 @@ from typing import List, Union, Iterable
 
 import pandas
 
-from . import rules
+from posextract import rules
 import argparse
 import os
 from spacy.tokens import Doc
 from spacy.symbols import aux, NOUN, pobj
-from .util import *
+from posextract.util import *
 import pandas as pd
 
 rule_funcs = [
@@ -141,6 +141,8 @@ def post_process_combine_adj(extractions: List[TripleExtraction]):
     possible_dupes = {}
 
     for extraction in extractions:
+        if isinstance(extraction.verb, VerbPhrase):
+            continue
         key = (extraction.subject.i, extraction.verb.i)
         possible_dupes.setdefault(key, []).append(extraction)
 
