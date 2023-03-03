@@ -455,15 +455,22 @@ def subject_search(token: Token, verbose=False):
 
 
 def get_verb_neg(token: Union[Token, VerbPhrase], up=True):
-    for child in token.children:
+    if isinstance(token, VerbPhrase):
+        children = token.second.children
+        verb_parent = token.second.head
+    else:
+        children = token.children
+        verb_parent = token.head
+
+    for child in children:
         if child.dep == neg:
             return child, None
 
-    if token.head.pos == VERB and token.head.text.lower() == 'failed' and token.dep == xcomp:
+    if verb_parent.pos == VERB and verb_parent.text.lower() == 'failed' and token.dep == xcomp:
         try:
-            child = next(token.children)
+            child = next(children)
             if child.pos == PART and child.text.lower() == 'to':
-                return token.head, child
+                return verb_parent, child
         except StopIteration:
             return None, None
 
