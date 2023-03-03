@@ -231,6 +231,36 @@ def post_process_conj_triples(extractions: List[TripleExtraction]):
     return new_extractions
 
 
+def post_process_adj_acomp(triple: TripleExtraction):
+    if triple.object.pos != ADJ or triple.object.dep != acomp:
+        return []
+
+    new_triples = []
+    visited = set()
+    considering = list(triple.object.children)
+
+    while considering:
+        candidate = considering.pop(-1)
+
+        if candidate in visited:
+            continue
+
+        visited.add(candidate)
+
+        if candidate.pos == ADJ and candidate.dep == conj:
+            new_triple = copy.copy(triple)
+            new_triple.object = candidate
+            new_triples.append(new_triple)
+
+        for child in candidate.children:
+            if child not in visited:
+                if child.pos != ADJ:
+                    continue
+                considering.append(child)
+
+    return new_triples
+
+
 def resolve_coreferences(triple: TripleExtraction):
     if triple.subject.text.lower() == 'which':
         if triple.subject.head.pos == NOUN:
@@ -257,6 +287,8 @@ def extract_one(doc: Doc, extractor_options: TripleExtractorOptions = None,
 
     extractions = graph_tokens(doc, verbose=verbose)
     extractions.extend(post_process_conj_triples(extractions))
+    for triple in extractions:
+        extractions.extend(post_process_adj_acomp(triple))
 
     if extractor_options.combine_adj:
         extractions = post_process_combine_adj(extractions)
