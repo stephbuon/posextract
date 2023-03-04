@@ -264,6 +264,7 @@ class TripleExtractionFlattened:
     neg_adverb_part: str = ''
     aux_verb: str = ''
     verb: str = ''
+    poa_neg: str = ''
     poa: str = ''
     object_negdet: str = ''
     object_adjectives: str = ''
@@ -290,6 +291,7 @@ class TripleExtraction:
     neg_adverb_part: Optional[Token] = None
     aux_verb: Optional[Token] = None
     verb: Optional[Union[Token, VerbPhrase]] = None
+    poa_neg: Optional[Token] = None
     poa: Optional[Token] = None
     object_negdet: Optional[Token] = None
     object_adjectives: Optional[List[Token]] = None
@@ -408,7 +410,8 @@ def object_search(token: Token):
             obj_negdet = get_object_neg(candidate)
             # obj_adj = get_object_adj(candidate)
             poa = candidate.head if is_poa(candidate.head) else None
-            objects.append((poa, obj_negdet, candidate))
+            poa_neg = get_poa_neg(poa) if poa is not None else None
+            objects.append((poa_neg, poa, obj_negdet, candidate))
 
         for child in candidate.children:
             if child not in visited:
@@ -495,6 +498,14 @@ def get_verb_neg(token: Union[Token, VerbPhrase], up=True):
 def get_subject_neg(token):
     for child in token.children:
         if child.dep == det and child.text.lower() in ("no", "not", "never"):
+            return child
+
+    return None
+
+
+def get_poa_neg(token):
+    for child in token.children:
+        if child.dep == neg:
             return child
 
     return None
