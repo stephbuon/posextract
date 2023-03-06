@@ -1,26 +1,11 @@
+from dataclasses import dataclass
+from typing import NamedTuple, Union
+
+import spacy.tokens
 from spacy.matcher import DependencyMatcher
 from spacy.symbols import *
 from spacy.tokens import *
-from typing import NamedTuple, Optional, List, Union
-from dataclasses import dataclass
-import dataclasses
-import spacy.tokens
-import copy
 
-
-class TripleExtractorOptions(NamedTuple):
-    compound_subject: bool = True
-    compound_object: bool = True
-    combine_adj: bool = False
-    add_auxiliary: bool = False
-    prep_phrase: bool = False
-    lemmatize: bool = False
-
-
-VERB_DEP_TAGS = {ccomp, relcl, xcomp, acl, advcl, pcomp, csubj, csubjpass, conj}
-OBJ_DEP_TAGS = {dobj, pobj, acomp}  # dative?
-
-__NLP = None
 __DEP_MATCHER = None
 
 
@@ -31,6 +16,7 @@ class VerbPhrase:
 
     def __hash__(self):
         return hash(self.first) + hash(self.second)
+
     @property
     def dep(self):
         raise NotImplementedError
@@ -157,12 +143,6 @@ class ConjVerbPhrase(VerbPhrase):
     def lemma_(self):
         return self.second.lemma_
 
-def get_nlp():
-    global __NLP
-    if __NLP is None:
-        __NLP = spacy.load("en_core_web_sm")
-    return __NLP
-
 
 def get_dep_matcher():
     global __DEP_MATCHER
@@ -271,99 +251,28 @@ def should_consider_verb_phrase(verb_phrase: VerbPhrase):
 
     return True
 
-@dataclass
-class TripleExtractionFlattened:
-    subject_negdet: str = ''
-    subject: str = ''
-    neg_adverb: str = ''
-    neg_adverb_part: str = ''
-    aux_verb: str = ''
-    verb: str = ''
-    poa_neg: str = ''
-    poa: str = ''
-    object_negdet: str = ''
-    object_adjectives: str = ''
-    object: str = ''
-    object_prep: str = ''
-    object_prep_noun: str = ''
-    rule: str = ''
-
-    def astuple(self):
-        return (v for k, v in self.__dict__.items() if k != 'rule')
-
-    def __str__(self):
-        return ' '.join((str(v) for v in self.astuple() if v))
 
 
-EMPHASIS_ADJ_LIST = ('very', 'much', 'most', 'utterly', 'as')
+class TripleExtractorOptions(NamedTuple):
+    compound_subject: bool = True
+    compound_object: bool = True
+    combine_adj: bool = False
+    add_auxiliary: bool = False
+    prep_phrase: bool = False
+    lemmatize: bool = False
 
 
-@dataclass
-class TripleExtraction:
-    subject_negdet: Optional[Token] = None
-    subject: Optional[Token] = None
-    neg_adverb: Optional[Token] = None
-    neg_adverb_part: Optional[Token] = None
-    aux_verb: Optional[Token] = None
-    verb: Optional[Union[Token, VerbPhrase]] = None
-    poa_neg: Optional[Token] = None
-    poa: Optional[Token] = None
-    object_negdet: Optional[Token] = None
-    object_adjectives: Optional[List[Token]] = None
-    object: Optional[Token] = None
-    object_prep: Optional[Token] = None
-    object_prep_noun: Optional[Token] = None
-    rule: str = ''
-    verb_phrase: bool = False
+VERB_DEP_TAGS = {ccomp, relcl, xcomp, acl, advcl, pcomp, csubj, csubjpass, conj}
+OBJ_DEP_TAGS = {dobj, pobj, acomp}  # dative?
 
-    def flatten(self, lemmatize=False, compound_subject=True, compound_object=True) -> TripleExtractionFlattened:
-        kwargs = {k: v for k, v in self.__dict__.items() if v is not None}
+__NLP = None
 
-        del kwargs['verb_phrase']
 
-        if lemmatize:
-            if self.object:
-                kwargs['object'] = self.object.lemma_
-            if self.verb:
-                kwargs['verb'] = self.verb.lemma_
-            if self.subject:
-                kwargs['subject'] = self.subject.lemma_
-        else:
-            if hasattr(self.verb, 'i') and (self.verb and self.subject) and (self.verb.i < self.subject.i):
-                kwargs['verb'] = self.verb.lemma_
-
-        if self.object_adjectives:
-            kwargs['object_adjectives'] = ' '.join((adj.text for adj in self.object_adjectives))
-
-        for k, v in kwargs.items():
-            if type(v) != str:
-                kwargs[k] = str(v)
-
-        if compound_subject:
-            for child in self.subject.children:
-                if child.dep_ == "compound":
-                    kwargs['subject'] = child.text + ' ' + kwargs['subject']
-
-        if self.object.dep == advmod and self.object.pos == ADV:
-            if self.object.head.pos == ADJ and self.object.text.lower() in EMPHASIS_ADJ_LIST:
-                kwargs['object'] += ' ' + self.object.head.text
-
-        if compound_object:
-            for child in reversed(list(self.object.children)):
-                if child.dep_ == "compound":
-                    kwargs['object'] = child.text + ' ' + kwargs['object']
-
-        for verb_child in self.verb.children:
-            if verb_child.pos == ADP and verb_child.dep == prt:
-                kwargs['verb'] += ' ' + verb_child.text
-
-        return TripleExtractionFlattened(
-            **kwargs
-        )
-
-    def get_triple_hash(self) -> int:
-        default_empty_str = lambda x: x.text.lower() if x else ''
-        return hash((default_empty_str(self.subject), default_empty_str(self.verb), default_empty_str(self.object)))
+def get_nlp():
+    global __NLP
+    if __NLP is None:
+        __NLP = spacy.load("en_core_web_sm")
+    return __NLP
 
 
 def is_root(token: Token):
@@ -405,81 +314,6 @@ def is_noun_attribute(token: Token):
 
 def is_poa(token: Token):
     return token.dep == prep or token.dep == agent or token.dep == det or token.dep == nmod
-
-
-def object_search(token: Token):
-    objects = []
-
-    visited = set()
-    considering = [token, ]
-
-    while considering:
-        candidate = considering.pop(-1)
-
-        if candidate in visited:
-            continue
-
-        visited.add(candidate)
-
-        if is_object(candidate):
-            obj_negdet = get_object_neg(candidate)
-            # obj_adj = get_object_adj(candidate)
-            poa = candidate.head if is_poa(candidate.head) else None
-            poa_neg = get_poa_neg(poa) if poa is not None else None
-            objects.append((poa_neg, poa, obj_negdet, candidate))
-
-        for child in candidate.children:
-            if child not in visited:
-                if child.pos == VERB or child.pos == AUX:
-                    continue
-                considering.append(child)
-
-    return objects
-
-
-def subject_search(token: Token, verbose=False):
-    objects = []
-
-    visited = set()
-    considering = [token, ]
-
-    if verbose:
-        print('\tDoing subject search for token: ', token)
-        print('\tverb.head', token.head)
-        print('\tverb.children', list(token.children))
-
-    while considering:
-        candidate = considering.pop(-1)
-
-        if candidate in visited:
-            continue
-
-        visited.add(candidate)
-
-        if candidate.dep == nsubj or candidate.dep == nsubjpass:
-            objects.append((get_subject_neg(candidate), candidate))
-
-        for child in candidate.children:
-            if child not in visited:
-                if child.pos == VERB:
-                    continue
-
-                if verbose:
-                    print('\t\t(verb=%s) considering child:' % token, child.text, 'with POS=', child.pos_)
-                    print('\t\tdependency of %s->%s:' % (candidate, child), child.dep_)
-                considering.append(child)
-
-        parent = candidate.head
-        if parent not in visited:
-            if (parent.pos == VERB or parent.pos == AUX) and (candidate.dep == conj or candidate.dep == advcl):
-                continue
-
-            if verbose:
-                print('\t\t(verb=%s) considering parent:' % token, parent.text, 'with POS=', parent.pos_)
-                print('\t\tdependency of %s->%s:' % (parent, candidate), candidate.dep_)
-            considering.append(parent)
-
-    return objects
 
 
 def get_verb_neg(token: Union[Token, VerbPhrase], up=True):
