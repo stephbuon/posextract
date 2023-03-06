@@ -486,6 +486,10 @@ def get_verb_neg(token: Union[Token, VerbPhrase], up=True):
                 return verb_parent, child
         except StopIteration:
             return None, None
+    elif verb_parent.pos == VERB and (token.dep == ccomp or token.dep == xcomp):
+        for child in verb_parent.children:
+            if child.dep == neg:
+                return child, None
 
     # if up and token.head.pos == VERB:
     #     parent_negation = get_verb_neg(token.head, up=False)
@@ -498,6 +502,8 @@ def get_verb_neg(token: Union[Token, VerbPhrase], up=True):
 def get_subject_neg(token):
     for child in token.children:
         if child.dep == det and child.text.lower() in ("no", "not", "never"):
+            return child
+        if child.dep == neg:
             return child
 
     return None
@@ -518,6 +524,9 @@ def get_object_neg(token):
 
         if child.dep == neg:
             return child
+
+    if token.head.pos == PART and token.head.text.lower() in ("not", ):
+        return token.head
 
     return None
 
