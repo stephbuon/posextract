@@ -235,6 +235,21 @@ def get_dep_matcher():
                     "RIGHT_ATTRS": {"DEP": "conj", "POS": "VERB"}
                 },
             ],
+            [
+                # anchor token: verb
+                {
+                    "RIGHT_ID": "verb",
+                    "RIGHT_ATTRS": {"POS": "VERB"}
+                },
+
+                # verb -> verb2
+                {
+                    "LEFT_ID": "verb",
+                    "REL_OP": ">>",
+                    "RIGHT_ID": "verb2",
+                    "RIGHT_ATTRS": {"DEP": "conj", "POS": "VERB"}
+                },
+            ],
 
         ])
 
