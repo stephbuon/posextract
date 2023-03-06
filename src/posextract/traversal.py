@@ -7,9 +7,9 @@ from spacy.symbols import *
 from posextract.triple_extraction import TripleExtraction
 from posextract.util import is_root, get_verb_neg, is_verb, get_nlp, is_object, get_object_neg, is_poa, get_poa_neg, \
     get_subject_neg
-from posextract.util import get_dep_matcher, VERB_PHRASE_TABLE, should_consider_verb_phrase, VerbPhrase
+from posextract.util import get_dep_matcher, should_consider_verb_phrase, VerbPhrase
 from posextract import rules
-
+from posextract.verb_phrase import VERB_PHRASE_TABLE
 
 rule_funcs = [
     rules.rule1,
@@ -36,7 +36,7 @@ def visit_verb(verb: Union[Token, VerbPhrase], parent_subjects, parent_objects, 
 
     # Search for the subject.
     if isinstance(verb, VerbPhrase):
-        subjects = subject_search(verb.subject_search_root, verbose=verbose)
+        subjects = subject_search(verb.subject_search_root, verbose=verbose, verb_phrase=True)
     else:
         subjects = subject_search(verb, verbose=verbose)
 
@@ -87,7 +87,7 @@ def visit_verb(verb: Union[Token, VerbPhrase], parent_subjects, parent_objects, 
 def visit_token(token, parent_subjects, verbose=False):
     for child in token.children:
         if is_verb(child):
-            yield from visit_verb(child, parent_subjects, parent_objects=[], verbose=verbose)
+            yield from visit_verb(child, parent_subjects=[], parent_objects=[], verbose=verbose)
         else:
             # Reset inherited subjects and objects.
             yield from visit_token(child, [], verbose=verbose)
@@ -108,7 +108,7 @@ def graph_tokens(doc: Doc, verbose=False) -> List[TripleExtraction]:
 
     triple_extractions = list(visit_verb(root_verb, [], [], verbose=verbose))
 
-    dep_matcher = get_dep_matcher()
+    dep_matcher = get_dep_matcher(get_nlp())
     matches = dep_matcher(doc)
 
     for match_id, token_ids in matches:
@@ -158,7 +158,7 @@ def object_search(token: Token):
     return objects
 
 
-def subject_search(token: Token, verbose=False):
+def subject_search(token: Token, verbose=False, verb_phrase=False):
     objects = []
 
     visited = set()
@@ -178,12 +178,13 @@ def subject_search(token: Token, verbose=False):
         visited.add(candidate)
 
         if candidate.dep == nsubj or candidate.dep == nsubjpass:
-            print('\tadding subject:', candidate, candidate.dep,)
             objects.append((get_subject_neg(candidate), candidate))
 
         for child in candidate.children:
             if child not in visited:
                 if child.pos == VERB:
+                    continue
+                if verb_phrase and child.pos == AUX:
                     continue
 
                 if verbose:

@@ -6,251 +6,40 @@ from spacy.matcher import DependencyMatcher
 from spacy.symbols import *
 from spacy.tokens import *
 
+from posextract.verb_phrase import VerbPhrase, ADVCLVerbPhrase, ConjVerbPhrase, CCompVerbPhrase, \
+    add_verb_phrase_patterns
+
 __DEP_MATCHER = None
+__NLP = None
 
 
-@dataclass
-class VerbPhrase:
-    first: Token
-    second: Token
-
-    def __hash__(self):
-        return hash(self.first) + hash(self.second)
-
-    @property
-    def dep(self):
-        raise NotImplementedError
-
-    @property
-    def dep_(self):
-        raise NotImplementedError
-
-    @property
-    def children(self):
-        raise NotImplementedError
-
-    @property
-    def subject_search_root(self):
-        raise NotImplementedError
-
-    @property
-    def object_search_root(self):
-        raise NotImplementedError
-
-    @property
-    def head(self):
-        raise NotImplementedError
-
-    @property
-    def pos(self):
-        raise NotImplementedError
-
-    @property
-    def text(self):
-        raise NotImplementedError
-
-    @property
-    def lemma_(self):
-        raise NotImplementedError
-
-    def __contains__(self, item):
-        return item == self.first or item == self.second
-
-    def __str__(self):
-        return self.text
-
-    def __eq__(self, other):
-        if isinstance(other, VerbPhrase):
-            return self.first == other.first and self.second == other.second
-        else:
-            return other == self.first or other == self.second
+def get_nlp():
+    global __NLP
+    if __NLP is None:
+        __NLP = spacy.load("en_core_web_sm")
+    return __NLP
 
 
-class ADVCLVerbPhrase(VerbPhrase):
-    @property
-    def dep(self):
-        return self.first.dep
-
-    @property
-    def dep_(self):
-        return self.first.dep_
-
-    @property
-    def children(self):
-        yield from self.first.children
-        yield from self.second.children
-
-    @property
-    def subject_search_root(self):
-        return self.first
-
-    @property
-    def object_search_root(self):
-        return self.second
-
-    @property
-    def head(self):
-        return self.first.head
-
-    @property
-    def pos(self):
-        return VERB
-
-    @property
-    def text(self):
-        return self.second.text
-
-    @property
-    def lemma_(self):
-        return self.second.lemma_
-
-
-class ConjVerbPhrase(VerbPhrase):
-    @property
-    def dep(self):
-        return self.first.dep
-
-    @property
-    def dep_(self):
-        return self.first.dep_
-
-    @property
-    def children(self):
-        yield from self.first.children
-        yield from self.second.children
-
-    @property
-    def subject_search_root(self):
-        return self.first
-
-    @property
-    def object_search_root(self):
-        return self.second
-
-    @property
-    def head(self):
-        return self.first.head
-
-    @property
-    def pos(self):
-        return VERB
-
-    @property
-    def text(self):
-        return self.second.text
-
-    @property
-    def lemma_(self):
-        return self.second.lemma_
-
-
-def get_dep_matcher():
+def get_dep_matcher(nlp):
     global __DEP_MATCHER
 
     if __DEP_MATCHER is None:
         matcher = DependencyMatcher(get_nlp().vocab)
-
-        matcher.add("advcl-verb-phrase", [
-            [
-                # anchor token: aux_verb
-                {
-                    "RIGHT_ID": "aux_verb",
-                    "RIGHT_ATTRS": {"POS": "AUX"}
-                },
-
-                # aux_verb -> verb
-                {
-                    "LEFT_ID": "aux_verb",
-                    "REL_OP": ">",
-                    "RIGHT_ID": "verb",
-                    "RIGHT_ATTRS": {"DEP": "advcl", "POS": "VERB"}
-                },
-            ],
-            [
-                # anchor token: verb1
-                {
-                    "RIGHT_ID": "verb1",
-                    "RIGHT_ATTRS": {"POS": "VERB"}
-                },
-
-                # verb1 -> verb2
-                {
-                    "LEFT_ID": "verb1",
-                    "REL_OP": ">",
-                    "RIGHT_ID": "verb2",
-                    "RIGHT_ATTRS": {"DEP": "advcl", "POS": "VERB"}
-                },
-            ]
-        ])
-
-        matcher.add("conj-verb-phrase", [
-            [
-                # anchor token: verb
-                {
-                    "RIGHT_ID": "verb",
-                    "RIGHT_ATTRS": {"POS": "VERB"}
-                },
-
-                # verb -> aux_verb
-                {
-                    "LEFT_ID": "verb",
-                    "REL_OP": ">",
-                    "RIGHT_ID": "aux_verb",
-                    "RIGHT_ATTRS": {"DEP": "conj", "POS": "AUX"}
-                },
-            ],
-
-            [
-                # anchor token: aux_verb
-                {
-                    "RIGHT_ID": "aux_verb",
-                    "RIGHT_ATTRS": {"POS": "AUX"}
-                },
-
-                # aux_verb -> verb
-                {
-                    "LEFT_ID": "aux_verb",
-                    "REL_OP": ">",
-                    "RIGHT_ID": "verb",
-                    "RIGHT_ATTRS": {"DEP": "conj", "POS": "VERB"}
-                },
-            ],
-            [
-                # anchor token: verb
-                {
-                    "RIGHT_ID": "verb",
-                    "RIGHT_ATTRS": {"POS": "VERB"}
-                },
-
-                # verb -> verb2
-                {
-                    "LEFT_ID": "verb",
-                    "REL_OP": ">>",
-                    "RIGHT_ID": "verb2",
-                    "RIGHT_ATTRS": {"DEP": "conj", "POS": "VERB"}
-                },
-            ],
-
-        ])
-
+        add_verb_phrase_patterns(matcher)
         __DEP_MATCHER = matcher
 
     return __DEP_MATCHER
 
 
-VERB_PHRASE_TABLE = {
-    'advcl-verb-phrase': ADVCLVerbPhrase,
-    'conj-verb-phrase': ConjVerbPhrase,
-}
-
-
 def should_consider_verb_phrase(verb_phrase: VerbPhrase):
+    if isinstance(verb_phrase, CCompVerbPhrase):
+        return True
+
     for child in verb_phrase.second.children:
         if child.dep == nsubj or child.dep == nsubjpass:
             return False
 
     return True
-
 
 
 class TripleExtractorOptions(NamedTuple):
@@ -264,15 +53,6 @@ class TripleExtractorOptions(NamedTuple):
 
 VERB_DEP_TAGS = {ccomp, relcl, xcomp, acl, advcl, pcomp, csubj, csubjpass, conj}
 OBJ_DEP_TAGS = {dobj, pobj, acomp}  # dative?
-
-__NLP = None
-
-
-def get_nlp():
-    global __NLP
-    if __NLP is None:
-        __NLP = spacy.load("en_core_web_sm")
-    return __NLP
 
 
 def is_root(token: Token):
