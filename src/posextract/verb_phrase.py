@@ -227,22 +227,23 @@ def add_verb_phrase_patterns(matcher: DependencyMatcher):
                 "RIGHT_ATTRS": {"DEP": "conj", "POS": "VERB"}
             },
         ],
-        [
-            # anchor token: verb
-            {
-                "RIGHT_ID": "verb",
-                "RIGHT_ATTRS": {"POS": "VERB"}
-            },
 
-            # verb -> verb2
-            {
-                "LEFT_ID": "verb",
-                "REL_OP": ">>",
-                "RIGHT_ID": "verb2",
-                "RIGHT_ATTRS": {"DEP": "conj", "POS": "VERB"}
-            },
-        ],
-
+        # Causes ungrammatical extractions.
+        # [
+        #     # anchor token: verb
+        #     {
+        #         "RIGHT_ID": "verb",
+        #         "RIGHT_ATTRS": {"POS": "VERB"}
+        #     },
+        #
+        #     # verb -> verb2
+        #     {
+        #         "LEFT_ID": "verb",
+        #         "REL_OP": ">>",
+        #         "RIGHT_ID": "verb2",
+        #         "RIGHT_ATTRS": {"DEP": "conj", "POS": "VERB"}
+        #     },
+        # ],
     ])
 
     matcher.add("ccomp-verb-phrase", [
