@@ -97,7 +97,10 @@ def is_poa(token: Token):
 
 
 def get_verb_neg(token: Union[Token, VerbPhrase], up=True):
-    if isinstance(token, VerbPhrase):
+    if isinstance(token, CCompVerbPhrase):
+        children = token.first.children
+        verb_parent = token.first.head
+    elif isinstance(token, VerbPhrase):
         children = token.second.children
         verb_parent = token.second.head
     else:
