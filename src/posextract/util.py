@@ -9,6 +9,8 @@ from spacy.tokens import *
 from posextract.verb_phrase import VerbPhrase, ADVCLVerbPhrase, ConjVerbPhrase, CCompVerbPhrase, \
     add_verb_phrase_patterns
 
+import re
+
 __DEP_MATCHER = None
 __NLP = None
 
@@ -171,3 +173,20 @@ def get_object_adj(token):
             return child
 
     return None
+
+
+def split_quotes(document: str):
+    if not document:
+        return
+
+    match = re.search(r"\"((?:\s*[^\s]+\s+){2,}(?:[^\s]+\s*))\"", document)
+    if not match:
+        yield document
+    else:
+        start, end = match.span()
+        if start > 1:
+            yield document[:start]
+
+        yield from split_quotes(match.group(1))
+
+        yield from split_quotes(document[end + 1:])

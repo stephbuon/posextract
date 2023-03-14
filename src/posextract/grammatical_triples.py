@@ -233,9 +233,10 @@ def extract(input_object: Union[str, Iterable[str]], extractor_options: TripleEx
         raise ValueError('extract_triples: input should be a string or a collection of strings')
 
     for i, doc in enumerate(input_object):
-        doc = nlp(doc)
-        output_extractions.extend(
-            extract_one(doc,extractor_options, flatten=True, verbose=verbose))
+        for sent in split_quotes(doc):
+            sent = nlp(sent)
+            output_extractions.extend(
+                extract_one(sent,extractor_options, flatten=True, verbose=verbose))
 
     if want_dataframe:
         extractions_df = pd.DataFrame([t.__dict__ for t in output_extractions])
