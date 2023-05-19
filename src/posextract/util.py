@@ -22,6 +22,14 @@ def get_nlp():
     return __NLP
 
 
+def enable_pipe(pipe_name):
+    get_nlp().add_pipe(pipe_name)
+
+
+def disable_pipe(pipe_name):
+    get_nlp().remove_pipe(pipe_name)
+
+
 def get_dep_matcher(nlp):
     global __DEP_MATCHER
 
@@ -51,6 +59,7 @@ class TripleExtractorOptions(NamedTuple):
     add_auxiliary: bool = False
     prep_phrase: bool = False
     lemmatize: bool = False
+    use_noun_chunks: bool = False
 
 
 VERB_DEP_TAGS = {ccomp, relcl, xcomp, acl, advcl, pcomp, csubj, csubjpass, conj}

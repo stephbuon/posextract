@@ -1,12 +1,13 @@
 import collections
 import copy
-from typing import List, Union, Iterable
+from typing import List, Union, Iterable, Optional
 
 import pandas
 
 import argparse
 import os
 
+from posextract.posrule.parser import parse_posrule
 from posextract.traversal import graph_tokens
 from posextract.triple_extraction import TripleExtraction, TripleExtractionFlattened
 from posextract.util import *
@@ -184,7 +185,8 @@ def yield_non_duplicate_triples(extractions: List[TripleExtraction]) -> List[Tri
 
 
 def extract_one(doc: Doc, extractor_options: TripleExtractorOptions = None,
-                verbose: bool = False, flatten: bool = False):
+                verbose: bool = False, flatten: bool = False,
+                filters: Optional[List] = None):
     if extractor_options is None:
         extractor_options = TripleExtractorOptions()
 
@@ -209,6 +211,15 @@ def extract_one(doc: Doc, extractor_options: TripleExtractorOptions = None,
         if extractor_options.prep_phrase:
             post_process_prep_phrase(triple)
 
+    def filter_func(ext):
+        for ext_filter in filters:
+            if ext_filter.eval(ext):
+                return True
+        return False
+
+    if filters:
+        extractions = list(filter(filter_func, extractions))
+
     if flatten:
         extractions = [
             triple.flatten(lemmatize=extractor_options.lemmatize,
@@ -221,9 +232,13 @@ def extract_one(doc: Doc, extractor_options: TripleExtractorOptions = None,
 
 def extract(input_object: Union[str, Iterable[str]], extractor_options: TripleExtractorOptions = None,
             verbose: bool = False,
-            want_dataframe: bool = False) -> Union[List[TripleExtractionFlattened], pandas.DataFrame]:
+            want_dataframe: bool = False,
+            filters: Optional[List] = None) -> Union[List[TripleExtractionFlattened], pandas.DataFrame]:
     if extractor_options is None:
         extractor_options = TripleExtractorOptions()
+
+    if extractor_options.use_noun_chunks:
+        get_nlp().add_pipe('merge_noun_chunks')
 
     output_extractions = []
 
@@ -236,21 +251,29 @@ def extract(input_object: Union[str, Iterable[str]], extractor_options: TripleEx
         for sent in split_quotes(doc):
             sent = nlp(sent)
             output_extractions.extend(
-                extract_one(sent,extractor_options, flatten=True, verbose=verbose))
+                extract_one(sent,extractor_options, flatten=True, verbose=verbose,
+                            filters=filters))
 
     if want_dataframe:
         extractions_df = pd.DataFrame([t.__dict__ for t in output_extractions])
         return extractions_df
+
+    if extractor_options.use_noun_chunks:
+        get_nlp().remove_pipe('merge_noun_chunks')
 
     return output_extractions
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='posextractor')
-    parser.add_argument('input', metavar='input', type=str,
-                        help='a filepath to a csv file or an input string')
-    parser.add_argument('output', metavar='output', type=str,
-                        help='an output path')
+    parser.add_argument('--input',  type=str,
+                        help='an input string')
+    parser.add_argument('--input-file', type=str,
+                        help='The filepath of a input csv file')
+    parser.add_argument('--input-filters', type=str,
+                        help='An input file or directory containing posextract filter rules.')
+    parser.add_argument('--output', metavar='output', type=str,
+                        help='an output path', required=True)
     parser.add_argument('--data-column', type=str, default=None, metavar='data_col',
                         help='what column to use if a csv is given', dest='data_column')
     parser.add_argument('--id-column', type=str, default=None, metavar='id_col',
@@ -265,9 +288,10 @@ if __name__ == '__main__':
     parser.add_argument('--prep-phrase', action='store_true')
     parser.add_argument('--no-compound-subject', action='store_true')
     parser.add_argument('--no-compound-object', action='store_true')
+    parser.add_argument('--use-noun-chunks', action='store_true')
 
     args = parser.parse_args()
-    is_file = os.path.isfile(args.input)
+    is_file = args.input_file is not None
 
     extractor_options = TripleExtractorOptions(
         compound_subject=not args.no_compound_subject,
@@ -275,20 +299,25 @@ if __name__ == '__main__':
         combine_adj=args.post_combine_adj,
         add_auxiliary=args.add_auxiliary,
         prep_phrase=args.prep_phrase,
-        lemmatize=args.lemma
+        lemmatize=args.lemma,
+        use_noun_chunks=args.use_noun_chunks,
     )
 
     inputs = []
     outputs = []
+    filters = []
 
     delimiter = {'comma': ',', 'pipe': '|', 'tab': '\t'}[args.file_delimiter]
 
     input_values = None
     df = None
 
+    if not args.input and not args.input_file:
+        exit('Please provide either an input string or an input file')
+
     if is_file:
         if args.verbose:
-            print('Loading input (%s) as a CSV file...' % args.input)
+            print('Loading input (%s) as a CSV file...' % args.input_file)
             print('delimiter:', args.file_delimiter)
         if args.data_column is None:
             exit('Invalid arguments: Must specify column name for data using --data-column')
@@ -298,10 +327,23 @@ if __name__ == '__main__':
         if args.id_column is not None:
             usecols.append(args.id_column)
 
-        df = pd.read_csv(args.input, index_col=args.id_column, usecols=usecols, delimiter=delimiter)
+        df = pd.read_csv(args.input_file, index_col=args.id_column, usecols=usecols, delimiter=delimiter)
         input_values = df[args.data_column]
     else:
         input_values = [args.input, ]
+
+    if args.input_filters:
+        input_filters = args.input_filters
+        if os.path.isfile(input_filters):
+            filters.append(parse_posrule(input_filters))
+        elif os.path.isdir(input_filters):
+            for dirpath, dirnames, filenames in os.walk(input_filters):
+                filenames = [fn for fn in filenames if fn.endswith('.posrule')]
+                for fn in filenames:
+                    fn = f'{dirpath}{"/" if not fn.startswith("/") else ""}{fn}'
+                    filters.append(parse_posrule(fn))
+        else:
+            raise FileNotFoundError(args.input_filters)
 
     with open(args.output, 'w+') as f:
         pass
@@ -310,7 +352,8 @@ if __name__ == '__main__':
     header = True
 
     for i, data_str in enumerate(input_values):
-        triples_df = extract(data_str, extractor_options=extractor_options, verbose=args.verbose, want_dataframe=True)
+        triples_df = extract(data_str, extractor_options=extractor_options, verbose=args.verbose, want_dataframe=True,
+                             filters=filters)
         extraction_count += len(triples_df)
         if df is not None:
             triples_df['sentence_id'] = df.index[i]

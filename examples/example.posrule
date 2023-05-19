@@ -1,0 +1,5 @@
+MATCH (SUBJECT="dog" AND PREDICATE="house") OR SUBJECT="bowl";
+MATCH SUBJECT=RE<"cats?">;
+//this is a comment
+// this is another comment
+IGNORE VERB="walking";
