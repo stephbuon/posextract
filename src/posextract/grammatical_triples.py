@@ -13,6 +13,13 @@ from posextract.triple_extraction import TripleExtraction, TripleExtractionFlatt
 from posextract.util import *
 import pandas as pd
 
+
+try:
+    collectionsAbc = collections.abc
+except AttributeError:
+    collectionsAbc = collections
+
+
 nlp = get_nlp()
 
 
@@ -244,7 +251,7 @@ def extract(input_object: Union[str, Iterable[str]], extractor_options: TripleEx
 
     if type(input_object) == str:
         input_object = [input_object, ]
-    elif not isinstance(input_object, collections.Iterable):
+    elif not isinstance(input_object, collectionsAbc.Iterable):
         raise ValueError('extract_triples: input should be a string or a collection of strings')
 
     for i, doc in enumerate(input_object):
