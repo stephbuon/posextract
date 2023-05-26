@@ -80,19 +80,20 @@ def post_process_prep_phrase(extraction: TripleExtraction):
             extraction.object_prep_noun = nouns[0]
 
             return extraction
-
-    # for child in extraction.verb.children:
-    #     if child == extraction.poa:
-    #         continue
-    #     if child.text == 'with':
-    #         pobjs = [childchild for childchild in child.children if childchild.dep == pobj]
-    #
-    #         if len(pobjs) != 1:
-    #             continue
-    #
-    #         extraction.object_prep = child
-    #         extraction.object_prep_noun = pobjs[0]
-    #         return extraction
+        
+    # Experimenting with adding this back (may result in double counted "with" statements
+     for child in extraction.verb.children:
+         if child == extraction.poa:
+             continue
+         if child.text == 'with':
+             pobjs = [childchild for childchild in child.children if childchild.dep == pobj]
+    
+             if len(pobjs) != 1:
+                 continue
+    
+             extraction.object_prep = child
+             extraction.object_prep_noun = pobjs[0]
+             return extraction
 
     return extraction
 
