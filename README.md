@@ -40,6 +40,14 @@ for triple in triples:
 # Output: Landlords exercise oppression, soldiers were ill
 ```
 
+Extract grammatical triples using different options from default: 
+
+```
+from posextract.util import TripleExtractorOptions
+
+triples = grammatical_triples.extract(sent, TripleExtractorOptions(prep_phrase = True))
+```
+
 Or extract adjectives and the nouns they modify. 
 
 ```
