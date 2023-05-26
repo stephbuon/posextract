@@ -90,3 +90,4 @@ python -m posextract.extract_triples --data_column sentence --id_column sentence
 ... see our Wiki: 
 - [About Our Evaluation Data](https://github.com/stephbuon/posextract/wiki/Evaluation-Data-Sets)
 - [About the Syntactic Dependency Parser](https://github.com/stephbuon/posextract/wiki/Our-Application-of-spaCy-NLP)
+- [How to Use posextract on Databricks](https://github.com/stephbuon/posextract/wiki/Using-posextract-on-Databricks)
